@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hugo Whisper Docs on Jackiesnacks</title>
-    <link>http://localhost:1313/</link>
-    <description>Recent content in Hugo Whisper Docs on Jackiesnacks</description>
+    <title>Overview on Jackiesnacks</title>
+    <link>http://localhost:1313/docs/</link>
+    <description>Recent content in Overview on Jackiesnacks</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 23 Mar 2024 10:36:51 +1000</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 11 Feb 2019 19:30:08 +1000</lastBuildDate>
+    <atom:link href="http://localhost:1313/docs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Install Hugo</title>
       <link>http://localhost:1313/docs/install-hugo/</link>
@@ -42,13 +42,6 @@
       <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
       <guid>http://localhost:1313/docs/example/</guid>
       <description>&lt;p&gt;Whisper is a minimal documentation theme built for Hugo. The design &amp;amp; functionality is intentionally minimal.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>CSS</title>
-      <link>http://localhost:1313/computer-science/web-development/css/css/</link>
-      <pubDate>Sat, 23 Mar 2024 10:36:51 +1000</pubDate>
-      <guid>http://localhost:1313/computer-science/web-development/css/css/</guid>
-      <description></description>
     </item>
   </channel>
 </rss>
