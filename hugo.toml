@@ -1,4 +1,4 @@
-baseURL = 'https://recelis.github.io/'
+baseURL = '/'
 languageCode = 'en-us'
 title = 'Jackiesnacks'
 themesDir = "themes"

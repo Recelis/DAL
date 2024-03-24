@@ -53,3 +53,6 @@ summaryLength = 30
 
   [params.footer]
     copyright_text = 'Free Hugo theme by <a class="zerostatic" href="https://www.zerostatic.io">Zerostatic Themes</a>'
+
+[security]
+  enableInlineShortcodes = true
