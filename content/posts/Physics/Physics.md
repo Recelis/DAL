@@ -20,7 +20,13 @@ A is the `projected area` of the object
 
 An object will reach its terminal speed `asymptotically`.
 
-## Velocity / time to reach terminal velocity
-
 ## Derivation
+
 `Ricatti equation` solvable by reducing to a `second-order linear differential equation`.
+<i>Skipping a lot of derivation because I don't follow the integrations</i>
+
+The resulting speed as a function of time that reaches terminal velocity becomes:
+
+v = V_t tanh(t g/V_t)
+
+`tanh` is an example of a `hyperbolic function`. When the `tanh` gets to 1, then the velocity reaches terminal velocity.
