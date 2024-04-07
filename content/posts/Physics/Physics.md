@@ -1,9 +1,10 @@
 ---
-title: 'Physics'
+title: "Physics"
 date: 2024-04-01T20:21:01.077Z
 ---
 
 # Terminal Velocity
+
 [docs](https://en.wikipedia.org/wiki/Terminal_velocity)
 Terminal velocity is the maxiumum velocity that an object can fall through a fluid. This limit is caused when the `drag force (F_d)` + `buoyancy` is equal to the `force of gravity`.
 
