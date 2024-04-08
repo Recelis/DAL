@@ -3,6 +3,14 @@ title: "Physics"
 date: 2024-04-01T20:21:01.077Z
 ---
 
+# Velocity
+
+Velocity is speed with a direction. Where speed is a distance covered over a certain amount of time. Integrating velocity by time between two points in time will lead to the total distance traveled. Taking the derivative will lead to the acceleration.
+
+# Acceleration
+
+Acceleration is the change of velocity over time. Acceleration itself has a direction.
+
 # Terminal Velocity
 
 [docs](https://en.wikipedia.org/wiki/Terminal_velocity)
