@@ -6,7 +6,7 @@ draft: true
 
 **Symmetric encryption**
 
-https://www.khanacademy.org/computing/computers-and-internet/xcae6f4a7ff015e7d:online-data-security/xcae6f4a7ff015e7d:data-encryption-techniques/a/symmetric-encryption-techniques
+(docs)[https://www.khanacademy.org/computing/computers-and-internet/xcae6f4a7ff015e7d:online-data-security/xcae6f4a7ff015e7d:data-encryption-techniques/a/symmetric-encryption-techniques]
 
 This is any technique in which the same key is used to encrypt and decrypt data. It is symmetric in that the process for encrypting is simply reversed when decrypting data.
 
@@ -14,17 +14,11 @@ This is any technique in which the same key is used to encrypt and decrypt data.
 
 The Caesar Cipher is an encryption method where data is encrypted by shifting everything by a number of letters.
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/0c6a6719-3fa4-4bdc-98cb-a552932a7132/bab56463-6a6a-4d2e-93ab-7f446ed195cc/Untitled.png)
-
 **Vigenere Cipher**
 
 This is more complicated in that it shifts all the letters by a single key.
 
-![Screen Shot 2024-01-01 at 8.52.28 am.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/0c6a6719-3fa4-4bdc-98cb-a552932a7132/d9551bb5-a6eb-402c-94da-7a781e29cacc/Screen_Shot_2024-01-01_at_8.52.28_am.png)
-
 This means that every key will have a differing shift amount which makes it difficult to decode even when the letters of the original data are the same. You would go through a Vigenere table to then encode and decode the message data. If the message is longer than the key, then the key just wraps again.
-
-![Screen Shot 2024-01-01 at 8.54.22 am.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/0c6a6719-3fa4-4bdc-98cb-a552932a7132/7c2c8631-c690-4b15-8619-7aa8d68376d3/Screen_Shot_2024-01-01_at_8.54.22_am.png)
 
 However, you can use **Frequency Analysis** to crack this code because words that are common such as “the” will be repeated over and over again.
 
@@ -79,3 +73,5 @@ https://learn.microsoft.com/en-us/azure/iot-hub/reference-x509-certificates
 https://datatracker.ietf.org/doc/html/rfc5280
 
 These certificates are the ones used for SSL/TLS to represent the public key as well as other fields to represent the root CA, encryption algorithm, and validity. There have been three iterations of these certificates.
+
+_Notes: Can I view the Certificates in the browser?_
