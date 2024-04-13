@@ -1,5 +1,5 @@
 ---
-title: 'TCP/IP Model'
+title: "TCP/IP Model"
 date: 2024-04-03T21:17:55.166Z
 ---
 
@@ -8,23 +8,22 @@ date: 2024-04-03T21:17:55.166Z
 (docs)[https://www.imperva.com/learn/application-security/osi-model/]
 This is a set of internet layers that the internet is built on. The article goes through the 7 OSI layers, but I'll just go through the TCP/IP model for brevity's sake.
 
--  Application Layer
-    - HTTP
-    - SMTP
-    - Telnet
-    - FTP
-    - DNS
-    - RIP
-    - SNMP
+- Application Layer
+  - HTTP
+  - SMTP
+  - Telnet
+  - FTP
+  - DNS
+  - RIP
+  - SNMP
 - Transport Layer
-    - TCP
-    - UDP
+  - TCP
+  - UDP
 - Internet Layer
 - Network Access Layer
-    - Ethernet
-    - Token Ring
-    - ATM
-    - Frame Relay
+  - Ethernet
+  - Token Ring
+  - ATM
+  - Frame Relay
 
-
-
+# IP address
