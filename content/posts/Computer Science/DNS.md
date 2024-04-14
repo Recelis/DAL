@@ -49,13 +49,16 @@ The `@149.112.121.10` is the CIRA public resolver service. If this isn't passed 
 ### A Record
 
 These records point to the IP address. They are considered the final rercord to get to your website.
-example.com record |type: |value: |TTL|
-@ | A |192.0.2.1 |14400|
+
+| example.com record | type: |    value: |   TTL |
+| ------------------ | :---: | --------: | ----: |
+| @                  |   A   | 192.0.2.1 | 14400 |
 
 ### CNAME Records
 
 These records point to a hostname. Typically they would work like this:
 www.dogs.com -> dogs.com
 
-blog.example.com record | type:| value:| TTL|
-@| CNAME | is an alias of www.example.com| 32600
+| blog.example.com record | type: |                         value: |   TTL |
+| ----------------------- | :---: | -----------------------------: | ----: |
+| @                       | CNAME | is an alias of www.example.com | 32600 |
