@@ -48,7 +48,7 @@ The `@149.112.121.10` is the CIRA public resolver service. If this isn't passed 
 
 ### A Record
 
-These records point to the IP address. They are considered the final rercord to get to your website.
+These records point to the IP address. They are considered the final record to get to your website.
 
 | example.com record | type: |    value: |   TTL |
 | ------------------ | :---: | --------: | ----: |
