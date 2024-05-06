@@ -153,3 +153,25 @@ myMock.mockReturnValueOnce(10).mockReturnValueOnce("x").mockReturnValue(true);
 console.log(myMock(), myMock(), myMock(), myMock());
 // > 10, 'x', true, true
 ```
+
+## Jest Object
+
+### Mock Functions
+
+### jest.fn(implementation?)
+A `jest.fn(implementation?)` returns a new unused mock function. Unused here means that when you check that it has been called before, it'll return 0.
+
+```typescript
+const mockFn = jest.fn();
+mockFn();
+expect(mockFn).toHaveBeenCalled();
+```
+
+
+The implementation here is a function that you can pass in to mock what this mock function should return.
+
+```typescript
+// With a mock implementation:
+const returnsTrue = jest.fn(() => true);
+console.log(returnsTrue()); // true;
+```
