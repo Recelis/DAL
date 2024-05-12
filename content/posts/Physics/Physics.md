@@ -3,6 +3,15 @@ title: "Physics"
 date: 2024-04-01T20:21:01.077Z
 ---
 
+# Dimensional Analysis
+
+[docs](David Morin Introduction to classical mechanics)
+Dimensional analysis is a way of describing a physical phenomena only by the units of measurement and some common rules that you know to extract the formula for the thing you want to describe.
+
+i.e.
+
+A spring with constant k has a mass m. The spring force is F(x) = -kx where x is the displacement from equilibrium. What can you say about the frequency of oscillations?
+
 # Velocity
 
 Velocity is speed with a direction. Where speed is a distance covered over a certain amount of time. Integrating velocity by time between two points in time will lead to the total distance traveled. Taking the derivative will lead to the acceleration.
