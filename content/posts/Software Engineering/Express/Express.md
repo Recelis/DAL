@@ -48,6 +48,68 @@ app.get('/', (req, res) => {
 
 [docs](https://expressjs.com/en/4x/api.html#req)
 
+The request object contains all the query strings, params, HTTP Headers and so one. I'll just list a few common request object properties and methods.
+
+##### req.baseUrl
+
+this returns the base url that the router is mounted on.
+
+```typescript
+var greet = express.Router();
+
+greet.get("/jp", function (req, res) {
+  console.log(req.baseUrl); // /greet
+  res.send("Konichiwa!");
+});
+
+app.use("/greet", greet); // load the router on '/greet'
+```
+
+##### req.body
+
+this returns the key value pairs of a route's body.
+
+```typescript
+var express = require("express");
+
+var app = express();
+
+app.use(express.json()); // for parsing application/json
+app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
+app.post("/profile", function (req, res, next) {
+  console.log(req.body);
+  res.json(req.body);
+});
+```
+
+##### req.fresh
+
+returns whether or not the cache is stale. Sending the headers `Cache-Control: no-cache` will reload everything but will set this to be false.
+
+##### req.hostname
+
+returns the hostname of the client. If the `trust proxy` setting evaluates to false, then it'll get the value from `X-Forwarded-Host`.
+
+##### req.method
+
+returns the HTTP method of the request.
+
+##### req.params
+
+returns the params of a route.
+
+```javascript
+Request URL: http://localhost:3000/users/34/books/8989
+req.params: { "userId": "34", "bookId": "8989" }
+
+// the route
+app.get('/users/:userId/books/:bookId', (req, res) => {
+  res.send(req.params.userId) // does this work?
+})
+
+```
+
 #### Response object
 
 [docs](https://expressjs.com/en/4x/api.html#res)
