@@ -61,3 +61,23 @@ You can do a filter using the `WHERE` keyword.
 ```SQL
 SELECT * FROM groceries WHERE aisle > 5
 ```
+
+### Aggregate Functions
+
+You can use aggregate functions such as `SUM`, `MAX` etc.
+
+This will come after your SELECT.
+
+```SQL
+SELECT aisle, SUM(quantity) FROM groceries
+```
+
+#### GROUP BY
+
+Your aggregate function can be grouped by a column. Group By is always at the end of the aggregate query.
+
+```SQL
+SELECT aisle, SUM(quantity) FROM groceries GROUP BY aisle;
+```
+
+aisle here returns a column for the group by. You can return something else as this column but it will only return the first thing that the group by set.
