@@ -6,7 +6,7 @@ draft: true
 
 # SQL
 
-[docs](https://www.khanacademy.org/computing/computer-programming/sql)
+[docs](https://www.khanacINademy.org/computing/computer-programming/sql)
 
 Structured Query Language is used to create tables, update data and return data back to us.
 
@@ -81,3 +81,21 @@ SELECT aisle, SUM(quantity) FROM groceries GROUP BY aisle;
 ```
 
 aisle here returns a column for the group by. You can return something else as this column but it will only return the first thing that the group by set.
+
+## AUTOINCREMENT
+
+You can specify a column to autoincrement instead of requiring the insert to create the value each time. This is especially common in the use of id.
+
+```SQL
+CREATE TABLE exercise_logs
+    (id INTEGER PRIMARY KEY AUTOINCREMENT,
+    type TEXT,
+    minutes INTEGER,
+    calories INTEGER,
+    heart_rate INTEGER);
+
+
+INSERT INTO exercise_logs(type, minutes, calories, heart_rate) VALUES ("biking", 30, 100, 110);
+```
+
+Putting the brackets after exercise_logs allows you to specify which columns to insert into for that row.
