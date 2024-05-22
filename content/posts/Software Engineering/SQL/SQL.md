@@ -99,3 +99,21 @@ INSERT INTO exercise_logs(type, minutes, calories, heart_rate) VALUES ("biking",
 ```
 
 Putting the brackets after exercise_logs allows you to specify which columns to insert into for that row.
+
+## AND Operator
+
+This combines conditions for a SELECT query.
+
+```SQL
+SELECT * FROM exercise_logs WHERE calories > 50 AND minutes < 30;
+```
+
+## OR Operator
+
+You can also use the OR that meet any of some conditions.
+
+```SQL
+SELECT * FROM exercise_logs WHERE calories > 50 OR minutes < 30;
+```
+
+AND operator takes precedent over OR operator but you can just use parenthesis.
