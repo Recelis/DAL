@@ -117,3 +117,34 @@ SELECT * FROM exercise_logs WHERE calories > 50 OR minutes < 30;
 ```
 
 AND operator takes precedent over OR operator but you can just use parenthesis.
+
+## IN Operator
+
+You can easily filter rows by values in a column.
+
+```SQL
+SELECT * FROM exercise_logs WHERE type IN ("biking", "hiking", "tree climbing", "rowing");
+```
+
+You can do the invert with a NOT operator.
+
+```SQL
+SELECT * FROM exercise_logs WHERE type NOT IN ("biking", "hiking", "tree climbing", "rowing");
+```
+
+## Subquery
+
+You can use a subquery in an IN operator.
+
+```SQL
+SELECT * FROM exercise_logs WHERE type IN (SELECT type FROM dr_favourites);
+```
+
+## LIKE Operator
+
+The LIKE operator allows you to do a fuzzy match against a column. So in the example below, it'll look for the word cardiovascular in the column reason. You need the two percentage signs on the start and end of the word as wildcard checks.
+
+```SQL
+SELECT * FROM exercise_logs WHERE type IN (
+    SELECT type FROM drs_favorites WHERE reason LIKE "%cardiovascular%");
+```
