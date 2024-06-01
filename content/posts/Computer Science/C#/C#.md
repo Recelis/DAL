@@ -68,6 +68,41 @@ var message;
 // (1,5): error CS0818: Implicitly-typed variables must be initialized
 ```
 
+### Strings
+
+#### Character Escape
+
+[docs](https://learn.microsoft.com/en-gb/training/modules/csharp-basic-formatting/2-exercise-character-escape-sequences)
+
+Character escapes in C# begin with a \ inside a string.
+
+```C#
+Console.WriteLine("Hello\nWorld!");
+Console.WriteLine("Hello\tWorld!");
+```
+
+You can escape a quotation mark too.
+
+```C#
+Console.WritelINE("hELLO \"World\"");
+```
+
+And you can even escape an escape.
+
+```C#
+Console.WriteLine("c:\\source\\repos");
+```
+
+#### Verbatim string literal
+
+A verbatim string literal keeps the formatting of the string.
+
+````C#
+Console.WriteLine(@"    c:\source\repos
+        (this is where your code goes)");
+```
+
+
 ### Namespaces
 
 Each file will contain a a namespace which will contain **class**, **struct**, **interface**, **enumeration**, **delegates**, or other namespaces. A namespace here is sort of like a module. https://learn.microsoft.com/en-gb/dotnet/csharp/fundamentals/program-structure/
@@ -83,6 +118,8 @@ Each file will contain a a namespace which will contain **class**, **struct**, *
 ### Delegates
 
 ## .Net
+
+````
 
 ```
 
