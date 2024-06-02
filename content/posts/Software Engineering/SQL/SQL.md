@@ -148,3 +148,25 @@ The LIKE operator allows you to do a fuzzy match against a column. So in the exa
 SELECT * FROM exercise_logs WHERE type IN (
     SELECT type FROM drs_favorites WHERE reason LIKE "%cardiovascular%");
 ```
+
+## Aggregate Queries
+
+### SUM
+
+You can sum up all the values in a table using the `SUM` operator.
+
+```SQL
+SELECT type, SUM(calories) AS total_calories FROM exercise_logs GROUP BY type;
+```
+
+Using the AS keyword, allows you to change the name of the column returned.
+
+Where the table in the example is:
+1 biking 30 115 110
+2 biking 10 45 105
+3 dancing 15 200 120
+4 dancing 15 165 120
+5 tree climbing 30 70 90
+6 tree climbing 25 72 80
+7 rowing 30 70 90
+8 hiking 60 80 85
