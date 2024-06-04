@@ -102,6 +102,17 @@ Console.WriteLine(@"    c:\source\repos
         (this is where your code goes)");
 ```
 
+#### String Concatenation
+``` C#
+string firstName = "Bob";
+string message = "Hello " + firstName;
+```
+
+#### String Interpolation
+```C#
+string message = $"{greeting} {firstName}!"
+```
+
 
 ### Namespaces
 
