@@ -97,22 +97,43 @@ Console.WriteLine("c:\\source\\repos");
 
 A verbatim string literal keeps the formatting of the string.
 
-````C#
+```C#
 Console.WriteLine(@"    c:\source\repos
         (this is where your code goes)");
 ```
 
 #### String Concatenation
-``` C#
-string firstName = "Bob";
-string message = "Hello " + firstName;
+
+```C#
+    string firstName = "Bob";
+    string message = "Hello " + firstName;
 ```
 
 #### String Interpolation
+
 ```C#
 string message = $"{greeting} {firstName}!"
 ```
 
+### Numbers
+
+C# deals with numbers similar to most other languages. It does allow `implicit type conversion` which allows numbers to be implicitly converted to a string during concatenation.
+
+```C#
+string firstName = "Bob";
+int widgetsSold = 7;
+Console.WriteLine(firstName + " sold " + widgetsSold + " widgets.");
+```
+
+#### Decimals
+
+C# also requires a different type to deal with decimals.
+
+```C#
+decimal decimalQuotient = 7.0m / 5;
+```
+
+For a decimal operation to work, you'll need at least one of the numbers to be a decimal.
 
 ### Namespaces
 
@@ -135,3 +156,4 @@ Each file will contain a a namespace which will contain **class**, **struct**, *
 ```
 
 ```
+````
