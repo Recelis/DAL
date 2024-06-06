@@ -8,7 +8,7 @@ draft = true
 
 As practiced on [musicCollection](https://github.com/Recelis/musicCollection) repo.
 
-# ASP .NET
+# ASP .NET Core
 
 ## Creating ASP .NET project
 
