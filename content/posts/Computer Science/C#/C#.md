@@ -4,8 +4,6 @@ date = 2024-03-18T09:50:39+10:00
 draft = true
 +++
 
-Understanding C# requires knowing basic syntax which is easy to understand. But also means that I have to get my hands on OOP concepts which is not that easy. More difficult that knowing what something is, is when to use them and when not to use them.
-
 ## Syntax
 
 ### Printing new line
@@ -149,11 +147,3 @@ Each file will contain a a namespace which will contain **class**, **struct**, *
 
 ### Delegates
 
-## .Net
-
-````
-
-```
-
-```
-````
