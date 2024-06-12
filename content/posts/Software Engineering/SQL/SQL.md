@@ -162,6 +162,7 @@ SELECT type, SUM(calories) AS total_calories FROM exercise_logs GROUP BY type;
 Using the AS keyword, allows you to change the name of the column returned.
 
 Where the table in the example is:
+id type minutes calories heart_rate
 1 biking 30 115 110
 2 biking 10 45 105
 3 dancing 15 200 120
@@ -170,3 +171,31 @@ Where the table in the example is:
 6 tree climbing 25 72 80
 7 rowing 30 70 90
 8 hiking 60 80 85
+
+### HAVING
+
+Using the `HAVING` operator allows you to filter based on aggregate Grouped values.
+
+```SQL
+SELECT type, SUM(calories) AS total_calories FROM exercise_logs
+    GROUP BY type
+    HAVING total_calories > 150
+    ;
+```
+
+type total_calories
+biking 160
+dancing 365
+
+### COUNT
+
+Count will be used with `GROUP BY` count the number of rows with a value under a column has appeared.
+
+```SQL
+SELECT type FROM exercise_logs GROUP BY type HAVING COUNT(*) >= 2;
+```
+
+type
+biking
+dancing
+tree climbing
