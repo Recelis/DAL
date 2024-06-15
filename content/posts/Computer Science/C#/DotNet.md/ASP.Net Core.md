@@ -32,6 +32,19 @@ In this project, it is not necessary to do a `dotnet tool restore` or a `dotnet 
 ### Controllers
 These are `classes` with `public methods` that exposes HTTP endpoints.
 
+#### Base Class: `ControllerBase`
+The base class provides functionality for handling HTTP requests.
+
+#### API controller class attributes
+```csharp
+[ApiController]
+[Route("[controller]")]
+public class WeatherForecastController : ControllerBase
+```
+
+Attributes are applied to the `WeatherForecastController`.
+[ApiController] enables 
+
 ### Program.cs
 This configures all the services and HTTP request pipeline. Also has app's entry point.
 
@@ -40,3 +53,10 @@ This contains `configuration metadata` for project.
 
 ### [projectName].http
 Contains config to test REST APIs from VS Code.
+
+#### Rest Client Send Request
+You can actually test your API with the Send Request command in your [projectName].http file. provided that you have `Rest Client` installed in your VSCode.
+
+### launchSettings.json
+This is the file that contains the config for the app.
+
