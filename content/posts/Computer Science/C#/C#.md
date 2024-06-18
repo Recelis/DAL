@@ -133,11 +133,32 @@ decimal decimalQuotient = 7.0m / 5;
 
 For a decimal operation to work, you'll need at least one of the numbers to be a decimal.
 
-### Namespaces
+## Type System
+[docs](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/)
 
-Each file will contain a a namespace which will contain **class**, **struct**, **interface**, **enumeration**, **delegates**, or other namespaces. A namespace here is sort of like a module. https://learn.microsoft.com/en-gb/dotnet/csharp/fundamentals/program-structure/
+## Value Types
+Value types derive from `System.Valuetype` which derived from `System.Object`. Value types variables directly contain their values and not in a separate heap allocation or garbage collection needed. The two types are:
+`struct` and `enum`. They are **sealed** in that you can't drive a type from any value type.
+
+
+## Reference Types
+A reference type can be a `class`, `record`, `delegate`, `array`, or `interface`. On declaration, value is null until it is assigned instance of type or you create one using `new` operator.
+
+```C#
+MyClass myClass = new MyClass();
+MyClass myClass2 = myClass;
+```
+
+There are built-in reference types which are `dynamic`, `object` or `string`.
+
+### Namespaces
+[docs](https://learn.microsoft.com/en-gb/dotnet/csharp/fundamentals/program-structure/)
+
+Each file will contain a a namespace which will contain **class**, **struct**, **interface**, **enumeration**, **delegates**, or other namespaces. A namespace here is sort of like a module.
 
 ### Classes
+
+### Records
 
 ### Structs
 
@@ -147,3 +168,41 @@ Each file will contain a a namespace which will contain **class**, **struct**, *
 
 ### Delegates
 
+## Types of literal values
+A literal values also have types from the compiler. E.g. a numeric literal should be typed by appending letter to end of number. `4.56f`, if no letter is appended, compiler will infer type.
+
+## Generic types
+Types declaraed with one or more **type parameters* that serve as placeholder for actual type *concrete type*.
+
+```C#
+List<string> stringList = new List<string>();
+```
+
+Allows reuse of same class without converting each element to an object.
+
+# Attributes
+[docs](https://learn.microsoft.com/en-us/dotnet/standard/attributes/)
+[docs](https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/reflection-and-attributes/)
+Attributes are a way to associate metadata, or declarative info with code. Once associated, it can be queried at run time using **reflection**. They can be created by declaring instances of special classes derived from **System.Attribute** and are created when the compiler turns the code into **common intermediate language (CIL)** and placed in a **portable executable (PE)**.
+
+## Reflection
+Reflection looks into the metadata of a compiled code and gets the attributes defined in your code (type, method, properties...) You can dynamically created an instance of a type, bind type to an existing object, or get type from an existing object and invoke methods or access fields or properties.
+
+Need to be add `using System;` and `using System.Reflection;` at top of `.cs` file.
+
+Examples of getting type using `GetType()` method.
+```C#
+int i = 42;
+Type type = i.GetType();
+Console.WriteLine(type);
+```
+
+## Using attributes
+You can give it apply a characteristic to a class (sort of like typing it)
+```C#
+[Serializable]
+public class SampleClass
+{
+    // Objects of this type can be serialized.
+}
+```
