@@ -30,7 +30,7 @@ In this project, it is not necessary to do a `dotnet tool restore` or a `dotnet 
 ## Structure of Project
 
 ### Controllers
-These are `classes` with `public methods` that exposes HTTP endpoints.
+These are `classes` with `public methods` that exposes HTTP endpoints. These are public classes with one or more public methods known as **actions**.
 
 #### Base Class: `ControllerBase`
 The base class provides functionality for handling HTTP requests.
@@ -43,7 +43,7 @@ public class WeatherForecastController : ControllerBase
 ```
 
 Attributes are applied to the `WeatherForecastController`.
-[ApiController] enables 
+[ApiController] enables opinionated behaviours to building web APIs as defined in the `Microsoft.AspNetCore.Mvc.ApiControllerAttribute` class.
 
 ### Program.cs
 This configures all the services and HTTP request pipeline. Also has app's entry point.
@@ -60,3 +60,52 @@ You can actually test your API with the Send Request command in your [projectNam
 ### launchSettings.json
 This is the file that contains the config for the app.
 
+## Data Store
+Models exist in a directory called Models. This is implemented using as `public class` under a namespace. e.g.
+
+```csharp
+namespace ContosoPizza.Models;
+
+public class Pizza
+{
+    public int Id { get; set; }
+    public string? Name { get; set; }
+    public bool IsGlutenFree { get; set; }
+}
+```
+
+Typically, this will be a connection to your DB.
+
+## Data Service
+This is the interface to the data store. Your controllers will interface with your data service and provide business logic.
+
+## Controllers
+As before, all controller classes extends off the ControllerBase class.
+
+```csharp
+using Microsoft.AspNetCore.Mvc;
+
+namespace ContosoPizza.Controllers;
+
+[ApiController]
+[Route("[controller]")]
+public class PizzaController: ControllerBase
+{
+    public PizzaController()
+    {
+
+    }
+
+    // GET all action
+    [HttpGet]
+    public ActionResult<List<Pizza>> GetAll () => PizzaService.GetAll();
+    // GET  by Id action
+    // POST action
+    // PUT action
+    // DELETE action
+}
+```
+
+For an opinionated MVC server, even for this example, the GetAll endpoint will be found on the [localhost:port]/pizza endpoint. This is because of the [Route] attribute and the /pizza part was due to the controller being named PizzaController.
+
+[ActionResult] attribute is the base class for all action results in ASP .NET Core.
