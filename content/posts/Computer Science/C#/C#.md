@@ -159,6 +159,36 @@ Each file will contain a a namespace which will contain **class**, **struct**, *
 ### Classes
 
 ### Records
+[docs](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/record)
+A `record` modifier is a given to a `class` or a `struct` to indicate that this is primarily to hold data.
+
+A `record` typically refers to `record class` which means that they are allocated on the heap. However, a `record struct` does exist and are allocated on the stack.
+
+```C#
+// A record class
+public record Person(string FirstName, string LastName);
+
+// A record struct
+public readonly record struct Point(double X, double Y, double Z);
+```
+
+When the `primary constructor` are declared, the parameters are referred to as `positional parameters`. The compiler will create these `positional properties` to mirror the primary constructor.
+
+i.e. in the Person example, the class will have a property FirstName and another property LastName without you needing to define this.
+
+A `record class` are supposed to be `immutable` but they can have mutable fields and properties.
+
+```C#
+public record Person
+{
+    public required string FirstName { get; set; }
+    public required string LastName { get; set; }
+};
+```
+
+
+
+
 
 ### Structs
 
