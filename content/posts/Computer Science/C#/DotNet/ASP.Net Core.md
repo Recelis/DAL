@@ -131,3 +131,9 @@ public class PizzaController: ControllerBase
 For an opinionated MVC server, even for this example, the GetAll endpoint will be found on the [localhost:port]/pizza endpoint. This is because of the [Route] attribute and the /pizza part was due to the controller being named PizzaController.
 
 [ActionResult] attribute is the base class for all action results in ASP .NET Core.
+
+# Assemblies
+[docs](https://learn.microsoft.com/en-us/dotnet/standard/assembly/)
+Assemblies are fundamental units of deployment, version control, reuse, activation scoping, and security permission for .NET applications.
+
+They are made running `build` in Visual Studio. Each package will contain one or more assembly.

@@ -186,10 +186,6 @@ public record Person
 };
 ```
 
-
-
-
-
 ### Structs
 
 ### Interfaces
@@ -301,4 +297,26 @@ public class BaseClass
     // Only accessible within the same assembly.
     internal static int x = 0;
 }  
+```
+
+### private
+Only accessible within the body of the class or struct when they are declared.
+
+```csharp
+class Employee2
+{
+    private readonly string _name = "FirstName, LastName";
+    private readonly double _salary = 100.0;
+
+    public string GetName()
+    {
+        // uses getters to return the private values
+        return _name;
+    }
+
+    public double Salary
+    {
+        get { return _salary; }
+    }
+}
 ```
