@@ -236,3 +236,69 @@ public class SampleClass
     // Objects of this type can be serialized.
 }
 ```
+
+# Keywords
+
+## Access Modifiers
+[docs](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/access-modifiers)
+
+### public
+No restriction on data.
+```csharp
+class PointTest
+{
+    public int x;
+    public int y;
+}
+
+class Program
+{
+    static void Main()
+    {
+        var p = new PointTest();
+        // Direct access to public members.
+        p.x = 10;
+        p.y = 15;
+        Console.WriteLine($"x = {p.x}, y = {p.y}");
+    }
+}
+// Output: x = 10, y = 15
+
+```
+
+### protected
+Access is limited to containing class or types derived from containing class. They cannot even be accessed from the class that they are a member of.
+
+```csharp
+class A
+{
+    protected int x = 123;
+}
+
+class B : A
+{
+    static void Main()
+    {
+        var a = new A();
+        var b = new B();
+
+        // Error CS1540, because x can only be accessed by
+        // classes derived from A.
+        // a.x = 10;
+
+        // OK, because this class derives from A.
+        b.x = 10;
+    }
+}
+```
+
+### internal
+An internal type or members are only accessible within files in the same `assembly`.
+
+```csharp
+public class BaseClass
+{  
+    // Only accessible within the same assembly.
+    internal static int x = 0;
+}  
+```
