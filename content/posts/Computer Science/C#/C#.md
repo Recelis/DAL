@@ -320,3 +320,45 @@ class Employee2
     }
 }
 ```
+
+### abstract
+The abstract modifier indicates that the thing has missing or incomplete information. Can be used on classes, methods, `indexers`, and `events`.
+
+#### abstract classes
+```C#
+abstract class Shape
+{
+    public abstract int GetArea();
+}
+
+class Square : Shape
+{
+    private int _side;
+
+    public Square(int n) => _side = n;
+
+    // GetArea method is required to avoid a compile-time error.
+    public override int GetArea() => _side * _side;
+
+    static void Main()
+    {
+        var sq = new Square(12);
+        Console.WriteLine($"Area of the square = {sq.GetArea()}");
+    }
+}
+// Output: Area of the square = 144
+```
+In this example, the abstract class Shape has an abstract method GetArea. The Square class inherits from Shape and has to give an implementation of the GetArea method.
+
+An abstract class cannot be instantiated.
+It can contain abstract methods and accessors.
+You cannot modifier an abstract class with a `sealed` modifier because the sealed modifier is the opposite of an abstract class.
+A non-abstract class has to include implementations of the inherited abstract methods and accessors.
+
+##### abstract methods
+Abstract methods are a `virtual method`. They can only be permitted in abstract classes.
+
+```C#
+public abstract void MyMethod();
+``` 
+The implementation must be an `override`.
