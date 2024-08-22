@@ -362,3 +362,63 @@ Abstract methods are a `virtual method`. They can only be permitted in abstract 
 public abstract void MyMethod();
 ``` 
 The implementation must be an `override`.
+
+# dyanmic
+[docs](https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/interop/using-type-dynamic)
+The dynamic type is one where the compiler assumes the element supports any operation so there will not be any errors at compilation but a run-time exception will be caused if the operation is not valid.
+
+```csharp
+static void Main(string[] args)
+{
+    ExampleClass ec = new ExampleClass();
+    // The following call to exampleMethod1 causes a compiler error
+    // if exampleMethod1 has only one parameter. Uncomment the line
+    // to see the error.
+    //ec.exampleMethod1(10, 4);
+
+    dynamic dynamic_ec = new ExampleClass();
+    // The following line is not identified as an error by the
+    // compiler, but it causes a run-time exception.
+    dynamic_ec.exampleMethod1(10, 4);
+
+    // The following calls also do not cause compiler errors, whether
+    // appropriate methods exist or not.
+    dynamic_ec.someMethod("some argument", 7, null);
+    dynamic_ec.nonexistentMethod();
+}
+
+class ExampleClass
+{
+    public ExampleClass() { }
+    public ExampleClass(int v) { }
+
+    public void exampleMethod1(int i) { }
+
+    public void exampleMethod2(string str) { }
+}
+```
+In the example above, exampleMethod only takes in 1 argument, so this will throw a run-time exception.
+
+Any operation involving a dynamic will usually result in a dynamic unless you are conversing something from dynamic to another type or a constructor takes in arguments of type dynamic.
+
+```C#
+dynamic d = 1;
+var testSum = d + 3;
+// Rest the mouse pointer over testSum in the following statement.
+System.Console.WriteLine(testSum);
+```
+testSum is a dynamic.
+
+
+## Conversions
+You can easily convert any value to dynamic.
+```csharp
+dynamic d1 = 7;
+```
+
+Or converting away from dynamic:
+```csharp
+int i = d1;
+```
+
+
