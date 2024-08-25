@@ -134,6 +134,44 @@ app.listen(3000);
 #### Router object
 
 [docs](https://stackoverflow.com/a/33261362)
+[docs](https://expressjs.com/en/guide/routing.html)
+The router object allows you to break up your routes file into modular components. The example they give is in the `express.Router` section. In this example, they define a file which will have its own middleware and HTTP routes.
+
+```typescript
+// THIS IS THE BIRDS.JS FILE
+const express = require('express')
+const router = express.Router()
+
+// middleware that is specific to this router
+const timeLog = (req, res, next) => {
+  console.log('Time: ', Date.now())
+  next()
+}
+router.use(timeLog)
+
+// define the home page route
+router.get('/', (req, res) => {
+  res.send('Birds home page')
+})
+// define the about route
+router.get('/about', (req, res) => {
+  res.send('About birds')
+})
+
+module.exports = router
+```
+
+And then they can import this route into the main application.
+
+```typescript
+const birds = require('./birds')
+// ...
+app.use('/birds', birds)
+```
+
+So now you can make requests to `/birds/about` and `/birds`.
+
+
 
 ## Middleware
 
