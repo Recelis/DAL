@@ -385,6 +385,59 @@ public abstract void MyMethod();
 
 The implementation must be an `override`.
 
+### virtual
+
+The virtual modifier is used on a property or a method on a base class which allows that property or method to be overridden in the inheriting class.
+
+If the inheriting class does not override it, then it'll call the original member.
+
+You cannot use the virtual modifier with the `static`, `abstract`, `private`, or `override` modifiers.
+
+The use of virtual is an exmaple of `Polymorphism`.
+
+```C#
+class MyBaseClass
+{
+    // virtual auto-implemented property. Overrides can only
+    // provide specialized behavior if they implement get and set accessors.
+    public virtual string Name { get; set; }
+
+    // ordinary virtual property with backing field
+    private int _num;
+    public virtual int Number
+    {
+        get { return _num; }
+        set { _num = value; }
+    }
+}
+
+class MyDerivedClass : MyBaseClass
+{
+    private string _name;
+
+    // Override auto-implemented property with ordinary property
+    // to provide specialized accessor behavior.
+    public override string Name
+    {
+        get
+        {
+            return _name;
+        }
+        set
+        {
+            if (!string.IsNullOrEmpty(value))
+            {
+                _name = value;
+            }
+            else
+            {
+                _name = "Unknown";
+            }
+        }
+    }
+}
+```
+
 ### sealed
 
 [docs](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/sealed)
