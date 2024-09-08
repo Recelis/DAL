@@ -134,14 +134,16 @@ decimal decimalQuotient = 7.0m / 5;
 For a decimal operation to work, you'll need at least one of the numbers to be a decimal.
 
 ## Type System
+
 [docs](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/)
 
 ## Value Types
+
 Value types derive from `System.Valuetype` which derived from `System.Object`. Value types variables directly contain their values and not in a separate heap allocation or garbage collection needed. The two types are:
 `struct` and `enum`. They are **sealed** in that you can't drive a type from any value type.
 
-
 ## Reference Types
+
 A reference type can be a `class`, `record`, `delegate`, `array`, or `interface`. On declaration, value is null until it is assigned instance of type or you create one using `new` operator.
 
 ```C#
@@ -152,6 +154,7 @@ MyClass myClass2 = myClass;
 There are built-in reference types which are `dynamic`, `object` or `string`.
 
 ### Namespaces
+
 [docs](https://learn.microsoft.com/en-gb/dotnet/csharp/fundamentals/program-structure/)
 
 Each file will contain a a namespace which will contain **class**, **struct**, **interface**, **enumeration**, **delegates**, or other namespaces. A namespace here is sort of like a module.
@@ -159,6 +162,7 @@ Each file will contain a a namespace which will contain **class**, **struct**, *
 ### Classes
 
 ### Records
+
 [docs](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/record)
 A `record` modifier is a given to a `class` or a `struct` to indicate that this is primarily to hold data.
 
@@ -195,10 +199,12 @@ public record Person
 ### Delegates
 
 ## Types of literal values
+
 A literal values also have types from the compiler. E.g. a numeric literal should be typed by appending letter to end of number. `4.56f`, if no letter is appended, compiler will infer type.
 
 ## Generic types
-Types declaraed with one or more **type parameters* that serve as placeholder for actual type *concrete type*.
+
+Types declaraed with one or more \*_type parameters_ that serve as placeholder for actual type _concrete type_.
 
 ```C#
 List<string> stringList = new List<string>();
@@ -207,16 +213,19 @@ List<string> stringList = new List<string>();
 Allows reuse of same class without converting each element to an object.
 
 # Attributes
+
 [docs](https://learn.microsoft.com/en-us/dotnet/standard/attributes/)
 [docs](https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/reflection-and-attributes/)
 Attributes are a way to associate metadata, or declarative info with code. Once associated, it can be queried at run time using **reflection**. They can be created by declaring instances of special classes derived from **System.Attribute** and are created when the compiler turns the code into **common intermediate language (CIL)** and placed in a **portable executable (PE)**.
 
 ## Reflection
+
 Reflection looks into the metadata of a compiled code and gets the attributes defined in your code (type, method, properties...) You can dynamically created an instance of a type, bind type to an existing object, or get type from an existing object and invoke methods or access fields or properties.
 
 Need to be add `using System;` and `using System.Reflection;` at top of `.cs` file.
 
 Examples of getting type using `GetType()` method.
+
 ```C#
 int i = 42;
 Type type = i.GetType();
@@ -224,7 +233,9 @@ Console.WriteLine(type);
 ```
 
 ## Using attributes
+
 You can give it apply a characteristic to a class (sort of like typing it)
+
 ```C#
 [Serializable]
 public class SampleClass
@@ -236,10 +247,13 @@ public class SampleClass
 # Keywords
 
 ## Access Modifiers
+
 [docs](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/access-modifiers)
 
 ### public
+
 No restriction on data.
+
 ```csharp
 class PointTest
 {
@@ -263,6 +277,7 @@ class Program
 ```
 
 ### protected
+
 Access is limited to containing class or types derived from containing class. They cannot even be accessed from the class that they are a member of.
 
 ```csharp
@@ -289,17 +304,19 @@ class B : A
 ```
 
 ### internal
+
 An internal type or members are only accessible within files in the same `assembly`.
 
 ```csharp
 public class BaseClass
-{  
+{
     // Only accessible within the same assembly.
     internal static int x = 0;
-}  
+}
 ```
 
 ### private
+
 Only accessible within the body of the class or struct when they are declared.
 
 ```csharp
@@ -322,9 +339,11 @@ class Employee2
 ```
 
 ### abstract
+
 The abstract modifier indicates that the thing has missing or incomplete information. Can be used on classes, methods, `indexers`, and `events`.
 
 #### abstract classes
+
 ```C#
 abstract class Shape
 {
@@ -348,6 +367,7 @@ class Square : Shape
 }
 // Output: Area of the square = 144
 ```
+
 In this example, the abstract class Shape has an abstract method GetArea. The Square class inherits from Shape and has to give an implementation of the GetArea method.
 
 An abstract class cannot be instantiated.
@@ -356,14 +376,48 @@ You cannot modifier an abstract class with a `sealed` modifier because the seale
 A non-abstract class has to include implementations of the inherited abstract methods and accessors.
 
 ##### abstract methods
+
 Abstract methods are a `virtual method`. They can only be permitted in abstract classes.
 
 ```C#
 public abstract void MyMethod();
-``` 
+```
+
 The implementation must be an `override`.
 
+### sealed
+
+[docs](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/sealed)
+
+A sealed class is one that cannot be inherited. You cannot use the sealed modifier on an abstract class because the modifiers are in direct opposition to each other (abstract classes MUST be inherited by another class).
+
+They can also be used on a method or property that overrides a `virtual` method or property on a base class to prevent them being overridden.
+
+```C#
+class X
+{
+    protected virtual void F() { Console.WriteLine("X.F"); }
+    protected virtual void F2() { Console.WriteLine("X.F2"); }
+}
+
+class Y : X
+{
+    sealed protected override void F() { Console.WriteLine("Y.F"); }
+    protected override void F2() { Console.WriteLine("Y.F2"); }
+}
+
+class Z : Y
+{
+    // Attempting to override F causes compiler error CS0239.
+    // protected override void F() { Console.WriteLine("Z.F"); }
+
+    // Overriding F2 is allowed.
+    protected override void F2() { Console.WriteLine("Z.F2"); }
+}
+```
+
 # dyanmic
+
 [docs](https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/interop/using-type-dynamic)
 The dynamic type is one where the compiler assumes the element supports any operation so there will not be any errors at compilation but a run-time exception will be caused if the operation is not valid.
 
@@ -397,6 +451,7 @@ class ExampleClass
     public void exampleMethod2(string str) { }
 }
 ```
+
 In the example above, exampleMethod only takes in 1 argument, so this will throw a run-time exception.
 
 Any operation involving a dynamic will usually result in a dynamic unless you are conversing something from dynamic to another type or a constructor takes in arguments of type dynamic.
@@ -407,18 +462,19 @@ var testSum = d + 3;
 // Rest the mouse pointer over testSum in the following statement.
 System.Console.WriteLine(testSum);
 ```
+
 testSum is a dynamic.
 
-
 ## Conversions
+
 You can easily convert any value to dynamic.
+
 ```csharp
 dynamic d1 = 7;
 ```
 
 Or converting away from dynamic:
+
 ```csharp
 int i = d1;
 ```
-
-
