@@ -469,6 +469,28 @@ class Z : Y
 }
 ```
 
+### static
+[docs](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/static)
+
+Static modifier allows the member to below to the type instead od a specific object. A class can be made static which makes all of its members and properties static. It also means that the class is automatically `sealed`.
+
+When the static modifier is placed on a member or a property, then that member or property cannot be referenced through the instance.
+
+It can only be referenced by the type name.
+
+```csharp
+public class MyBaseC
+{
+    public struct MyStruct
+    {
+        public static int x = 100;
+    }
+}
+Console.WriteLine(MyBaseC.MyStruct.x);
+```
+
+The `this` keyword cannot be used on a static method or property accessors.
+
 # dyanmic
 
 [docs](https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/interop/using-type-dynamic)
