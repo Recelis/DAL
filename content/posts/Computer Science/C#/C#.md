@@ -553,3 +553,16 @@ Or converting away from dynamic:
 ```csharp
 int i = d1;
 ```
+
+# Console Class
+[docs](https://learn.microsoft.com/en-us/dotnet/api/system.console?view=net-8.0)
+
+```csharp
+public static class Console
+```
+
+This is the standard input, output, and error streams for console applications.
+
+A common use case is `Console.WriteLine`.
+
+
