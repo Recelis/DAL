@@ -198,6 +198,79 @@ public record Person
 
 ### Delegates
 
+### Methods
+[docs](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/methods)
+A method is a block of code with statements that gets executed with the specified method arguments. The `Main` method is the entry point for every C# application and is called by the `common language runtime`. Although, you can have an application which uses `top-level statements` which compiles its own Main method.
+
+#### Method Signatures
+Methods are declared inside `class`, `struct` or `interface` and need an access level such as `public`, `private`. You'll have optional arguments, the name of the method, and the return type.
+
+```csharp
+abstract class Motorcycle
+{
+    // Anyone can call this.
+    public void StartEngine() {/* Method statements here */ }
+
+    // Only derived classes can call this.
+    protected void AddGas(int gallons) { /* Method statements here */ }
+
+    // Derived classes can override the base class implementation.
+    public virtual int Drive(int miles, int speed) { /* Method statements here */ return 1; }
+
+    // Derived classes must implement this.
+    public abstract double GetTopSpeed();
+}
+```
+
+#### Method access
+Methods are called on the object with or without arguments.
+
+```csharp
+class TestMotorcycle : Motorcycle
+{
+    public override double GetTopSpeed()
+    {
+        return 108.4;
+    }
+
+    static void Main()
+    {
+        TestMotorcycle moto = new TestMotorcycle();
+
+        moto.StartEngine();
+        moto.AddGas(15);
+        moto.Drive(5, 20);
+        double speed = moto.GetTopSpeed();
+        Console.WriteLine("My top speed is {0}", speed);
+    }
+}
+```
+
+#### Method parameters vs arguments
+The word parameter is for the definition of the values that the method takes in. While arguments are the concrete values that get passed in for each parameter.
+```csharp
+int Square(int i)
+{
+    int input = i;
+    return input * input;
+}
+```
+
+#### Pass by Reference vs passing by value
+When an instance of a `value type` passed into a method, it is copied in. You can change this to be passed by reference using the `ref` keyword.
+
+But when an object is passed into a method, then it is by reference.
+
+#### Return values
+
+#### Async methods
+
+#### Expression body definitions
+
+#### Iterators
+
+
+
 ## Types of literal values
 
 A literal values also have types from the compiler. E.g. a numeric literal should be typed by appending letter to end of number. `4.56f`, if no letter is appended, compiler will infer type.
