@@ -8,4 +8,6 @@ date: 2024-09-15T20:39:13.741Z
 
 This is a way to create a function with an infinite number of terms where each term's exponent is larger and larger to then equal another `analytic` function.
 
-![alt text](taylorseries.png)
+![Taylor Series example](taylorseries.png)
+
+![Taylor Series Rule](taylorseriesrule.png)
