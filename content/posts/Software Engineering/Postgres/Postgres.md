@@ -20,3 +20,37 @@ WHERE city = name;
 
 SELECT * FROM myview;
 ```
+
+### Transactions
+
+[docs](https://www.postgresql.org/docs/current/tutorial-transactions.html)
+
+You can group queries together so that they will behave in an atomic way. The way to do this is by wrap your queries with a BEGIN and a COMMIT statement.
+
+```sql
+BEGIN;
+UPDATE accounts SET balance = balance - 100.00
+    WHERE name = 'Alice';
+-- etc etc
+COMMIT;
+```
+
+All sql statements are by default treated as transactional.
+
+You can use `SAVEPOINT` and `ROLLBACK TO` to remove actions and then skip to the place after you rollbacked from.
+
+```SQL
+BEGIN;
+UPDATE accounts SET balance = balance - 100.00
+    WHERE name = 'Alice';
+SAVEPOINT my_savepoint;
+UPDATE accounts SET balance = balance + 100.00
+    WHERE name = 'Bob';
+-- oops ... forget that and use Wally's account
+ROLLBACK TO my_savepoint;
+UPDATE accounts SET balance = balance + 100.00
+    WHERE name = 'Wally';
+COMMIT;
+```
+
+In this example, you set the savepoint, and then rollback to the savepoint, which removes the update to Bob's account. Then continue forward to Wally's account.
