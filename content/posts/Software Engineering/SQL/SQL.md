@@ -6,7 +6,7 @@ draft: true
 
 # SQL
 
-[docs](https://www.khanacINademy.org/computing/computer-programming/sql)
+[docs](https://www.khanacademy.org/computing/computer-programming/sql)
 
 Structured Query Language is used to create tables, update data and return data back to us.
 
@@ -200,36 +200,18 @@ biking
 dancing
 tree climbing
 
-### Transactions
-
-[docs](https://www.postgresql.org/docs/current/tutorial-transactions.html)
-
-You can group queries together so that they will behave in an atomic way. The way to do this is by wrap your queries with a BEGIN and a COMMIT statement.
+### CASE
+A case statement is similar to a switch or if statement in other programming languages.
 
 ```sql
-BEGIN;
-UPDATE accounts SET balance = balance - 100.00
-    WHERE name = 'Alice';
--- etc etc
-COMMIT;
+SELECT type, heart_rate,
+    CASE
+        WHEN heart_rate > 220 - 30 THEN "above max"
+        WHEN heart_rate > ROUND(0.9 * (220 - 30)) THEN "above target"
+        WHEN heart_rate > ROUND(0.5 * (220 - 30)) THEN "within target"
+        ELSE "below target"
+    END as "hr_zone"
+FROM exercise_logs
 ```
 
-All sql statements are by default treated as transactional.
-
-You can use `SAVEPOINT` and `ROLLBACK TO` to remove actions and then skip to the place after you rollbacked from.
-
-```SQL
-BEGIN;
-UPDATE accounts SET balance = balance - 100.00
-    WHERE name = 'Alice';
-SAVEPOINT my_savepoint;
-UPDATE accounts SET balance = balance + 100.00
-    WHERE name = 'Bob';
--- oops ... forget that and use Wally's account
-ROLLBACK TO my_savepoint;
-UPDATE accounts SET balance = balance + 100.00
-    WHERE name = 'Wally';
-COMMIT;
-```
-
-In this example, you set the savepoint, and then rollback to the savepoint, which removes the update to Bob's account. Then continue forward to Wally's account.
+This will do queries and group them into different conditions to then save as another "column".
