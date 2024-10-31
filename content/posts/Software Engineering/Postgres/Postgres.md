@@ -6,6 +6,40 @@ draft: true
 
 # Postgres
 
+## Creating a db
+```sql
+    createdb dbName
+```
+
+## Deleting a db
+```sql
+    dropdb dbName
+```
+
+## Accessing a Database
+To access the database from the CLI, you can use `psql`.
+
+```sql
+psql dbName
+```
+
+You can also use SQL Editing tools like PgAdmin. In MacOS, you can use the `postgres`
+software to create, access, and delete dbs.
+
+## Common Psql commands
+[docs](https://stackoverflow.com/a/47185648)
+Now in Psql you could run commands such as:
+
+    \? list all the commands
+    \l list databases
+    \conninfo display information about current connection
+    \c [DBNAME] connect to new database, e.g., \c template1
+    \dt list tables of the public schema
+    \dt <schema-name>.* list tables of certain schema, e.g., \dt public.*
+    \dt *.* list tables of all schemas
+    Then you can run SQL statements, e.g., SELECT * FROM my_table;(Note: a statement must be terminated with semicolon ;)
+    \q quit psql
+
 ## Views
 
 [docs](https://www.postgresql.org/docs/current/tutorial-views.html)
