@@ -88,3 +88,12 @@ COMMIT;
 ```
 
 In this example, you set the savepoint, and then rollback to the savepoint, which removes the update to Bob's account. Then continue forward to Wally's account.
+
+Row Security Policies
+
+[docs](https://www.postgresql.org/docs/current/ddl-rowsecurity.html)
+This is a way to control access to tables. You can define policies that limit what rows can be accessed based on the user. If a user has access to the the table, then they can access all rows within that table.
+
+Once row security is enabled on a table, then all subsequent queries on that table will be affected by the policy. If there are no policies defined, then default-deny policy is used so no one will be able to access the table.
+
+I am currently using row security policies as part of Supabase's auth system within WishingMay.
