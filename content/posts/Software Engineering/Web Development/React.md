@@ -46,19 +46,36 @@ const value = useContext(SomeContext);
 ```
 
 You can use context with state, with useState, and this will allow you to update the context value. To do this, you will need to provide the state's updater function as part of the value of the provider.
+Typically, the Provider is wrapped up as its own component.
 
 ```typescript
-export default function MyApp() {
-  const [currentUser, setCurrentUser] = useState(null);
+export default function CurrentUserProvider (props: {children: React.ReactNode}) {
+  const [currentUser, setCurrentUser] = useState<User | undefined>(undefined);
+
+// it is better to use a handler than the setCurrentUser modifier to avoid setting the type as a SetDispatch
+const handleCurrentUserChange = (newUser: User) => setCurrentUser(newUser);
   return (
     <CurrentUserContext.Provider
       value={{
         currentUser,
-        setCurrentUser
+        handleCurrentUserChange
       }}
     >
       <Form />
     </CurrentUserContext.Provider>
   );
 }
+```
+
+Then you need to wrap the Provider around the component that you want access to that context.
+```typescript
+<CurrentUserProvider>
+    <MyComponent>
+</CurrentUserProvider>
+```
+
+And to use that context inside MyComponent.
+
+```typescript
+const {currentUser, handleCurrentUserChange} = useContext(CurrentUserContext);
 ```
