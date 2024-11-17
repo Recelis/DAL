@@ -215,3 +215,6 @@ FROM exercise_logs
 ```
 
 This will do queries and group them into different conditions to then save as another "column".
+
+#### ROUND
+The round operator rounds up or down the decimals in a number.
