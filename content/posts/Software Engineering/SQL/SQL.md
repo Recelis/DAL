@@ -218,3 +218,5 @@ This will do queries and group them into different conditions to then save as an
 
 #### ROUND
 The round operator rounds up or down the decimals in a number.
+
+(Current lesson Challenge: Gradebook)
