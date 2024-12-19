@@ -219,4 +219,21 @@ This will do queries and group them into different conditions to then save as an
 #### ROUND
 The round operator rounds up or down the decimals in a number.
 
-(Current lesson Challenge: Gradebook)
+<!-- Challenge: Gradebook https://www.khanacademy.org/computing/computer-programming/sql/more-advanced-sql-queries/pc/challenge-gradebook -->
+
+1. Create a table with names, number_grade, and the percentage completed.
+```sql
+SELECT name, number_grade, ROUND(fraction_completed * 100) AS percent_completed from student_grades;
+```
+2. Create a table with letter_grades and the number of students who had reached that letter grade.
+```sql
+SELECT COUNT(*),
+    CASE
+        WHEN number_grade > 90 THEN "A"
+        WHEN number_grade <= 90 AND number_grade > 80 THEN "B"
+        WHEN number_grade <= 80 AND number_grade > 70 THEN "C"
+        ELSE "F"
+    END as "letter_grade"
+FROM student_grades
+GROUP BY letter_grade;
+```

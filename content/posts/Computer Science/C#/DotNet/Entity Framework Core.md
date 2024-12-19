@@ -6,7 +6,7 @@ draft = true
 
 [docs](https://learn.microsoft.com/en-us/training/modules/persist-data-ef-core/)
 
-# Entity Framework1
+# Entity Framework
 
 ## EF Core Architecture
 
