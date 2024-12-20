@@ -244,3 +244,49 @@ SELECT COUNT(*),
 FROM student_grades
 GROUP BY letter_grade;
 ```
+
+<!-- Challenge: Project Data Dig https://www.khanacademy.org/computing/computer-programming/sql/more-advanced-sql-queries/pp/project-data-dig -->
+
+What are average, max, and min values in the data?
+
+SELECT 
+    MAX(population) as Max,
+    ROUND(AVG(population)) as Avg,
+    MIN(population) as Min
+from countries;
+
+What about those numbers per category in the data (using HAVING)?
+
+SELECT name, population from countries
+    GROUP BY name
+    HAVING percent_one_year_change >= 2.1
+    ORDER BY population;
+
+What ways are there to group the data values that don’t exist yet (using CASE)?
+
+SELECT COUNT(*),
+    CASE
+        WHEN percent_one_year_change > 1 THEN "Growing"
+        WHEN percent_one_year_change = 1 THEN "Maintaining"
+        ELSE "Shrinking"
+    END as "percentage_change"
+FROM countries
+GROUP BY percentage_change;
+
+What interesting ways are there to filter the data (using AND/OR)?
+SELECT
+    CASE
+        WHEN percent_one_year_change > 1 AND fertility_rate > 2.1 THEN "Growth with ABOVE THRESHOLD"
+        WHEN percent_one_year_change > 1  AND fertility_rate = 2.1 THEN "Growth with ON THRESHOLD"
+        WHEN percent_one_year_change > 1  AND fertility_rate < 2.1 THEN "Growth with BELOW THRESHOLD"
+        WHEN percent_one_year_change = 1  AND fertility_rate > 2.1 THEN "Maintaining with ABOVE THRESHOLD"
+        WHEN percent_one_year_change = 1  AND fertility_rate = 2.1 THEN "Maintaining with ON THRESHOLD"
+        WHEN percent_one_year_change = 1  AND fertility_rate < 2.1 THEN "Maintaining with BELOW THRESHOLD"
+        WHEN percent_one_year_change < 1  AND fertility_rate > 2.1 THEN "Shrinkage with ABOVE THRESHOLD"
+        WHEN percent_one_year_change < 1  AND fertility_rate = 2.1 THEN "Shrinkage with ON THRESHOLD"
+        WHEN percent_one_year_change < 1  AND fertility_rate < 2.1 THEN "Shrinkage with BELOW THRESHOLD"
+        ELSE "NA"
+    END as "threshold",
+    COUNT(*) as "Number of Countries"
+FROM countries
+GROUP BY threshold;
