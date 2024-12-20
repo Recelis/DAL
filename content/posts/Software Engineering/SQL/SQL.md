@@ -52,6 +52,13 @@ You can order your results, if the order matters to your query, by using `ORDER 
 
 ```SQL
 SELECT * FROM groceries ORDER BY aisle
+
+```
+
+You can add ASC|DESC to the end of the ORDER BY to sort in ascending or descending order.
+
+```SQL
+SELECT * FROM groceries ORDER BY aisle DESC;
 ```
 
 ### WHERE
