@@ -249,21 +249,26 @@ GROUP BY letter_grade;
 
 What are average, max, and min values in the data?
 
+```SQL
 SELECT 
     MAX(population) as Max,
     ROUND(AVG(population)) as Avg,
     MIN(population) as Min
 from countries;
+```
 
 What about those numbers per category in the data (using HAVING)?
 
+```SQL
 SELECT name, population from countries
     GROUP BY name
     HAVING percent_one_year_change >= 2.1
     ORDER BY population;
+```
 
 What ways are there to group the data values that don’t exist yet (using CASE)?
 
+```SQL
 SELECT COUNT(*),
     CASE
         WHEN percent_one_year_change > 1 THEN "Growing"
@@ -272,8 +277,10 @@ SELECT COUNT(*),
     END as "percentage_change"
 FROM countries
 GROUP BY percentage_change;
-
+```
+    
 What interesting ways are there to filter the data (using AND/OR)?
+```SQL
 SELECT
     CASE
         WHEN percent_one_year_change > 1 AND fertility_rate > 2.1 THEN "Growth with ABOVE THRESHOLD"
@@ -290,3 +297,122 @@ SELECT
     COUNT(*) as "Number of Countries"
 FROM countries
 GROUP BY threshold;
+```
+
+## JOIN
+### CROSS JOIN
+This is the simplest join. For each row in first table, create a new row for each row in the second table.
+
+```SQL
+SELECT * FROM student_grades, students;
+```
+
+e.g. 
+```SQL
+-- Students Table --
+INSERT INTO students (first_name, last_name, email, phone, birthdate)
+    VALUES ("Peter", "Rabbit", "peter@rabbit.com", "555-6666", "2002-06-24");
+INSERT INTO students (first_name, last_name, email, phone, birthdate)
+    VALUES ("Alice", "Wonderland", "alice@wonderland.com", "555-4444", "2002-07-04");
+-- Grades Table --
+INSERT INTO student_grades (student_id, test, grade)
+    VALUES (1, "Nutrition", 95);
+INSERT INTO student_grades (student_id, test, grade)
+    VALUES (2, "Nutrition", 92);
+INSERT INTO student_grades (student_id, test, grade)
+    VALUES (1, "Chemistry", 85);
+INSERT INTO student_grades (student_id, test, grade)
+    VALUES (2, "Chemistry", 95);
+```
+-- Result
+| id | student_id | test      | grade | id | first_name | last_name  | email                | phone    | birthdate  |
+|----|------------|-----------|-------|----|------------|------------|----------------------|----------|------------|
+| 1  | 1          | Nutrition | 95    | 1  | Peter      | Rabbit     | peter@rabbit.com     | 555-6666 | 2002-06-24 |
+| 1  | 1          | Nutrition | 95    | 2  | Alice      | Wonderland | alice@wonderland.com | 555-4444 | 2002-07-04 |
+| 2  | 2          | Nutrition | 92    | 1  | Peter      | Rabbit     | peter@rabbit.com     | 555-6666 | 2002-06-24 |
+| 2  | 2          | Nutrition | 92    | 2  | Alice      | Wonderland | alice@wonderland.com | 555-4444 | 2002-07-04 |
+| 3  | 1          | Chemistry | 85    | 1  | Peter      | Rabbit     | peter@rabbit.com     | 555-6666 | 2002-06-24 |
+| 3  | 1          | Chemistry | 85    | 2  | Alice      | Wonderland | alice@wonderland.com | 555-4444 | 2002-07-04 |
+| 4  | 2          | Chemistry | 95    | 1  | Peter      | Rabbit     | peter@rabbit.com     | 555-6666 | 2002-06-24 |
+| 4  | 2          | Chemistry | 95    | 2  | Alice      | Wonderland | alice@wonderland.com | 555-4444 | 2002-07-04 |
+
+### INNER JOIN
+This is a join that does the cross join but limits it to the condition.
+
+#### Implicit Inner Join
+This type of inner join is not very efficient.
+```SQL
+SELECT * FROM student_grades, students
+    WHERE student_grades.student_id = students.id;
+```
+
+#### Explicit Inner Join
+This is a more efficient inner join which uses the JOIN keyword.
+
+```SQL
+SELECT first_name, last_name, email, test, grade FROM students
+    JOIN student_grades
+    ON students.id = student_grades.student_id;
+```
+
+The SELECT ... FROM ... JOIN alone does the **CROSS JOIN**. The ON will do the inner-join.
+
+You can filter this down further using the WHERE keyword.
+
+If you have columns that have duplicated names across more than one table, you'll get an error because SQL will not know which column to pull data from.
+So you should **Prefix** your column names with your table names.
+
+```SQL
+SELECT students.first_name, students.last_name, students.email, student_grades.test, student_grades.grade FROM students
+    JOIN student_grades
+    ON students.id = student_grades.student_id
+    WHERE grade > 90;
+```
+<!-- Challenge: Bobby's Hobbies 
+https://www.khanacademy.org/computing/computer-programming/sql/relational-queries-in-sql/pc/challenge-bobbys-hobbies
+-->
+Now, select the 2 tables with a join so that you can see each person's name next to their hobby.
+```SQL
+SELECT persons.name, hobbies.name FROM persons
+    JOIN hobbies
+    ON persons.id = hobbies.person_id;
+```
+
+Now, add an additional query that shows only the name and hobbies of 'Bobby McBobbyFace', using JOIN combined with WHERE.
+
+```SQL
+SELECT persons.name, hobbies.name FROM persons
+    JOIN hobbies
+    ON persons.id = hobbies.person_id
+    WHERE persons.name = "Bobby McBobbyFace";
+```
+
+### OUTER JOIN
+An OUTER JOIN is something that displays the join even if there are no results.
+If there are no results, then it'll return with a NULL instead.
+
+#### LEFT OUTER JOIN
+The LEFT part of the LEFT OUTER JOIN means to show all the values in the left hand table.
+
+```sql
+SELECT students.first_name, students.last_name, student_projects.title
+    FROM students
+    LEFT OUTER JOIN student_projects
+    ON students.id = student_projects.student_id;
+```
+
+| first_name | last_name  | title        |
+|------------|------------|--------------|
+| Peter      | Rabbit     | Carrotapault |
+| Alice      | Wonderland | NULL         |
+
+#### RIGHT OUTER JOIN
+The RIGHT part of the RIGHT OUTER JOIN just forces you to display all the values on the right hand table.
+
+You can just LEFT OUTER JOIN but switch tables around.
+
+#### FULL OUTER JOIN
+This will show all values in both tables. Displaying NULL on each side if needed.
+
+<!-- Challenge: Customer's Orders 
+https://www.khanacademy.org/computing/computer-programming/sql/relational-queries-in-sql/pc/challenge-customers-orders -->
