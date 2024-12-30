@@ -436,7 +436,7 @@ Now, create another query that will result in one row per each customer, with th
     ORDER BY total DESC;
 ```
 
-#### Self Joins
+### Self Joins
 You can do a **join** to your own table.
 
 E.g. if your table has an id that references itself.
@@ -460,6 +460,8 @@ SELECT students.first_name, students.last_name, buddies.email as buddy_email
     ON students.buddy_id = buddies.id;
 ```
 
+In this case the `buddies` in `JOIN students buddies` is an alias.
+
 <!-- Challenge We've created a table with all the 'Harry Potter' movies, with a sequel_id column that matches the id of the sequel for each movie. Issue a SELECT that will show the title of each movie next to its sequel's title (or NULL if it doesn't have a sequel). -->
 
 We've created a table with all the 'Harry Potter' movies, with a sequel_id column that matches the id of the sequel for each movie. Issue a SELECT that will show the title of each movie next to its sequel's title (or NULL if it doesn't have a sequel).
@@ -469,4 +471,28 @@ SELECT movies.title, sequel.title as sequel_title
     from movies
     LEFT OUTER JOIN movies sequel
     ON movies.sequel_id = sequel.id;
+```
+
+### Combining Multiple Joins
+You can do more than one join at a time by combining joins.
+
+```sql
+SELECT a.title, b.title FROM project_pairs
+    JOIN student_projects a
+    ON project_pairs.project1_id = a.id
+    JOIN student_projects b
+    ON project_pairs.project2_id = b.id;
+```
+
+In this case, two self joins are done on the project pairs to be 
+able to display the title of each project in the project_pairs list.
+
+<!-- Challenge: https://www.khanacademy.org/computing/computer-programming/sql/relational-queries-in-sql/pc/challenge-friendbook -->
+
+We've created a database for a friend networking site, with a table storing data on each person, a table on each person's hobbies, and a table of friend connections between the people. In this first step, use a JOIN to display a table showing people's names with their hobbies.
+
+```SQL
+SELECT persons.fullname, hobbies.name FROM persons
+    JOIN hobbies
+    ON persons.id = hobbies.person_id;
 ```
