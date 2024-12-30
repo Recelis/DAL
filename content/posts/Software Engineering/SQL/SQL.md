@@ -459,3 +459,14 @@ SELECT students.first_name, students.last_name, buddies.email as buddy_email
     JOIN students buddies
     ON students.buddy_id = buddies.id;
 ```
+
+<!-- Challenge We've created a table with all the 'Harry Potter' movies, with a sequel_id column that matches the id of the sequel for each movie. Issue a SELECT that will show the title of each movie next to its sequel's title (or NULL if it doesn't have a sequel). -->
+
+We've created a table with all the 'Harry Potter' movies, with a sequel_id column that matches the id of the sequel for each movie. Issue a SELECT that will show the title of each movie next to its sequel's title (or NULL if it doesn't have a sequel).
+
+```sql
+SELECT movies.title, sequel.title as sequel_title 
+    from movies
+    LEFT OUTER JOIN movies sequel
+    ON movies.sequel_id = sequel.id;
+```
