@@ -496,3 +496,14 @@ SELECT persons.fullname, hobbies.name FROM persons
     JOIN hobbies
     ON persons.id = hobbies.person_id;
 ```
+
+Now, use another SELECT with a JOIN to show the names of each pair of friends, based on the data in the friends table.
+
+```sql
+SELECT person1.fullname, person2.fullname FROM friends
+    JOIN persons person1
+    ON friends.person1_id = person1.id
+    JOIN persons person2
+    ON friends.person2_id = person2.id; 
+```
+
