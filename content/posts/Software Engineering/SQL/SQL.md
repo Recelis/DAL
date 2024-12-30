@@ -435,3 +435,27 @@ Now, create another query that will result in one row per each customer, with th
     GROUP BY customers.name
     ORDER BY total DESC;
 ```
+
+#### Self Joins
+You can do a **join** to your own table.
+
+E.g. if your table has an id that references itself.
+
+```SQL
+CREATE TABLE students (id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name TEXT,
+    last_name TEXT,
+    email TEXT,
+    phone TEXT,
+    birthdate TEXT,
+    buddy_id INTEGER);
+```
+
+This will look like:
+
+```SQL
+SELECT students.first_name, students.last_name, buddies.email as buddy_email
+    FROM students
+    JOIN students buddies
+    ON students.buddy_id = buddies.id;
+```
