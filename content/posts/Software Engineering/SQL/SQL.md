@@ -208,6 +208,7 @@ dancing
 tree climbing
 
 ### CASE
+
 A case statement is similar to a switch or if statement in other programming languages.
 
 ```sql
@@ -224,15 +225,19 @@ FROM exercise_logs
 This will do queries and group them into different conditions to then save as another "column".
 
 #### ROUND
+
 The round operator rounds up or down the decimals in a number.
 
 <!-- Challenge: Gradebook https://www.khanacademy.org/computing/computer-programming/sql/more-advanced-sql-queries/pc/challenge-gradebook -->
 
 1. Create a table with names, number_grade, and the percentage completed.
+
 ```sql
 SELECT name, number_grade, ROUND(fraction_completed * 100) AS percent_completed from student_grades;
 ```
+
 2. Create a table with letter_grades and the number of students who had reached that letter grade.
+
 ```sql
 SELECT COUNT(*),
     CASE
@@ -250,7 +255,7 @@ GROUP BY letter_grade;
 What are average, max, and min values in the data?
 
 ```SQL
-SELECT 
+SELECT
     MAX(population) as Max,
     ROUND(AVG(population)) as Avg,
     MIN(population) as Min
@@ -278,8 +283,9 @@ SELECT COUNT(*),
 FROM countries
 GROUP BY percentage_change;
 ```
-    
+
 What interesting ways are there to filter the data (using AND/OR)?
+
 ```SQL
 SELECT
     CASE
@@ -300,14 +306,17 @@ GROUP BY threshold;
 ```
 
 ## JOIN
+
 ### CROSS JOIN
+
 This is the simplest join. For each row in first table, create a new row for each row in the second table.
 
 ```SQL
 SELECT * FROM student_grades, students;
 ```
 
-e.g. 
+e.g.
+
 ```SQL
 -- Students Table --
 INSERT INTO students (first_name, last_name, email, phone, birthdate)
@@ -324,29 +333,34 @@ INSERT INTO student_grades (student_id, test, grade)
 INSERT INTO student_grades (student_id, test, grade)
     VALUES (2, "Chemistry", 95);
 ```
+
 -- Result
-| id | student_id | test      | grade | id | first_name | last_name  | email                | phone    | birthdate  |
+| id | student_id | test | grade | id | first_name | last_name | email | phone | birthdate |
 |----|------------|-----------|-------|----|------------|------------|----------------------|----------|------------|
-| 1  | 1          | Nutrition | 95    | 1  | Peter      | Rabbit     | peter@rabbit.com     | 555-6666 | 2002-06-24 |
-| 1  | 1          | Nutrition | 95    | 2  | Alice      | Wonderland | alice@wonderland.com | 555-4444 | 2002-07-04 |
-| 2  | 2          | Nutrition | 92    | 1  | Peter      | Rabbit     | peter@rabbit.com     | 555-6666 | 2002-06-24 |
-| 2  | 2          | Nutrition | 92    | 2  | Alice      | Wonderland | alice@wonderland.com | 555-4444 | 2002-07-04 |
-| 3  | 1          | Chemistry | 85    | 1  | Peter      | Rabbit     | peter@rabbit.com     | 555-6666 | 2002-06-24 |
-| 3  | 1          | Chemistry | 85    | 2  | Alice      | Wonderland | alice@wonderland.com | 555-4444 | 2002-07-04 |
-| 4  | 2          | Chemistry | 95    | 1  | Peter      | Rabbit     | peter@rabbit.com     | 555-6666 | 2002-06-24 |
-| 4  | 2          | Chemistry | 95    | 2  | Alice      | Wonderland | alice@wonderland.com | 555-4444 | 2002-07-04 |
+| 1 | 1 | Nutrition | 95 | 1 | Peter | Rabbit | peter@rabbit.com | 555-6666 | 2002-06-24 |
+| 1 | 1 | Nutrition | 95 | 2 | Alice | Wonderland | alice@wonderland.com | 555-4444 | 2002-07-04 |
+| 2 | 2 | Nutrition | 92 | 1 | Peter | Rabbit | peter@rabbit.com | 555-6666 | 2002-06-24 |
+| 2 | 2 | Nutrition | 92 | 2 | Alice | Wonderland | alice@wonderland.com | 555-4444 | 2002-07-04 |
+| 3 | 1 | Chemistry | 85 | 1 | Peter | Rabbit | peter@rabbit.com | 555-6666 | 2002-06-24 |
+| 3 | 1 | Chemistry | 85 | 2 | Alice | Wonderland | alice@wonderland.com | 555-4444 | 2002-07-04 |
+| 4 | 2 | Chemistry | 95 | 1 | Peter | Rabbit | peter@rabbit.com | 555-6666 | 2002-06-24 |
+| 4 | 2 | Chemistry | 95 | 2 | Alice | Wonderland | alice@wonderland.com | 555-4444 | 2002-07-04 |
 
 ### INNER JOIN
+
 This is a join that does the cross join but limits it to the condition.
 
 #### Implicit Inner Join
+
 This type of inner join is not very efficient.
+
 ```SQL
 SELECT * FROM student_grades, students
     WHERE student_grades.student_id = students.id;
 ```
 
 #### Explicit Inner Join
+
 This is a more efficient inner join which uses the JOIN keyword.
 
 ```SQL
@@ -368,10 +382,13 @@ SELECT students.first_name, students.last_name, students.email, student_grades.t
     ON students.id = student_grades.student_id
     WHERE grade > 90;
 ```
-<!-- Challenge: Bobby's Hobbies 
+
+<!-- Challenge: Bobby's Hobbies
 https://www.khanacademy.org/computing/computer-programming/sql/relational-queries-in-sql/pc/challenge-bobbys-hobbies
 -->
+
 Now, select the 2 tables with a join so that you can see each person's name next to their hobby.
+
 ```SQL
 SELECT persons.name, hobbies.name FROM persons
     JOIN hobbies
@@ -388,10 +405,12 @@ SELECT persons.name, hobbies.name FROM persons
 ```
 
 ### OUTER JOIN
+
 An OUTER JOIN is something that displays the join even if there are no results.
 If there are no results, then it'll return with a NULL instead.
 
 #### LEFT OUTER JOIN
+
 The LEFT part of the LEFT OUTER JOIN means to show all the values in the left hand table.
 
 ```sql
@@ -402,19 +421,21 @@ SELECT students.first_name, students.last_name, student_projects.title
 ```
 
 | first_name | last_name  | title        |
-|------------|------------|--------------|
+| ---------- | ---------- | ------------ |
 | Peter      | Rabbit     | Carrotapault |
 | Alice      | Wonderland | NULL         |
 
 #### RIGHT OUTER JOIN
+
 The RIGHT part of the RIGHT OUTER JOIN just forces you to display all the values on the right hand table.
 
 You can just LEFT OUTER JOIN but switch tables around.
 
 #### FULL OUTER JOIN
+
 This will show all values in both tables. Displaying NULL on each side if needed.
 
-<!-- Challenge: Customer's Orders 
+<!-- Challenge: Customer's Orders
 https://www.khanacademy.org/computing/computer-programming/sql/relational-queries-in-sql/pc/challenge-customers-orders -->
 
 We've created a database for customers and their orders. Not all of the customers have made orders, however. Come up with a query that lists the name and email of every customer followed by the item and price of orders they've made. Use a LEFT OUTER JOIN so that a customer is listed even if they've made no orders, and don't add any ORDER BY.
@@ -437,6 +458,7 @@ Now, create another query that will result in one row per each customer, with th
 ```
 
 ### Self Joins
+
 You can do a **join** to your own table.
 
 E.g. if your table has an id that references itself.
@@ -467,13 +489,14 @@ In this case the `buddies` in `JOIN students buddies` is an alias.
 We've created a table with all the 'Harry Potter' movies, with a sequel_id column that matches the id of the sequel for each movie. Issue a SELECT that will show the title of each movie next to its sequel's title (or NULL if it doesn't have a sequel).
 
 ```sql
-SELECT movies.title, sequel.title as sequel_title 
+SELECT movies.title, sequel.title as sequel_title
     from movies
     LEFT OUTER JOIN movies sequel
     ON movies.sequel_id = sequel.id;
 ```
 
 ### Combining Multiple Joins
+
 You can do more than one join at a time by combining joins.
 
 ```sql
@@ -484,7 +507,7 @@ SELECT a.title, b.title FROM project_pairs
     ON project_pairs.project2_id = b.id;
 ```
 
-In this case, two self joins are done on the project pairs to be 
+In this case, two self joins are done on the project pairs to be
 able to display the title of each project in the project_pairs list.
 
 <!-- Challenge: https://www.khanacademy.org/computing/computer-programming/sql/relational-queries-in-sql/pc/challenge-friendbook -->
@@ -504,6 +527,22 @@ SELECT person1.fullname, person2.fullname FROM friends
     JOIN persons person1
     ON friends.person1_id = person1.id
     JOIN persons person2
-    ON friends.person2_id = person2.id; 
+    ON friends.person2_id = person2.id;
 ```
 
+<!-- Project: Famous people https://www.khanacademy.org/computing/computer-programming/sql/relational-queries-in-sql/pp/project-famous-people -->
+
+```SQL
+CREATE TABLE authors (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT);
+
+CREATE TABLE books (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT);
+
+CREATE TABLE book_authors(book_id INTEGER, author_id INTEGER);
+
+INSERT INTO authors(name) VALUES ("Jane Austen");
+
+INSERT INTO authors(name) VALUES ("Mary Shelley");
+
+INSERT INTO authors(name) VALUES ("Stephen King");
+
+```
