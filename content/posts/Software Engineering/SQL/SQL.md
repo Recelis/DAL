@@ -545,4 +545,31 @@ INSERT INTO authors(name) VALUES ("Mary Shelley");
 
 INSERT INTO authors(name) VALUES ("Stephen King");
 
+INSERT INTO authors(name) VALUES ("Neil Gaiman");
+
+INSERT INTO authors(name) VALUES ("Terry Pratchett");
+
+INSERT INTO books(title) VALUES ("Pride and Prejudice");
+
+INSERT INTO books(title) VALUES ("Frankenstein");
+
+INSERT INTO books(title) VALUES ("Carrie");
+
+INSERT INTO books(title) VALUES ("Good Omens");
+
+INSERT INTO book_authors(book_id, author_id) VALUES (1, 1);
+
+INSERT INTO book_authors(book_id, author_id) VALUES (2, 2);
+
+INSERT INTO book_authors(book_id, author_id) VALUES (3, 3);
+
+INSERT INTO book_authors(book_id, author_id) VALUES (4, 4);
+
+INSERT INTO book_authors(book_id, author_id) VALUES (4, 5);
+
+SELECT books.title, authors.name from book_authors
+    JOIN books
+    ON books.id = book_authors.book_id
+    JOIN authors
+    ON authors.id = book_authors.author_id;
 ```
