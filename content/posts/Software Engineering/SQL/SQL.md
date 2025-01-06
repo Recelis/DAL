@@ -573,3 +573,32 @@ SELECT books.title, authors.name from book_authors
     JOIN authors
     ON authors.id = book_authors.author_id;
 ```
+
+## SQL Query Planning and Optimization
+A SQL Query needs to be planned out because there may be many ways that it is executed to get the results.
+
+For a simple query like this:
+```sql
+SELECT * FROM books WHERE author = "J K Rowling";
+```
+
+It could do it two ways:
+- A Full Table Scan to look through all the rows in the table.
+- Creating an **index** by making a copy of the table sorted by author, doing `binary search` to find row where author is 'J K Rowling', finding matching the ids, then doing binary search on original table to return rows that match the IDS.
+
+The SQL engine would plan out which to use based on what is most efficient. The factors here may be number of rows in table. How long it might call this query.
+
+### Query Tuning
+This is a manual optimisation process for improving the response of SQL queries. Oftentimes would use a SQL profiler first to see what queries are taking up the most time.
+
+Then you can tell SQL how it is executing the SQL query bu using `EXPLAIN QUERY PLAN`
+in front of the query you want to analyse (this is only for SQLite).
+
+The next step is to then try to figure out how to improve the query based on your SQL engine. This might be creating an index.
+
+More docs for reading
+[extra](https://www.sqlite.org/queryplanner.html)
+
+[extra](https://docs.oracle.com/cd/B19306_01/server.102/b14211/sql_1016.htm#g42927)
+
+[extra](https://www.red-gate.com/simple-talk/databases/sql-server/performance-sql-server/execution-plan-basics/)
