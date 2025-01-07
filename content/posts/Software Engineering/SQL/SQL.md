@@ -602,3 +602,39 @@ More docs for reading
 [extra](https://docs.oracle.com/cd/B19306_01/server.102/b14211/sql_1016.htm#g42927)
 
 [extra](https://www.red-gate.com/simple-talk/databases/sql-server/performance-sql-server/execution-plan-basics/)
+
+## UPDATE
+The syntax for updating the a row is:
+
+```sql
+UPDATE diary_logs SET content = "I had a horrible fight with OhNoesGuy" WHERE id = 1;
+```
+
+## DELETE
+Deleting a row is like this:
+
+```sql
+DELETE FROM diary_logs WHERE id = 1;
+```
+
+Be very careful with the WHERE condition to ensure that it is unique across the table. This is the same with updating too.
+
+
+<!-- Challenge: Dynamic Documents: https://www.khanacademy.org/computing/computer-programming/sql/modifying-databases-with-sql/pc/challenge-dynamic-documents  -->
+
+We've created a database for a documents app, with rows for each document with it's title, content, and author. In this first step, use UPDATE to change the author to 'Jackie Draper' for all rows where it's currently 'Jackie Paper'. Then re-select all the rows to make sure the table changed like you expected.
+
+
+```sql
+UPDATE documents SET author  = "Jackie Draper" WHERE author = "Jackie Paper";
+
+SELECT * FROM documents;
+```
+
+Now you'll delete a row, being very careful not to delete all the rows. Only delete the row where the title is 'Things I'm Afraid Of'. Then re-select all the rows to make sure the table changed like you expected.
+
+```sql
+DELETE FROM documents WHERE title = "Things I'm Afraid Of";
+
+SELECT * FROM documents;
+```
