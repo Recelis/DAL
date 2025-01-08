@@ -638,3 +638,17 @@ DELETE FROM documents WHERE title = "Things I'm Afraid Of";
 
 SELECT * FROM documents;
 ```
+
+## ALTER TABLE
+After creation, to add a new column, you cannot run the `CREATE TABLE` command again with the new column name because that will wipe out any existing data you have. Instead, you should use the ALTER command. There can be some performance issues for this on large datasets.
+
+```SQL
+ALTER TABLE diary_logs ADD emotion TEXT default "unknown";
+```
+
+## DROP TABLE
+If you want to completely remove a table, use `DROP`.
+
+```SQL
+DROP TABLE diary_logs;
+```
