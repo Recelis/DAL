@@ -680,3 +680,25 @@ Now insert a new item into the table that has all three attributes filled in, in
 INSERT INTO clothes (type, design, price) VALUES ("cardigan", "warm wool", 40);
 SELECT * FROM clothes;
 ```
+
+## Making SQL Safer
+Here are some techniques for not accidentally damaging or erasing all your data. Especially when you are running SQL on a live database.
+
+### Avoiding bad updates/deletes
+Before running an update:
+```SQL
+-- run this before the update
+SELECT id, deleted FROM users WHERE id = 1;
+
+UPDATE users SET deleted = true WHERE id = 1;
+
+-- You can also use the LIMIT operator to make sure you don't update more rows than you expect.
+UPDATE users SET deleted = true WHERE id = 1 LIMIT 1;
+```
+
+#### LIMIT
+This limits the number of rows to update/delete.
+```SQL
+DELETE users WHERE id = 1 LIMIT 1;
+```
+
