@@ -747,3 +747,29 @@ UPDATE user SET recent_activity = "Earned SQL Master badge" WHERE id = 1;
 COMMIT;
 ```
 
+### Making Backups
+You should be making backups at a regular interval. Backups can happen on an hourly, daily, or weekly basis depending on size and space available.
+
+### Replication
+Storing multiple copies of databases in different places is important if one copy becomes unavilable. However, it is slower to write. If the data is very time-sensitive, it is better than to wait for an engineer to get the data out of a backup.
+
+### Granting privileges
+Most db systems that are stored on a shared server with multiple users will have users and privileges built in. Full access should only be given for a select few.
+
+```SQL
+GRANT FULL ON TABLE users TO super_admin;
+```
+
+You can limit by granting SELECT to a different type of user. But even this is too much scope as there may be private data. However, big companies may also have anonymized versions of their data.
+
+```SQL
+GRANT SELECT ON TABLE users TO analyzing_user;
+```
+
+<!-- Project: App impersonator -->
+Think about your favorite apps, and pick one that stores your data- like a game that stores scores, an app that lets you post updates, etc. Now in this project, you're going to imagine that the app stores your data in a SQL database (which is pretty likely!), and write SQL statements that might look like their own SQL.
+
+CREATE a table to store the data.
+INSERT a few example rows in the table.
+Use an UPDATE to emulate what happens when you edit data in the app.
+Use a DELETE to emulate what happens when you delete data in the app.
