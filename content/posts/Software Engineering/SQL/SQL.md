@@ -702,3 +702,48 @@ This limits the number of rows to update/delete.
 DELETE users WHERE id = 1 LIMIT 1;
 ```
 
+### Transactions
+A transaction is a sequence of operations that are treated as one logical piece of work. It must comply  with **ACID principles**.
+
+A command like **CREATE**, **UPDATE**, **INSERT**, or **DELETE** automatically start a transaction, but you may want multiple updates to take place one after another.
+
+The syntax for a transaction starts with `BEGIN TRANSACTION` and ends with `COMMIT`.
+
+```sql
+BEGIN TRANSACTION;
+UPDATE people SET husband = "Winston" WHERE user_id = 1;
+UPDATE people SET wife = "Winnefer" WHERE user_id = 2;
+COMMIT;
+```
+
+If the database is unable to do both UPDATE commands, then it'll rollback to how it was before it started.
+
+A transaction also stops multiple concurrency issues. i.e.
+
+A user has earned a user_bade and the recent_activity has updated with this:
+
+```sql
+INSERT INTO user_badges VALUES (1, "SQL Master", "4pm");
+UPDATE user SET recent_activity = "Earned SQL Master badge" WHERE id = 1;
+```
+
+However, a second process has added another badge almost at the same time, and this leads to the commands being written in the following order.
+
+```sql
+INSERT INTO user_badges VALUES (1, "SQL Master");
+INSERT INTO user_badges VALUES (1, "Great Listener");
+UPDATE user SET recent_activity = "Earned Great Listener badge" WHERE id = 1;
+UPDATE user SET recent_activity = "Earned SQL Master badge" WHERE id = 1;
+```
+
+This will mean the order of recent_activity is not correct.
+
+However, it would not be an issue if the INSERT and UPDATE commands were wrapped in a transaction.
+
+```sql
+BEGIN TRANSACTION;
+INSERT INTO user_badges VALUES (1, "SQL Master");
+UPDATE user SET recent_activity = "Earned SQL Master badge" WHERE id = 1;
+COMMIT;
+```
+
