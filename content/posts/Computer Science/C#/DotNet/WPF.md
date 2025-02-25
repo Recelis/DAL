@@ -5,6 +5,8 @@ draft = true
 +++
 
 # WPF
+(docs)[https://learn.microsoft.com/en-us/dotnet/desktop/wpf/overview/?view=netdesktop-9.0]
+
 WPF is a .NET UI framwork for Windows native applications. The older WPF version uses .NET Framework, but that is not recommended anymore.
 
 It uses **Markup** and **code-behind** to develop interfaces. The markup in **XAML** to implement appearance while the code-behind is for behaviour.
