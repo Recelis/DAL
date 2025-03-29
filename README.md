@@ -16,6 +16,3 @@ To test the server, run:
 To create a new page:
 `hugo new content posts/my-first-post.md`
 
-## Github Pages
-
-JackieSnacks is hosted on Github Pages at `https://recelis.github.io/jackiesnacksblog/`.
