@@ -1,5 +1,0 @@
-baseURL = '/'
-languageCode = 'en-us'
-title = 'Jackiesnacks'
-themesDir = "themes"
-theme = "hugo-whisper-theme"
