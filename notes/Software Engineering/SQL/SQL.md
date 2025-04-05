@@ -569,20 +569,24 @@ SELECT books.title, authors.name from book_authors
 ```
 
 ## SQL Query Planning and Optimization
+
 A SQL Query needs to be planned out because there may be many ways that it is executed to get the results.
 
 For a simple query like this:
+
 ```sql
 SELECT * FROM books WHERE author = "J K Rowling";
 ```
 
 It could do it two ways:
+
 - A Full Table Scan to look through all the rows in the table.
 - Creating an **index** by making a copy of the table sorted by author, doing `binary search` to find row where author is 'J K Rowling', finding matching the ids, then doing binary search on original table to return rows that match the IDS.
 
 The SQL engine would plan out which to use based on what is most efficient. The factors here may be number of rows in table. How long it might call this query.
 
 ### Query Tuning
+
 This is a manual optimisation process for improving the response of SQL queries. Oftentimes would use a SQL profiler first to see what queries are taking up the most time.
 
 Then you can tell SQL how it is executing the SQL query bu using `EXPLAIN QUERY PLAN`
@@ -598,6 +602,7 @@ More docs for reading
 [extra](https://www.red-gate.com/simple-talk/databases/sql-server/performance-sql-server/execution-plan-basics/)
 
 ## UPDATE
+
 The syntax for updating the a row is:
 
 ```sql
@@ -605,6 +610,7 @@ UPDATE diary_logs SET content = "I had a horrible fight with OhNoesGuy" WHERE id
 ```
 
 ## DELETE
+
 Deleting a row is like this:
 
 ```sql
@@ -613,11 +619,9 @@ DELETE FROM diary_logs WHERE id = 1;
 
 Be very careful with the WHERE condition to ensure that it is unique across the table. This is the same with updating too.
 
-
 <!-- Challenge: Dynamic Documents: https://www.khanacademy.org/computing/computer-programming/sql/modifying-databases-with-sql/pc/challenge-dynamic-documents  -->
 
 We've created a database for a documents app, with rows for each document with it's title, content, and author. In this first step, use UPDATE to change the author to 'Jackie Draper' for all rows where it's currently 'Jackie Paper'. Then re-select all the rows to make sure the table changed like you expected.
-
 
 ```sql
 UPDATE documents SET author  = "Jackie Draper" WHERE author = "Jackie Paper";
@@ -634,6 +638,7 @@ SELECT * FROM documents;
 ```
 
 ## ALTER TABLE
+
 After creation, to add a new column, you cannot run the `CREATE TABLE` command again with the new column name because that will wipe out any existing data you have. Instead, you should use the ALTER command. There can be some performance issues for this on large datasets.
 
 ```SQL
@@ -641,6 +646,7 @@ ALTER TABLE diary_logs ADD emotion TEXT default "unknown";
 ```
 
 ## DROP TABLE
+
 If you want to completely remove a table, use `DROP`.
 
 ```SQL
@@ -648,6 +654,7 @@ DROP TABLE diary_logs;
 ```
 
 <!-- Challenge: Clothing alterations -->
+
 Step 1
 We've created a database of clothes, and decided we need a price column. Use ALTER to add a 'price' column to the table. Then select all the columns in each row to see what your table looks like now.
 
@@ -676,10 +683,13 @@ SELECT * FROM clothes;
 ```
 
 ## Making SQL Safer
+
 Here are some techniques for not accidentally damaging or erasing all your data. Especially when you are running SQL on a live database.
 
 ### Avoiding bad updates/deletes
+
 Before running an update:
+
 ```SQL
 -- run this before the update
 SELECT id, deleted FROM users WHERE id = 1;
@@ -691,13 +701,16 @@ UPDATE users SET deleted = true WHERE id = 1 LIMIT 1;
 ```
 
 #### LIMIT
+
 This limits the number of rows to update/delete.
+
 ```SQL
 DELETE users WHERE id = 1 LIMIT 1;
 ```
 
 ### Transactions
-A transaction is a sequence of operations that are treated as one logical piece of work. It must comply  with **ACID principles**.
+
+A transaction is a sequence of operations that are treated as one logical piece of work. It must comply with **ACID principles**.
 
 A command like **CREATE**, **UPDATE**, **INSERT**, or **DELETE** automatically start a transaction, but you may want multiple updates to take place one after another.
 
@@ -742,12 +755,15 @@ COMMIT;
 ```
 
 ### Making Backups
+
 You should be making backups at a regular interval. Backups can happen on an hourly, daily, or weekly basis depending on size and space available.
 
 ### Replication
+
 Storing multiple copies of databases in different places is important if one copy becomes unavilable. However, it is slower to write. If the data is very time-sensitive, it is better than to wait for an engineer to get the data out of a backup.
 
 ### Granting privileges
+
 Most db systems that are stored on a shared server with multiple users will have users and privileges built in. Full access should only be given for a select few.
 
 ```SQL
@@ -761,9 +777,37 @@ GRANT SELECT ON TABLE users TO analyzing_user;
 ```
 
 <!-- Project: App impersonator -->
+
 Think about your favorite apps, and pick one that stores your data- like a game that stores scores, an app that lets you post updates, etc. Now in this project, you're going to imagine that the app stores your data in a SQL database (which is pretty likely!), and write SQL statements that might look like their own SQL.
 
 CREATE a table to store the data.
 INSERT a few example rows in the table.
 Use an UPDATE to emulate what happens when you edit data in the app.
 Use a DELETE to emulate what happens when you delete data in the app.
+
+```SQL
+/* What does the app's SQL look like? */
+
+CREATE TABLE todos (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, priority INTEGER NOT NULL UNIQUE);
+
+
+INSERT into todos VALUES (0, "clean rubbish bin", 0);
+INSERT into todos VALUES (1, "throw out rubbish", 1);
+INSERT into todos VALUES (2, "water plants", 2);
+
+
+SELECT * from todos;
+
+BEGIN TRANSACTION;
+UPDATE todos SET priority = -1 WHERE id = 0;
+UPDATE todos SET priority = 0 WHERE id = 1;
+UPDATE todos SET priority = 1 WHERE id = 0;
+COMMIT;
+
+SELECT * from todos;
+
+DELETE FROM todos WHERE id = 2;
+
+SELECT * from todos;
+
+```
