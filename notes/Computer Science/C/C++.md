@@ -61,7 +61,8 @@ iPtr = i; // THIS WILL ERROR AS WELL BECAUSE iPtr can only hold the address of a
 Pointers that have not been initialized will have a serial logical error (might be caught at compile time but if not then highly dangerous!).
 
 ```cpp
-int * iPtr; // pointer is declared
+int * iPtr; // declared pointer
+// there needs to be a initialization of the pointer to the address e.g. iPtr = &value; i.e. pointer = address of value
 *iPtr = 55;
 cout << *iPtr << endl;
 ```
@@ -83,6 +84,48 @@ Either 0 or NULL will work. You can also use `nullptr` to do this with C++11. Th
 int *ptr = nullptr;
 ```
 
+### char array
+
 ## References vs Pointers
 
 Use references when possible, pointers when needed [stackoverflow](https://stackoverflow.com/a/18147466).
+
+## Macros
+
+### ifndef and endif
+
+### define
+
+## Template
+
+## virtual
+`override` keyword
+### pure virtual
+
+## guarding init() functions
+
+## heap
+
+## stack
+
+## F()
+
+## std library
+
+### Smart Pointers
+
+std::unique_ptr
+
+## size_t
+
+## enum
+
+### KEY_COUNT technique
+
+## Class Member
+Class::member
+
+## inheritance
+
+### virtual destructors
+recommended
