@@ -32,7 +32,7 @@ int * pNumber;
 pNumber = &number;
 ```
 
-Name: pNumber (int*)
+Name: pNumber (int\*)
 address: 0xcanbeanything
 value: 0x22ccec (&number)
 
@@ -93,16 +93,19 @@ int *ptr = nullptr;
 ```
 
 ## References
-A reference is an 'alias' to an existing variable. It allows you to read and update the original value which makes them very powerful when it is used as a function parameter where instead of `passing-by-value`, you pass by reference. 
+
+A reference is an 'alias' to an existing variable. It allows you to read and update the original value which makes them very powerful when it is used as a function parameter where instead of `passing-by-value`, you pass by reference.
 
 As such it is very similar to a pointer. Although references tend to have nicer syntax and are easier to use.
 
 The syntax is:
+
 ```cpp
     type &newName = existingName;
 ```
 
 An example is:
+
 ```cpp
 int number = 99;
 int & refNumber = number;
@@ -113,7 +116,7 @@ cout << number << endl; // should also be 100
 
 The value of the reference is the address of the variable.
 
-e.g. 
+e.g.
 name: refNumber (int&)
 address: 0xcanbeanything
 value: 0x22ccec (&number) // address of number
@@ -127,10 +130,12 @@ value: 88
 Use references when possible, pointers when needed [stackoverflow](https://stackoverflow.com/a/18147466).
 
 A reference is a named constant for an address. There are two main differences:
+
 1. a reference needs to be initiased during declaration. e.g. `int & iRef; //errors out` It also cannot be changed once it has been established, while a pointer can.
-2. To get the value pointed to by a pointer, you use a dereferencing operator *. 
-But it is not necessary for a reference.
-i.e. 
+2. To get the value pointed to by a pointer, you use a dereferencing operator \*.
+   But it is not necessary for a reference.
+   i.e.
+
 ```cpp
 // for pointer
 int variable = 5;
@@ -143,6 +148,7 @@ cout << reference << endl; // 5
 ```
 
 ### Pass-by-reference into Functions with Reference Arguments vs Pointer Arguments
+
 For standard pass by value:
 
 ```cpp
@@ -153,7 +159,7 @@ int main() {
    cout << square(number) << endl; // 64
    cout << number << endl;         // 8 - no change
 }
- 
+
 int square(int n) {  // non-const
    cout <<  "In square(): " << &n << endl;  // 0x22ff00
    n *= n;           // clone modified inside the function
@@ -171,7 +177,7 @@ int main() {
    square(&number);          // Explicit referencing to pass an address
    cout << number << endl;   // 64
 }
- 
+
 void square(int * pNumber) {  // Function takes an int pointer (non-const)
    cout <<  "In square(): " << pNumber << endl;  // 0x22ff1c
    *pNumber *= *pNumber;      // Explicit de-referencing to get the value pointed-to
@@ -188,7 +194,7 @@ int main() {
    square(number);          // Implicit referencing (without '&')
    cout << number << endl;  // 64
 }
- 
+
 void square(int & rNumber) {  // Function takes an int reference (non-const)
    cout <<  "In square(): " << &rNumber << endl;  // 0x22ff1c
    rNumber *= rNumber;        // Implicit de-referencing (without '*')
@@ -196,6 +202,7 @@ void square(int & rNumber) {  // Function takes an int reference (non-const)
 ```
 
 ## Use const whenever possible
+
 A `const` function formal parameter cannot be modified inside the function. This is a good tip to remember to avoid accidentally modifying variables inside functions. A `const` function parameter can receive `const` and non-`const` arguments. While a non-const function reference or pointer can only receive a non-const argument.
 
 ```cpp
@@ -215,7 +222,7 @@ int & squareRef(int & rNumber) {
    rNumber *= rNumber;
    return rNumber;
 }
- 
+
 int * squarePtr(int * pNumber) {
    cout <<  "In squarePtr(): " << pNumber << endl;  // 0x22ff10
    *pNumber *= *pNumber;
@@ -243,7 +250,7 @@ int main() {
    int *ptrResult = &squarePtr(number);
    cout << ptrResult << endl;  // 64
    delete ptrResult; // needs to be cleaned up
-   
+
    int & refResult = squareRef(number);
    cout << refResult << endl;   // 64
    // no way to delete this memory because delete should only be used on a pointer.
@@ -263,9 +270,13 @@ int & squareRef(int number) {
 ```
 
 ## Memory Management
+
 [docs](https://stackoverflow.com/a/5836571)
+
 ### stack
+
 The stack is where local variables are stored and are used to hold parameters that are passed to functions. In other words, parameters that exist solely in a function live in the stack.
+
 ```cpp
 int myFunction(int param) {
     // param lives in stack
@@ -274,9 +285,11 @@ int myFunction(int param) {
 ```
 
 ### heap
+
 The heap on the other hand is memory that is defined with the `new` keyword or `malloc`. It is program defined memory that usually needs to be manually freed.
 
 ## Macros
+
 A macro is basically a form of text substitution that occurs before compilation begins. The most common example is `define`. It is possible to do function macros too but it isn't recommended.
 
 ```cpp
@@ -288,6 +301,7 @@ constexpr int square(int x) {
 ```
 
 ### define
+
 ```cpp
 #define PI 3.14159
 
@@ -298,10 +312,13 @@ int main() {
 ```
 
 ### include guards
+
 Macros that prevent header files from being included more than once.
 
 #### ifndef, #define and endif
+
 These are `include guards` which are macros to prevent header files from being included more than once.
+
 ```cpp
 #ifndef MATH_H // if not defined
 #define MATH_H // define it
@@ -310,6 +327,7 @@ These are `include guards` which are macros to prevent header files from being i
 ```
 
 ### pragma once
+
 Use this modern macro instead as your `include guards`.
 
 ```cpp
@@ -318,9 +336,34 @@ Use this modern macro instead as your `include guards`.
 
 ## Template
 
+[docs](https://learn.microsoft.com/en-us/cpp/cpp/templates-cpp?view=msvc-170)
+
+These are things that allow you to write classes and functions that can take any type. Sort of like a generic in TypeScript.
+
+```cpp
+template <typename T>
+T minimum(const T& lhs, const T& rhs)
+{
+    return lhs < rhs ? lhs : rhs;
+}
+```
+
+It uses two keywords, `template` and `typename`. T is the `template parameter` while the `typename` acts as a placeholder for the type to be used.
+
+To use this:
+
+```cpp
+int a = get_a();
+int b = get_b();
+int i = minimum(a, b);
+```
+
+The compiler will deduce this as an `int` and create a corresponding int function.
 
 ## virtual
+
 `override` keyword
+
 ### pure virtual
 
 ## guarding init() functions
@@ -340,9 +383,15 @@ std::unique_ptr
 ### KEY_COUNT technique
 
 ## Class Member
+
 Class::member
 
 ## inheritance
 
 ### virtual destructors
+
 recommended
+
+```
+
+```
