@@ -360,11 +360,70 @@ int i = minimum(a, b);
 
 The compiler will deduce this as an `int` and create a corresponding int function.
 
-## virtual
+## inheritance
 
-`override` keyword
+[docs](https://learn.microsoft.com/en-us/cpp/cpp/inheritance-cpp?view=msvc-170)
+
+In C++, classes can be derived from another. The class being derived from is the `base class`, The syntax is:
+
+```cpp
+class DerivedSingleBase : [virtual] [access-specifier] Base
+{
+    // member list
+};
+
+class DerivedMultipleBases : [virtual] [access-specifier] Base1,
+    [virtual] [access-specifier] Base2, ...
+{
+    // member list
+};
+```
+
+There are three important parts here: `virtual inheritance`, the `access specifier` which forms the `member access control`, and `single vs multiple inheritance`. The virtual inheritance for a class is somewhat different from the virtual used in a function.
+
+### virtual inheritance
+
+#### virtual function
+
+[docs](https://learn.microsoft.com/en-us/cpp/cpp/virtual-functions?view=msvc-170)
+
+This basically means that the function in the base class can be overwritten.
+
+```cpp
+class Base {
+public:
+    virtual void sayHi() {
+        std::cout << "Base says hi\n";
+    }
+};
+
+class Derived : public Base {
+public:
+    void sayHi() override {
+        std::cout << "Derived says hi\n";
+    }
+};
+```
+
+##### calling by pointer or reference
+
+#### override keyword
+
+The `override` keyword is actually optional but is recommended to use in modern C++ (C++ 11 and newer) to make it explicit that this function is virtual.
 
 ### pure virtual
+
+### virtual destructors
+
+recommended
+
+```
+
+```
+
+### member access control
+
+### single vs multiple inheritance
 
 ## guarding init() functions
 
@@ -385,13 +444,3 @@ std::unique_ptr
 ## Class Member
 
 Class::member
-
-## inheritance
-
-### virtual destructors
-
-recommended
-
-```
-
-```
