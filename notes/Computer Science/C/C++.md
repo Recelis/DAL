@@ -1,5 +1,61 @@
 # C++
 
+## Classes and structs
+
+### Member Access control (C++)
+[docs](https://learn.microsoft.com/en-us/cpp/cpp/member-access-control-cpp?view=msvc-170)
+
+- public - this is the public interface of a class. Members and methods can be called from outside.
+- private - these typically hold the implementation details that are solely for use inside the class.
+- protected - these can be used within the base class (as a private member or method) but also in any derived class.
+
+Default is `private` in a class.
+
+```CPP
+// access_specifiers_for_base_classes.cpp
+class BaseClass
+{
+public:
+    int PublicFunc(); // Declare a public member.
+protected:
+    int ProtectedFunc(); // Declare a protected member.
+private:
+    int PrivateFunc(); // Declare a private member.
+};
+
+// Declare two classes derived from BaseClass.
+class DerivedClass1 : public BaseClass
+{
+    void foo()
+    {
+        PublicFunc();
+        ProtectedFunc();
+        PrivateFunc(); // function is inaccessible
+    }
+};
+
+class DerivedClass2 : private BaseClass
+{
+    void foo()
+    {
+        PublicFunc();
+        ProtectedFunc();
+        PrivateFunc(); // function is inaccessible
+    }
+};
+
+int main()
+{
+    DerivedClass1 derived_class1;
+    DerivedClass2 derived_class2;
+    derived_class1.PublicFunc();
+    derived_class2.PublicFunc(); // function is inaccessible
+}
+```
+
+Deriving class uses the member access will also change how the base class members are treated. e.g. in the example DerivedClass2 is derived from a `private` BaseClass and so doesn't have access to PublicFunc even though it was initially a public member in BaseClass.
+
+
 ## Pointers
 
 [tutorial](https://www3.ntu.edu.sg/home/ehchua/programming/cpp/cp4_PointerReference.html)
