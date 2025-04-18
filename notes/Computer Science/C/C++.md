@@ -469,6 +469,39 @@ The `override` keyword is actually optional but is recommended to use in modern 
 
 ### pure virtual
 
+#### accessing base class virtual methods in derived class
+To access the base class virtaul methods in your derived class, you can do Base::method().
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Animal {
+public:
+    virtual void speak() {
+        cout << "Animal speaks" << endl;
+    }
+};
+
+class Dog : public Animal {
+public:
+    void speak() override {
+        cout << "Dog barks" << endl;
+
+        // Call the base class version
+        Animal::speak();
+    }
+};
+
+int main() {
+    Dog d;
+    d.speak();
+
+    return 0;
+}
+```
+
+
 ### virtual destructors
 
 recommended
