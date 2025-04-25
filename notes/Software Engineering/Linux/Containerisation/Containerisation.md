@@ -1,6 +1,6 @@
 # Containerisation
 
-Containers are environments in a Linux operating systems which are scoped using `Linux namespaces`. This means that processes cannot be shared outside of a container.
+Containers are environments in a Linux operating systems which are scoped using `Linux namespaces`. This means that resources cannot be shared outside of a container.
 
 <!-- Look into Linux namespaces more. -->
 
