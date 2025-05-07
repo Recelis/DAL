@@ -76,7 +76,7 @@ This is more expensive but it fixes an issue where you have multiple active serv
 
 ### Partitioning
 
-This is when you partition one tyoe of data and store them in different load-balanced databases e.g. in old facebook this would be mit.facebook.com vs hardvard.facebook.com. However, it would be very difficult if you try to do something that would cross the partitions.
+This is when you partition one type of data and store them in different load-balanced databases e.g. in old facebook this would be mit.facebook.com vs harvard.facebook.com. However, it would be very difficult if you try to do something that would cross the partitions.
 
 ![Partitions](./Partitions.png)
 
