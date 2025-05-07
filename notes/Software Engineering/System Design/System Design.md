@@ -56,6 +56,42 @@ It is very efficient to just serve a HTML files from a server. This can be cache
 
 ### Database Replication
 
+This is replication of databases.
+
+#### Active-Passive
+
+This is when one database is replicated to all of its 'slaves'. It solves redundancy issues if the Active database dies then the one of the other databases can be promoted to take its place. It can also be used to balance read requests for them where the passives are used for reads and the writes go to the active.
+
+![Active Passive Replication](./Database%20Replication%20-%20Master%20Slave.png)
+
+A combined diagram of the load balancer with database replication becomes like this:
+
+![Load Balancer with db replication](./Load%20balancer%20and%20db%20replication.png)
+
+The issues with this is the Load balancers are still single points of failure. Typically though, they come in pairs and may be Active-Passive or Active-Active and communicate their liveness with a `heartbeat` (a packet that is routinely sent to the other server). This is called `High Availability`.
+
+#### Active-Active
+
+This is more expensive but it fixes an issue where you have multiple active servers. Writing to Active 1 will get propagated to Active 2 and vice versa. This ensures that when one active server fails, then writes will still write.
+
+### Partitioning
+
+This is when you partition one tyoe of data and store them in different load-balanced databases e.g. in old facebook this would be mit.facebook.com vs hardvard.facebook.com. However, it would be very difficult if you try to do something that would cross the partitions.
+
+![Partitions](./Partitions.png)
+
+However, they instead did this by partitioning by names A-M and N-Z.
+
+## Availability Zones
+
+If your entire network is in a building, and the building loses power, then it can be mitigated by copying the data centers elsewhere.
+
+Load balancing is now done on the DNS level.
+
+## Security
+
+It is good to only allow tcp port 80 (HTTP) and 443 (HTTPS) as well as a SSL based VPN or port 22 (SSH) for SSSHing into your data center. Once you are inside the data center, you can then keep communications open to HTTP to avoid complexity. From the load balancer for the databases, the communications would be tcp 3306 (MySql).
+
 ## Clones
 
 [docs](https://web.archive.org/web/20220530193911/https://www.lecloud.net/post/7295452622/scalability-for-dummies-part-1-clones)
