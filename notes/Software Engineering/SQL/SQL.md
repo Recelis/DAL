@@ -21,10 +21,12 @@ For any table, you'll need to specify a `PRIMARY KEY`.
 You can now add data to your table by using the `INSERT` command. This data will be given row by row.
 
 ```SQL
-    INSERT INTO groceries VALUES (1, "Bananas", 4);
+    INSERT INTO groceries VALUES (1, 'Bananas', 4);
 ```
 
 The value of the `PRIMARY KEY` must be `unique` for each row in the table.
+
+**Be very careful of Double Quotation marks vs Single Quotation Marks. Double Quotation marks are used for column or table name while strings use Single Quotation marks.**
 
 ## SELECT
 
@@ -96,7 +98,7 @@ CREATE TABLE exercise_logs
     heart_rate INTEGER);
 
 
-INSERT INTO exercise_logs(type, minutes, calories, heart_rate) VALUES ("biking", 30, 100, 110);
+INSERT INTO exercise_logs(type, minutes, calories, heart_rate) VALUES ('biking', 30, 100, 110);
 ```
 
 Putting the brackets after exercise_logs allows you to specify which columns to insert into for that row.
@@ -124,13 +126,13 @@ AND operator takes precedent over OR operator but you can just use parenthesis.
 You can easily filter rows by values in a column.
 
 ```SQL
-SELECT * FROM exercise_logs WHERE type IN ("biking", "hiking", "tree climbing", "rowing");
+SELECT * FROM exercise_logs WHERE type IN ('biking', 'hiking', 'tree climbing', 'rowing');
 ```
 
 You can do the invert with a NOT operator.
 
 ```SQL
-SELECT * FROM exercise_logs WHERE type NOT IN ("biking", "hiking", "tree climbing", "rowing");
+SELECT * FROM exercise_logs WHERE type NOT IN ('biking', 'hiking', 'tree climbing', 'rowing');
 ```
 
 ## Subquery
@@ -147,7 +149,7 @@ The LIKE operator allows you to do a fuzzy match against a column. So in the exa
 
 ```SQL
 SELECT * FROM exercise_logs WHERE type IN (
-    SELECT type FROM drs_favorites WHERE reason LIKE "%cardiovascular%");
+    SELECT type FROM drs_favorites WHERE reason LIKE '%cardiovascular%');
 ```
 
 ## Aggregate Queries
@@ -208,15 +210,15 @@ A case statement is similar to a switch or if statement in other programming lan
 ```sql
 SELECT type, heart_rate,
     CASE
-        WHEN heart_rate > 220 - 30 THEN "above max"
-        WHEN heart_rate > ROUND(0.9 * (220 - 30)) THEN "above target"
-        WHEN heart_rate > ROUND(0.5 * (220 - 30)) THEN "within target"
-        ELSE "below target"
-    END as "hr_zone"
+        WHEN heart_rate > 220 - 30 THEN 'above max'
+        WHEN heart_rate > ROUND(0.9 * (220 - 30)) THEN 'above target'
+        WHEN heart_rate > ROUND(0.5 * (220 - 30)) THEN 'within target'
+        ELSE 'below target'
+    END as 'hr_zone'
 FROM exercise_logs
 ```
 
-This will do queries and group them into different conditions to then save as another "column".
+This will do queries and group them into different conditions to then save as another 'column'.
 
 #### ROUND
 
@@ -235,11 +237,11 @@ SELECT name, number_grade, ROUND(fraction_completed * 100) AS percent_completed 
 ```sql
 SELECT COUNT(*),
     CASE
-        WHEN number_grade > 90 THEN "A"
-        WHEN number_grade <= 90 AND number_grade > 80 THEN "B"
-        WHEN number_grade <= 80 AND number_grade > 70 THEN "C"
-        ELSE "F"
-    END as "letter_grade"
+        WHEN number_grade > 90 THEN 'A'
+        WHEN number_grade <= 90 AND number_grade > 80 THEN 'B'
+        WHEN number_grade <= 80 AND number_grade > 70 THEN 'C'
+        ELSE 'F'
+    END as 'letter_grade'
 FROM student_grades
 GROUP BY letter_grade;
 ```
@@ -270,10 +272,10 @@ What ways are there to group the data values that don’t exist yet (using CASE)
 ```SQL
 SELECT COUNT(*),
     CASE
-        WHEN percent_one_year_change > 1 THEN "Growing"
-        WHEN percent_one_year_change = 1 THEN "Maintaining"
-        ELSE "Shrinking"
-    END as "percentage_change"
+        WHEN percent_one_year_change > 1 THEN 'Growing'
+        WHEN percent_one_year_change = 1 THEN 'Maintaining'
+        ELSE 'Shrinking'
+    END as 'percentage_change'
 FROM countries
 GROUP BY percentage_change;
 ```
@@ -283,18 +285,18 @@ What interesting ways are there to filter the data (using AND/OR)?
 ```SQL
 SELECT
     CASE
-        WHEN percent_one_year_change > 1 AND fertility_rate > 2.1 THEN "Growth with ABOVE THRESHOLD"
-        WHEN percent_one_year_change > 1  AND fertility_rate = 2.1 THEN "Growth with ON THRESHOLD"
-        WHEN percent_one_year_change > 1  AND fertility_rate < 2.1 THEN "Growth with BELOW THRESHOLD"
-        WHEN percent_one_year_change = 1  AND fertility_rate > 2.1 THEN "Maintaining with ABOVE THRESHOLD"
-        WHEN percent_one_year_change = 1  AND fertility_rate = 2.1 THEN "Maintaining with ON THRESHOLD"
-        WHEN percent_one_year_change = 1  AND fertility_rate < 2.1 THEN "Maintaining with BELOW THRESHOLD"
-        WHEN percent_one_year_change < 1  AND fertility_rate > 2.1 THEN "Shrinkage with ABOVE THRESHOLD"
-        WHEN percent_one_year_change < 1  AND fertility_rate = 2.1 THEN "Shrinkage with ON THRESHOLD"
-        WHEN percent_one_year_change < 1  AND fertility_rate < 2.1 THEN "Shrinkage with BELOW THRESHOLD"
-        ELSE "NA"
-    END as "threshold",
-    COUNT(*) as "Number of Countries"
+        WHEN percent_one_year_change > 1 AND fertility_rate > 2.1 THEN 'Growth with ABOVE THRESHOLD'
+        WHEN percent_one_year_change > 1  AND fertility_rate = 2.1 THEN 'Growth with ON THRESHOLD'
+        WHEN percent_one_year_change > 1  AND fertility_rate < 2.1 THEN 'Growth with BELOW THRESHOLD'
+        WHEN percent_one_year_change = 1  AND fertility_rate > 2.1 THEN 'Maintaining with ABOVE THRESHOLD'
+        WHEN percent_one_year_change = 1  AND fertility_rate = 2.1 THEN 'Maintaining with ON THRESHOLD'
+        WHEN percent_one_year_change = 1  AND fertility_rate < 2.1 THEN 'Maintaining with BELOW THRESHOLD'
+        WHEN percent_one_year_change < 1  AND fertility_rate > 2.1 THEN 'Shrinkage with ABOVE THRESHOLD'
+        WHEN percent_one_year_change < 1  AND fertility_rate = 2.1 THEN 'Shrinkage with ON THRESHOLD'
+        WHEN percent_one_year_change < 1  AND fertility_rate < 2.1 THEN 'Shrinkage with BELOW THRESHOLD'
+        ELSE 'NA'
+    END as 'threshold',
+    COUNT(*) as 'Number of Countries'
 FROM countries
 GROUP BY threshold;
 ```
@@ -314,18 +316,18 @@ e.g.
 ```SQL
 -- Students Table --
 INSERT INTO students (first_name, last_name, email, phone, birthdate)
-    VALUES ("Peter", "Rabbit", "peter@rabbit.com", "555-6666", "2002-06-24");
+    VALUES ('Peter', 'Rabbit', 'peter@rabbit.com', '555-6666', '2002-06-24');
 INSERT INTO students (first_name, last_name, email, phone, birthdate)
-    VALUES ("Alice", "Wonderland", "alice@wonderland.com", "555-4444", "2002-07-04");
+    VALUES ('Alice', 'Wonderland', 'alice@wonderland.com', '555-4444', '2002-07-04');
 -- Grades Table --
 INSERT INTO student_grades (student_id, test, grade)
-    VALUES (1, "Nutrition", 95);
+    VALUES (1, 'Nutrition', 95);
 INSERT INTO student_grades (student_id, test, grade)
-    VALUES (2, "Nutrition", 92);
+    VALUES (2, 'Nutrition', 92);
 INSERT INTO student_grades (student_id, test, grade)
-    VALUES (1, "Chemistry", 85);
+    VALUES (1, 'Chemistry', 85);
 INSERT INTO student_grades (student_id, test, grade)
-    VALUES (2, "Chemistry", 95);
+    VALUES (2, 'Chemistry', 95);
 ```
 
 -- Result
@@ -395,7 +397,7 @@ Now, add an additional query that shows only the name and hobbies of 'Bobby McBo
 SELECT persons.name, hobbies.name FROM persons
     JOIN hobbies
     ON persons.id = hobbies.person_id
-    WHERE persons.name = "Bobby McBobbyFace";
+    WHERE persons.name = 'Bobby McBobbyFace';
 ```
 
 ### OUTER JOIN
@@ -533,23 +535,23 @@ CREATE TABLE books (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT);
 
 CREATE TABLE book_authors(book_id INTEGER, author_id INTEGER);
 
-INSERT INTO authors(name) VALUES ("Jane Austen");
+INSERT INTO authors(name) VALUES ('Jane Austen');
 
-INSERT INTO authors(name) VALUES ("Mary Shelley");
+INSERT INTO authors(name) VALUES ('Mary Shelley');
 
-INSERT INTO authors(name) VALUES ("Stephen King");
+INSERT INTO authors(name) VALUES ('Stephen King');
 
-INSERT INTO authors(name) VALUES ("Neil Gaiman");
+INSERT INTO authors(name) VALUES ('Neil Gaiman');
 
-INSERT INTO authors(name) VALUES ("Terry Pratchett");
+INSERT INTO authors(name) VALUES ('Terry Pratchett');
 
-INSERT INTO books(title) VALUES ("Pride and Prejudice");
+INSERT INTO books(title) VALUES ('Pride and Prejudice');
 
-INSERT INTO books(title) VALUES ("Frankenstein");
+INSERT INTO books(title) VALUES ('Frankenstein');
 
-INSERT INTO books(title) VALUES ("Carrie");
+INSERT INTO books(title) VALUES ('Carrie');
 
-INSERT INTO books(title) VALUES ("Good Omens");
+INSERT INTO books(title) VALUES ('Good Omens');
 
 INSERT INTO book_authors(book_id, author_id) VALUES (1, 1);
 
@@ -575,7 +577,7 @@ A SQL Query needs to be planned out because there may be many ways that it is ex
 For a simple query like this:
 
 ```sql
-SELECT * FROM books WHERE author = "J K Rowling";
+SELECT * FROM books WHERE author = 'J K Rowling';
 ```
 
 It could do it two ways:
@@ -606,7 +608,7 @@ More docs for reading
 The syntax for updating the a row is:
 
 ```sql
-UPDATE diary_logs SET content = "I had a horrible fight with OhNoesGuy" WHERE id = 1;
+UPDATE diary_logs SET content = 'I had a horrible fight with OhNoesGuy' WHERE id = 1;
 ```
 
 ## DELETE
@@ -624,7 +626,7 @@ Be very careful with the WHERE condition to ensure that it is unique across the 
 We've created a database for a documents app, with rows for each document with it's title, content, and author. In this first step, use UPDATE to change the author to 'Jackie Draper' for all rows where it's currently 'Jackie Paper'. Then re-select all the rows to make sure the table changed like you expected.
 
 ```sql
-UPDATE documents SET author  = "Jackie Draper" WHERE author = "Jackie Paper";
+UPDATE documents SET author  = 'Jackie Draper' WHERE author = 'Jackie Paper';
 
 SELECT * FROM documents;
 ```
@@ -632,7 +634,7 @@ SELECT * FROM documents;
 Now you'll delete a row, being very careful not to delete all the rows. Only delete the row where the title is 'Things I'm Afraid Of'. Then re-select all the rows to make sure the table changed like you expected.
 
 ```sql
-DELETE FROM documents WHERE title = "Things I'm Afraid Of";
+DELETE FROM documents WHERE title = 'Things I'm Afraid Of';
 
 SELECT * FROM documents;
 ```
@@ -642,7 +644,7 @@ SELECT * FROM documents;
 After creation, to add a new column, you cannot run the `CREATE TABLE` command again with the new column name because that will wipe out any existing data you have. Instead, you should use the ALTER command. There can be some performance issues for this on large datasets.
 
 ```SQL
-ALTER TABLE diary_logs ADD emotion TEXT default "unknown";
+ALTER TABLE diary_logs ADD emotion TEXT default 'unknown';
 ```
 
 ## DROP TABLE
@@ -678,7 +680,7 @@ Step 3
 Now insert a new item into the table that has all three attributes filled in, including 'price'. Do one final SELECT of all the rows to check it worked.
 
 ```SQL
-INSERT INTO clothes (type, design, price) VALUES ("cardigan", "warm wool", 40);
+INSERT INTO clothes (type, design, price) VALUES ('cardigan', 'warm wool', 40);
 SELECT * FROM clothes;
 ```
 
@@ -718,8 +720,8 @@ The syntax for a transaction starts with `BEGIN TRANSACTION` and ends with `COMM
 
 ```sql
 BEGIN TRANSACTION;
-UPDATE people SET husband = "Winston" WHERE user_id = 1;
-UPDATE people SET wife = "Winnefer" WHERE user_id = 2;
+UPDATE people SET husband = 'Winston' WHERE user_id = 1;
+UPDATE people SET wife = 'Winnefer' WHERE user_id = 2;
 COMMIT;
 ```
 
@@ -730,17 +732,17 @@ A transaction also stops multiple concurrency issues. i.e.
 A user has earned a user_bade and the recent_activity has updated with this:
 
 ```sql
-INSERT INTO user_badges VALUES (1, "SQL Master", "4pm");
-UPDATE user SET recent_activity = "Earned SQL Master badge" WHERE id = 1;
+INSERT INTO user_badges VALUES (1, 'SQL Master', '4pm');
+UPDATE user SET recent_activity = 'Earned SQL Master badge' WHERE id = 1;
 ```
 
 However, a second process has added another badge almost at the same time, and this leads to the commands being written in the following order.
 
 ```sql
-INSERT INTO user_badges VALUES (1, "SQL Master");
-INSERT INTO user_badges VALUES (1, "Great Listener");
-UPDATE user SET recent_activity = "Earned Great Listener badge" WHERE id = 1;
-UPDATE user SET recent_activity = "Earned SQL Master badge" WHERE id = 1;
+INSERT INTO user_badges VALUES (1, 'SQL Master');
+INSERT INTO user_badges VALUES (1, 'Great Listener');
+UPDATE user SET recent_activity = 'Earned Great Listener badge' WHERE id = 1;
+UPDATE user SET recent_activity = 'Earned SQL Master badge' WHERE id = 1;
 ```
 
 This will mean the order of recent_activity is not correct.
@@ -749,8 +751,8 @@ However, it would not be an issue if the INSERT and UPDATE commands were wrapped
 
 ```sql
 BEGIN TRANSACTION;
-INSERT INTO user_badges VALUES (1, "SQL Master");
-UPDATE user SET recent_activity = "Earned SQL Master badge" WHERE id = 1;
+INSERT INTO user_badges VALUES (1, 'SQL Master');
+UPDATE user SET recent_activity = 'Earned SQL Master badge' WHERE id = 1;
 COMMIT;
 ```
 
@@ -791,9 +793,9 @@ Use a DELETE to emulate what happens when you delete data in the app.
 CREATE TABLE todos (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, priority INTEGER NOT NULL UNIQUE);
 
 
-INSERT into todos VALUES (0, "clean rubbish bin", 0);
-INSERT into todos VALUES (1, "throw out rubbish", 1);
-INSERT into todos VALUES (2, "water plants", 2);
+INSERT into todos VALUES (0, 'clean rubbish bin', 0);
+INSERT into todos VALUES (1, 'throw out rubbish', 1);
+INSERT into todos VALUES (2, 'water plants', 2);
 
 
 SELECT * from todos;
