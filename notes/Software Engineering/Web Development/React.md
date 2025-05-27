@@ -194,6 +194,40 @@ dispatch({
 
 [docs](https://react.dev/reference/react/useCallback)
 
+When a component rerenders, React will rerender all of its children recursively. So `useCallback` lets you cache a function definition between re-renders. However, because whenever`() => {}` or `function () {}` are called, it will always create a new function (similar to how calling {} will create a new object everytime), then putting a standard `memo` around a component with a function passed in will not cache it.
+
+```javascript
+import { memo } from "react";
+// onSubmit will be created each time causing this to be rerendered even if none of its props have changed.
+const ShippingForm = memo(function ShippingForm({ onSubmit }) {
+  // ...
+});
+```
+
+```javascript
+function ProductPage({ productId, referrer, theme }) {
+  // Tell React to cache your function between re-renders...
+  const handleSubmit = useCallback(
+    (orderDetails) => {
+      post("/product/" + productId + "/buy", {
+        referrer,
+        orderDetails,
+      });
+    },
+    [productId, referrer]
+  ); // ...so as long as these dependencies don't change...
+
+  return (
+    <div className={theme}>
+      {/* ...ShippingForm will receive the same props and can skip re-rendering */}
+      <ShippingForm onSubmit={handleSubmit} />
+    </div>
+  );
+}
+```
+
+Only do this if you notice that the page is freezing from some change in the component/s above.
+
 ### useLayoutEffect
 
 ### useMemo
