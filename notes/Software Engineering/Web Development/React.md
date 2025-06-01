@@ -263,3 +263,9 @@ Rerendering of components can be turned on by going into `Profiler` => `gear ico
 ## error boundaries
 
 ## createPortal
+
+## React Devtools Profiler
+
+### Profiling
+
+### Flamegraph Chart
