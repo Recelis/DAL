@@ -228,6 +228,8 @@ function ProductPage({ productId, referrer, theme }) {
 
 Only do this if you notice that the page is freezing from some change in the component/s above.
 
+Rerendering of components can be turned on by going into `Profiler` => `gear icon` => `Highlight updates when components render.`
+
 ### useLayoutEffect
 
 ### useMemo
