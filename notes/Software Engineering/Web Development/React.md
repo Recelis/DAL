@@ -232,6 +232,12 @@ Rerendering of components can be turned on by going into `Profiler` => `gear ico
 
 ### useLayoutEffect
 
+[docs](https://react.dev/reference/react/useLayoutEffect)
+
+This is a useEffect that is called before the browser repaints the screen. It blocks the screen from repainting which can hurt performance.
+
+Use cases
+
 ### useMemo
 
 ### useReducer
