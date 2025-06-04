@@ -188,7 +188,44 @@ dispatch({
 
 [docs](https://react.dev/learn/scaling-up-with-reducer-and-context)
 
+## Render and Commit
+
+[docs](https://react.dev/learn/render-and-commit)
+
+This section describes the steps for how a React component is rendered.
+
+As described in the diagram, there are 3 steps: `Trigger`, `Render` and `Commit`.
+
+![image](./react%20render.png)
+
+### Trigger
+
+A component will render for two reasons.
+
+1. For the initial render
+2. The component or its ancestors state has been updated.
+
+### Render
+
+After triggering a render, React has to figure out what to display. Rendering is just another word for calling your components.
+
+React calls this recursively, so it will render components within components.
+
+For the initial render, React will create DOM nodes for each HTML tag in your component. For a rerender, React calculates which properties have changed since the last render but won't do anything until it the `Commit` stage.
+
+### Commit
+
+Committing changes only applies to rerendering. For the initial render, React uses `appendChild()` to put the DOM nodes into the screen.
+
+For rerenders, React just does the minimal necessary operations to make the DOM match the latest output.
+
+### Browser paint
+
+After React has done the commit to send the changes to the DOM. The browser itself will then do a repaint of the screen.
+
 ## Hooks
+
+### useEffect
 
 ### useCallback
 
