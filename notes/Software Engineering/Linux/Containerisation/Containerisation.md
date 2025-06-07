@@ -22,6 +22,39 @@ To view all running docker containers, use command `docker ps`.
 
 The dockerignore file ignores files from being copied into the docker container. There should be one corresponding to each Dockerfile.
 
+#### Docker build
+
+[docs](https://docs.docker.com/get-started/docker-concepts/building-images/build-tag-and-publish-an-image/)
+
+Before you can run your Docker containers, you need to build the images.
+
+This is `docker build .`
+
+This will return a message with a hash for the container name.
+
+`Successfully built d2ff6fae5b55`
+
+Then you can run the container:
+
+`docker run d2ff6fae5b55`
+
+#### Docker build with tagging
+
+You can tag the image with a more human readable name.
+
+`docker build -t my-app --target prod .`
+
+Here you've given the tag my-app and the target prod. Targets will be explained in the multistage build section.
+
+You can now this more easily as:
+
+`docker run -p 80:80 my-app`
+This command also sets the port mapping i.e. the port 80 of the container is now exposed to the port 80 in the host.
+
+You can also give your tags a namespace too to group them together.
+
+`docker build -t my-username/my-image .`
+
 ### docker compose
 
 The docker compose file `compose.yml` file uses YAML to define the different services that you use.
