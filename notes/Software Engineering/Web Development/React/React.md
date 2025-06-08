@@ -371,9 +371,36 @@ Rerendering of components can be turned on by going into `Profiler` => `gear ico
 
 [docs](https://react.dev/reference/react/useLayoutEffect)
 
-This is a useEffect that is called before the browser repaints the screen. It blocks the screen from repainting which can hurt performance.
+This is a useEffect that is called before the browser repaints the screen but after rendering [Link to Render and Commit](React.md#render-and-commit). This allows the JSX to be a pure calculation but also adds in a side effect to the component.
 
-Use cases
+It blocks the screen from repainting which can hurt performance.
+
+Use cases for this would be getting the size of a component/HTML element before it has been painted on the screen.
+
+```javascript
+function Tooltip() {
+  const ref = useRef(null);
+  const [tooltipHeight, setTooltipHeight] = useState(0); // You don't know real height yet
+
+  useLayoutEffect(() => {
+    const { height } = ref.current.getBoundingClientRect();
+    setTooltipHeight(height); // Re-render now that you know the real height
+  }, []);
+
+  // ...use tooltipHeight in the rendering logic below...
+}
+```
+
+In the example, it will retrigger the effect before the screen is painted. This pauses the paint and the useLayoutEffect's changes will run.
+
+Because the browser usually batches the paints to wait for all the JavaScript microtask to run, the useLayoutEffect will be batched with the initial commit JavaScript code, before the screen is painted. So only one paint occurs which avoids a flicker if you used `useEffect`.
+
+#### Rendering Timeline
+
+- Runs DOM updates
+- Immediately runs useLayoutEffect
+- Optionally does another render
+- Then allows the browser to proceed with layout and paint
 
 ### useMemo
 
