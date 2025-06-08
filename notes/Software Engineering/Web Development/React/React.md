@@ -227,6 +227,106 @@ After React has done the commit to send the changes to the DOM. The browser itse
 
 ### useEffect
 
+#### Synchronizing with effects
+
+[docs](https://react.dev/learn/synchronizing-with-effects#how-to-handle-the-effect-firing-twice-in-development)
+
+An effect runs to specify a side effect on rendering, not on a user event like clicking. This may be connecting to a server.
+
+useEffect runs after the commit stage during the render loop. So it only runs after the paint.
+
+Doing something like this:
+
+```javascript
+import { useState, useRef, useEffect } from "react";
+
+function VideoPlayer({ src, isPlaying }) {
+  const ref = useRef(null);
+
+  if (isPlaying) {
+    ref.current.play(); // Calling these while rendering isn't allowed.
+  } else {
+    ref.current.pause(); // Also, this crashes.
+  }
+
+  return <video ref={ref} src={src} loop playsInline />;
+}
+
+export default function App() {
+  const [isPlaying, setIsPlaying] = useState(false);
+  return (
+    <>
+      <button onClick={() => setIsPlaying(!isPlaying)}>
+        {isPlaying ? "Pause" : "Play"}
+      </button>
+      <VideoPlayer
+        isPlaying={isPlaying}
+        src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4"
+      />
+    </>
+  );
+}
+```
+
+Is not allowed because it modifies the DOM during the render loop which is not allowed. React components must be pure.
+
+Also, the DOM hasn't been created yet on the first render so it can't even call the video's play function.
+
+##### Running on every render
+
+useEffect runs on every render so this will become an infinite loop.
+
+```javascript
+const [count, setCount] = useState(0);
+useEffect(() => {
+  setCount(count + 1);
+});
+```
+
+The useEffect will add to count, which triggers another render which then calls the useEffect again...
+
+To fix this, set the dependencies parameter.
+
+```javascript
+useEffect(() => {
+  if (isPlaying) {
+    // It's used here...
+    // ...
+  } else {
+    // ...
+  }
+}, [isPlaying]); // ...so it must be declared here!
+```
+
+Now this only calls when isPlaying is changed. It does a check using `Object.is`. So if the objects are defined in two different places but have the same values then it is still difference.
+
+i.e.
+
+```javascript
+let obj = {};
+Object.is(obj, {}); // false
+```
+
+##### useEffect Cleanup
+
+If you need to connect to a service on component mount, then when the component unmounts, you'll need to disconnect otherwise when you come back, you'll have created two connections.
+
+The fix for this is to use the cleanup function when you return from your effect.
+
+```javascript
+useEffect(() => {
+  const connection = createConnection();
+  connection.connect();
+  return () => {
+    connection.disconnect();
+  };
+}, []);
+```
+
+In development, this will call the createConnection twice. i.e. Connecting, Disconnected, Connecting.
+
+It is a dev feature to allow you to see whether a component had fully unmounted and cleaned up all the side effects.
+
 ### useCallback
 
 [docs](https://react.dev/reference/react/useCallback)
