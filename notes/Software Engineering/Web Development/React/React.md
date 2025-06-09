@@ -327,6 +327,70 @@ In development, this will call the createConnection twice. i.e. Connecting, Disc
 
 It is a dev feature to allow you to see whether a component had fully unmounted and cleaned up all the side effects.
 
+#### Lifecycle of Reactive Effects
+
+[docs](https://react.dev/learn/lifecycle-of-reactive-effects)
+
+Effects should be thought as separate and independent as processes. In this example we have an effect that creates a function and then runs a cleanup when the roomId changes.
+
+```javascript
+function ChatRoom({ roomId }) {
+  useEffect(() => {
+    logVisit(roomId); // avoid this!
+    const connection = createConnection(serverUrl, roomId);
+    connection.connect();
+    return () => {
+      connection.disconnect();
+    };
+  }, [roomId]);
+  // ...
+}
+```
+
+The issue here is with the logVisit when roomId changes. While this may look "cleaner", it is less maintainable because later you may want the connection code may depend on another dependency (**reactive values**) which means you'll now have an unnecessary log.
+
+It is better to separate this into another useEffect.
+
+```javascript
+function ChatRoom({ roomId }) {
+  useEffect(() => {
+    logVisit(roomId);
+  }, [roomId]);
+
+  useEffect(() => {
+    const connection = createConnection(serverUrl, roomId);
+    // ...
+  }, [roomId]);
+  // ...
+}
+```
+
+When the dependencies are empty, it means that it will only synchronise when the component mounts and run cleanup when the component unmounts.
+
+##### All variables declared in the component body are reactive
+
+When you declare variables based on other reactive values, then they too become reactive and need to be added to the effect's dependencies.
+
+```javascript
+function ChatRoom({ roomId, selectedServerUrl }) {
+  // roomId is reactive
+  const settings = useContext(SettingsContext); // settings is reactive
+  const serverUrl = selectedServerUrl ?? settings.defaultServerUrl; // serverUrl is reactive
+  useEffect(() => {
+    const connection = createConnection(serverUrl, roomId); // Your Effect reads roomId and serverUrl
+    connection.connect();
+    return () => {
+      connection.disconnect();
+    };
+  }, [roomId, serverUrl]); // So it needs to re-synchronize when either of them changes!
+  // ...
+}
+```
+
+Otherwise you'll get a linting error.
+
+If you don't want to synchronise to some values, you should either move their declaration into the useEffect block, split them into separate effects, or separate events from your effects.
+
 ### useCallback
 
 [docs](https://react.dev/reference/react/useCallback)
@@ -411,10 +475,6 @@ Because the browser usually batches the paints to wait for all the JavaScript mi
 ### Refs
 
 [docs](https://react.dev/learn/escape-hatches)
-
-### Lifecycle of Reactive Effects
-
-[docs](https://react.dev/learn/lifecycle-of-reactive-effects)
 
 ## "use strict"
 
