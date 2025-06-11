@@ -475,6 +475,50 @@ Because the browser usually batches the paints to wait for all the JavaScript mi
 ### Refs
 
 [docs](https://react.dev/learn/escape-hatches)
+Refs are a good way to remember something in your component but not have it trigger a new render. Because it doesn't trigger a new render, it is not tracked by React and is an `escape hatch`.
+
+`import { useRef } from 'react'`
+
+Then you call the useRef hook.
+
+`const ref = useRef(0); // default value`
+Your value will be saved in ref.current.
+
+In this example, we are showing the number of times you've clicked on the button, saving that value in ref.current and displaying it in an alert.
+
+```javascript
+import { useRef } from "react";
+
+export default function Counter() {
+  let ref = useRef(0);
+
+  function handleClick() {
+    ref.current = ref.current + 1;
+    alert("You clicked " + ref.current + " times!");
+  }
+
+  return <button onClick={handleClick}>Click me!</button>;
+}
+```
+
+However, because the component doesn't rerender on ref change. Something like this will never be updated.
+
+```javascript
+import { useRef } from "react";
+
+export default function Counter() {
+  let countRef = useRef(0);
+
+  function handleClick() {
+    // This doesn't re-render the component!
+    countRef.current = countRef.current + 1;
+  }
+
+  return (
+    <button onClick={handleClick}>You clicked {countRef.current} times</button>
+  );
+}
+```
 
 ## "use strict"
 
