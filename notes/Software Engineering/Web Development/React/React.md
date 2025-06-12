@@ -468,6 +468,27 @@ Because the browser usually batches the paints to wait for all the JavaScript mi
 
 ### useMemo
 
+[docs](https://react.dev/reference/react/useMemo)
+
+This is an optimisation that caches your calculations between re-renders.
+
+```javascript
+import { useMemo } from "react";
+
+function TodoList({ todos, tab }) {
+  const visibleTodos = useMemo(() => filterTodos(todos, tab), [todos, tab]);
+  // ...
+}
+```
+
+This means that filterTodos will not run again unless the dependencies have changed. It is good for big calculations. To properly see when to use `useMemo`, you can use `console.time()` to see how your component works in practice. The docs also recommends that you throttle your CPU by setting it to a mid-tier or low-end mobile as the average user probably doesn't have 32gb of ram on their machine.
+
+```javascript
+console.time("filter array");
+const visibleTodos = filterTodos(todos, tab);
+console.timeEnd("filter array");
+```
+
 ### useReducer
 
 ## Escape Hatches
