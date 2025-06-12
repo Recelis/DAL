@@ -489,7 +489,50 @@ const visibleTodos = filterTodos(todos, tab);
 console.timeEnd("filter array");
 ```
 
-### useReducer
+### useOptimistic
+
+[docs](https://react.dev/reference/react/useOptimistic)
+
+```javascript
+const [optimisticTodos, addOptimisticTodo] = useOptimistic(todos);
+
+async function handleAddTodo(newTodo) {
+  addOptimisticTodo([...todos, newTodo]); // optimistic UI update
+
+  try {
+    await api.addTodo(newTodo);
+  } catch (err) {
+    // error handling goes here
+    console.error("Failed to add todo:", err);
+    // You can refetch data or roll back state manually if needed
+  }
+}
+```
+
+This hooks lets you show the optimistic/happy path when state is changed. It is really used for mostly form handling. When a form is saved, you'd want the new saved values to show instantly, instead of waiting for the request to complete before showing the new values.
+
+If the request fails, then you wouldn't want the new values to be displayed so you'll have to manually revert back.
+
+<!-- This seems very much like useState -->
+
+In terms of practical use, they seem very similar. However, useOptimistic is mostly used to tell the developer that the real state is not handled in the component but actually in a server which is why useOptimistic is used a lot in Server Components. This can be written with useState as such.
+
+```javascript
+const [todos, setTodos] = useState([]);
+
+async function handleAddTodo(newTodo) {
+  const optimisticTodos = [...todos, newTodo];
+  setTodos(optimisticTodos); // optimistic update
+
+  try {
+    await api.addTodo(newTodo);
+  } catch (err) {
+    setTodos(todos); // manually rollback
+  }
+}
+```
+
+The key difference is that it will automatically merge and remove duplicates from the list when the server responds.
 
 ## Escape Hatches
 
