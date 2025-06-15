@@ -13,6 +13,7 @@ dotnet new webapi -controllers -f net8.0
 This creates a ASP .NET API project that uses `controllers`.
 
 To run:
+
 ```C#
 dotnet run
 ```
@@ -24,12 +25,15 @@ In this project, it is not necessary to do a `dotnet tool restore` or a `dotnet 
 ## Structure of Project
 
 ### Controllers
+
 These are `classes` with `public methods` that exposes HTTP endpoints. These are public classes with one or more public methods known as **actions**.
 
 #### Base Class: `ControllerBase`
+
 The base class provides functionality for handling HTTP requests.
 
 #### API controller class attributes
+
 ```csharp
 [ApiController]
 [Route("[controller]")]
@@ -40,21 +44,27 @@ Attributes are applied to the `WeatherForecastController`.
 [ApiController] enables opinionated behaviours to building web APIs as defined in the `Microsoft.AspNetCore.Mvc.ApiControllerAttribute` class.
 
 ### Program.cs
+
 This configures all the services and HTTP request pipeline. Also has app's entry point.
 
 ### [projectName].csproj
+
 This contains `configuration metadata` for project.
 
 ### [projectName].http
+
 Contains config to test REST APIs from VS Code.
 
 #### Rest Client Send Request
+
 You can actually test your API with the Send Request command in your [projectName].http file. provided that you have `Rest Client` installed in your VSCode.
 
 ### launchSettings.json
+
 This is the file that contains the config for the app.
 
 ## Data Store
+
 Models exist in a directory called Models. This is implemented using as `public class` under a namespace. e.g.
 
 ```csharp
@@ -71,9 +81,11 @@ public class Pizza
 Typically, this will be a connection to your DB.
 
 ## Data Service
+
 This is the interface to the data store. Your controllers will interface with your data service and provide business logic.
 
 ## Controllers
+
 As before, all controller classes extends off the ControllerBase class.
 
 ```csharp
@@ -103,7 +115,7 @@ public class PizzaController: ControllerBase
     // POST action
     [HttpPost]
     public IActionResult Create(Pizza pizza)
-    {            
+    {
         // This code will save the pizza and return a result
     }
     // PUT action
@@ -127,7 +139,37 @@ For an opinionated MVC server, even for this example, the GetAll endpoint will b
 [ActionResult] attribute is the base class for all action results in ASP .NET Core.
 
 # Assemblies
+
 [docs](https://learn.microsoft.com/en-us/dotnet/standard/assembly/)
 Assemblies are fundamental units of deployment, version control, reuse, activation scoping, and security permission for .NET applications.
 
 They are made running `build` in Visual Studio. Each package will contain one or more assembly.
+
+# Model binding
+
+[docs](https://learn.microsoft.com/en-us/aspnet/core/mvc/models/model-binding?view=aspnetcore-9.0)
+
+This is a way to bind incoming data from requests to your action parameters. It avoids writing your own converters from strings in your requests to your data models.
+
+```c#
+[HttpGet("{id}")]
+public ActionResult<Pet> GetById(int id, bool dogsOnly)
+```
+
+When the app gets a request:
+
+```http
+https://contoso.com/api/pets/2?DogsOnly=true
+```
+
+This would go through the request string and assign the "2" to 2 as an int to id and "true" as a string to true as a boolean for dogsOnly.
+
+## FromBody
+
+The [FromBody] attribute is used to read in the request's body and assign it to the argument.
+
+```c#
+public async Task<IActionResult> CreateTemplate([FromBody] TemplateDto templateDto)
+```
+
+There are other From\* attributes as well.
