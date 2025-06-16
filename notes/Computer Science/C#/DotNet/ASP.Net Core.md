@@ -82,7 +82,27 @@ Typically, this will be a connection to your DB.
 
 ## Data Service
 
-This is the interface to the data store. Your controllers will interface with your data service and provide business logic.
+[docs](https://learn.microsoft.com/en-gb/training/modules/build-web-api-aspnet-core/5-exercise-add-data-store)
+
+This is the interface to the data store. Your controllers will interface with your data service and provide business logic. This extra layer will deal with your business logic leaving your controllers deal with the HTTP requests.
+
+```csharp
+public class PizzaService
+{
+    private readonly MyDbContext _db;
+
+    public PizzaService(MyDbContext db)
+    {
+        _db = db;
+    }
+
+    public async Task AddPizzaAsync(Pizza pizza)
+    {
+        _db.Pizzas.Add(pizza);
+        await _db.SaveChangesAsync();
+    }
+}
+```
 
 ## Controllers
 
@@ -97,9 +117,11 @@ namespace ContosoPizza.Controllers;
 [Route("[controller]")]
 public class PizzaController: ControllerBase
 {
-    public PizzaController()
-    {
+    private readonly PizzaService _pizzaService;
 
+    public PizzaController(PizzaService pizzaService)
+    {
+        _pizzaService = pizzaService;
     }
 
     // GET all action
