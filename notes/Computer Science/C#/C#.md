@@ -1,4 +1,5 @@
 # C#
+
 ## Syntax
 
 ### Printing new line
@@ -194,10 +195,12 @@ public record Person
 ### Delegates
 
 ### Methods
+
 [docs](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/methods)
 A method is a block of code with statements that gets executed with the specified method arguments. The `Main` method is the entry point for every C# application and is called by the `common language runtime`. Although, you can have an application which uses `top-level statements` which compiles its own Main method.
 
 #### Method Signatures
+
 Methods are declared inside `class`, `struct` or `interface` and need an access level such as `public`, `private`. You'll have optional arguments, the name of the method, and the return type.
 
 ```csharp
@@ -218,6 +221,7 @@ abstract class Motorcycle
 ```
 
 #### Method access
+
 Methods are called on the object with or without arguments.
 
 ```csharp
@@ -242,7 +246,9 @@ class TestMotorcycle : Motorcycle
 ```
 
 #### Method parameters vs arguments
+
 The word parameter is for the definition of the values that the method takes in. While arguments are the concrete values that get passed in for each parameter.
+
 ```csharp
 int Square(int i)
 {
@@ -252,6 +258,7 @@ int Square(int i)
 ```
 
 #### Pass by Reference vs passing by value
+
 When an instance of a `value type` passed into a method, it is copied in. You can change this to be passed by reference using the `ref` keyword.
 
 But when an object is passed into a method, then it is by reference.
@@ -263,8 +270,6 @@ But when an object is passed into a method, then it is by reference.
 #### Expression body definitions
 
 #### Iterators
-
-
 
 ## Types of literal values
 
@@ -538,6 +543,7 @@ class Z : Y
 ```
 
 ### static
+
 [docs](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/static)
 
 Static modifier allows the member to below to the type instead od a specific object. A class can be made static which makes all of its members and properties static. It also means that the class is automatically `sealed`.
@@ -623,6 +629,7 @@ int i = d1;
 ```
 
 # Console Class
+
 [docs](https://learn.microsoft.com/en-us/dotnet/api/system.console?view=net-8.0)
 
 ```csharp
@@ -633,4 +640,21 @@ This is the standard input, output, and error streams for console applications.
 
 A common use case is `Console.WriteLine`.
 
+## using keyword
 
+[docs](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/using)
+
+This keyword defines a scope where the object will be disposed of at the end.
+
+```c#
+string filePath = "example.txt";
+string textToWrite = "Hello, this is a test message!";
+
+// Use the using statement to ensure the StreamWriter is properly disposed of
+using (StreamWriter writer = new StreamWriter(filePath))
+{
+    writer.WriteLine(textToWrite);
+}
+```
+
+This will call the `Dispose` method for the object which is from the IDisposable interface. This interface is part of the Base Class. Dispose is different to calling an object's destructor. Dispose is immediate while the destructor is really for garbage collection and rarely used.
