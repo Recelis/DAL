@@ -160,14 +160,19 @@ For an opinionated MVC server, even for this example, the GetAll endpoint will b
 
 [ActionResult] attribute is the base class for all action results in ASP .NET Core.
 
-# Assemblies
+### Action Result Class
 
-[docs](https://learn.microsoft.com/en-us/dotnet/standard/assembly/)
-Assemblies are fundamental units of deployment, version control, reuse, activation scoping, and security permission for .NET applications.
+To set the different HTTP Statuses of the responses, you can use the ActionResult Class methods.
 
-They are made running `build` in Visual Studio. Each package will contain one or more assembly.
+You'll need to include the MVC package.
 
-# Model binding
+```c#
+using Microsoft.AspNetCore.Mvc;
+```
+
+This will allow you to return methods such as NotFound(), Ok()... etc which automatically set your HTTP Status to the corresponding state.
+
+### Model binding
 
 [docs](https://learn.microsoft.com/en-us/aspnet/core/mvc/models/model-binding?view=aspnetcore-9.0)
 
@@ -186,7 +191,7 @@ https://contoso.com/api/pets/2?DogsOnly=true
 
 This would go through the request string and assign the "2" to 2 as an int to id and "true" as a string to true as a boolean for dogsOnly.
 
-## FromBody
+### FromBody
 
 The [FromBody] attribute is used to read in the request's body and assign it to the argument.
 
@@ -195,3 +200,14 @@ public async Task<IActionResult> CreateTemplate([FromBody] TemplateDto templateD
 ```
 
 There are other From\* attributes as well.
+
+### Data Service Layer
+
+<!-- TODO -->
+
+# Assemblies
+
+[docs](https://learn.microsoft.com/en-us/dotnet/standard/assembly/)
+Assemblies are fundamental units of deployment, version control, reuse, activation scoping, and security permission for .NET applications.
+
+They are made running `build` in Visual Studio. Each package will contain one or more assembly.
