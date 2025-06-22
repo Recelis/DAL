@@ -2,7 +2,7 @@
 
 As practiced on [musicCollection](https://github.com/Recelis/musicCollection) repo.
 
-# ASP .NET Core
+# ASP .NET Core MVC
 
 ## Creating ASP .NET project
 
@@ -84,7 +84,7 @@ Typically, this will be a connection to your DB.
 
 [docs](https://learn.microsoft.com/en-gb/training/modules/build-web-api-aspnet-core/5-exercise-add-data-store)
 
-This is the interface to the data store. Your controllers will interface with your data service and provide business logic. This extra layer will deal with your business logic leaving your controllers deal with the HTTP requests.
+This is the interface to the data store. Your controllers will interface with your data service and provide business logic. This extra layer will deal with your business logic leaving your controllers to deal with the HTTP requests.
 
 ```csharp
 public class PizzaService
@@ -103,6 +103,36 @@ public class PizzaService
     }
 }
 ```
+
+### Inmemory vs Db DataService
+
+Because your services will be added to your API via `Dependency Injection`, you can specify the interface and the class that you want to add as part of this service.
+
+```c#
+// if running unit tests
+builder.Services.AddSingleton<IQuestionnaireService, InMemoryQuestionnaireService>();
+// else if running deployment
+builder.Services.AddSingleton<IQuestionnaireService, PostgresQuestionnaireService>();
+```
+
+This will require that your classes InMemoryQuestionnaireService and PostgresQuestionnaireService have to implement IQuestionnaireService.
+
+```csharp
+public class InMemoryQuestionnaireService : IQuestionnaireService
+```
+
+#### Db DataService
+
+You can connect your Database to your DataService by adding your DB Context as a member.
+
+```c#
+public class PostgresQuestionnaireService : IQuestionnaireService
+{
+    private readonly LifeTrackerContext _lifeTrackerContext;
+}
+```
+
+This will use dependency injection to pass to your controllers.
 
 ## Controllers
 
@@ -200,10 +230,6 @@ public async Task<IActionResult> CreateTemplate([FromBody] TemplateDto templateD
 ```
 
 There are other From\* attributes as well.
-
-### Data Service Layer
-
-<!-- TODO -->
 
 # Assemblies
 
