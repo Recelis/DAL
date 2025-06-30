@@ -9,6 +9,8 @@ The gallbladder is a small organ that holds digestive juice produced by the `liv
 
 ## Muscles
 
+Muscles have at least points of interest. Their attachment locations, their function, and their innvervation (where the nerve goes to the muscle).
+
 ### Neck
 
 ### Deep neck flexors
@@ -24,6 +26,15 @@ These are the `cervical muscles` and are made up of the `Longus colli` and `Long
 These are the muscles at the base of the head.
 
 `Rectus Capitis Posterior Major and Minor` and `Obliquus Capitis Superior and Inferior`.
+
+### Scalenes
+
+[docs](https://www.physio-pedia.com/Scalene)
+[docs](https://teachmeanatomy.info/neck/muscles/scalene/)
+
+These are a group of neck muscles in the lateral neck (i.e. the front). They are the `scalenus anterior`, `scalenus medius` and `scalenus posterior`. There might be a fourth muscle `scalenus minimus` behind the anterior. Each of these muscles have different start and end connection points on the spine.
+
+![Scalene](./Scalene-Muscles-of-the-Neck.jpg)
 
 ### Trapezius
 
@@ -52,6 +63,8 @@ There are other muscles that it works with:
 These are muscles that sit underneath the trapezius muscles. They are made up of two muscles the Rhomboid Major and Rhomboid Minor. Minor sits above (superior) to the Major.
 
 ![Romboid with Trapezius and Scapula](./Scapula%20muscles.jpg)
+
+### Deltoid
 
 ## Bones
 
