@@ -47,6 +47,12 @@ There are other muscles that it works with:
 
 ### Rhomboids
 
+[docs](https://www.physio-pedia.com/Rhomboids)
+
+These are muscles that sit underneath the trapezius muscles. They are made up of two muscles the Rhomboid Major and Rhomboid Minor. Minor sits above (superior) to the Major.
+
+![Romboid with Trapezius and Scapula](./Scapula%20muscles.jpg)
+
 ## Bones
 
 ### Scapula
@@ -54,6 +60,8 @@ There are other muscles that it works with:
 [docs](https://www.physio-pedia.com/Scapula)
 
 This is a bone triangular shaped bone in the back.
+
+### Vertebrae
 
 ## Movements
 
