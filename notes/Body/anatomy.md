@@ -66,6 +66,13 @@ These are muscles that sit underneath the trapezius muscles. They are made up of
 
 ### Deltoid
 
+[docs](https://www.physio-pedia.com/Deltoid)
+[docs](https://my.clevelandclinic.org/health/body/21875-deltoid-muscles)
+
+The deltoids are shoulder muscles and are made up of the `Anterior deltoids` (the front), the `lateral deltoids` (the side) and the `posterior deltoids` (the back).
+
+The anterior deltoids are connected to the the `clavicle`. The lateral deltoids connect to the `acromion` (the bony part of the scapula) and posterior deltoid connects to the flat surface of the `scapula`.
+
 ## Bones
 
 ### Scapula
