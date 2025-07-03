@@ -9,7 +9,9 @@ The gallbladder is a small organ that holds digestive juice produced by the `liv
 
 ## Muscles
 
-Muscles have at least points of interest. Their attachment locations, their function, and their innvervation (where the nerve goes to the muscle).
+Muscles have at least points of interest. Their attachment locations, their function, their blood supply, and their innvervation (where the nerve goes to the muscle).
+
+The attachment locations tend to be `origin` or `insertion`. The origin is the place where it is fixed or less movable. While the `insertion` is the movable end that gets pulled towards the origin when the muscle contracts.
 
 ### Neck
 
@@ -73,13 +75,55 @@ The deltoids are shoulder muscles and are made up of the `Anterior deltoids` (th
 
 The anterior deltoids are connected to the the `clavicle`. The lateral deltoids connect to the `acromion` (the bony part of the scapula) and posterior deltoid connects to the flat surface of the `scapula`.
 
+### Levator Scapulae
+
+[docs](https://en.wikipedia.org/wiki/Levator_scapulae_muscle)
+
+This is a muscle in the back and side of the neck. It's main purpose is to lift the scapula. It connects to the C1-4 vertebrae and medial border of the scapula.
+
+![levator scapulae with other vertical column muscles](./levator%20scapulae.png)
+
+### Serratus Anterior
+
 ## Bones
+
+Bones have several points of interest, their `ossification` (which is how they are grown),
 
 ### Scapula
 
 [docs](https://www.physio-pedia.com/Scapula)
 
 This is a bone triangular shaped bone in the back.
+
+There are a few sections of the scapula. These are `coracoid process`, `acromion`, various tubercles, surfaces, borders, angles.
+
+#### Surfaces
+
+##### Front / subscapular Fossa
+
+##### Back
+
+##### Side
+
+#### Angles
+
+##### Superior angle / media angle
+
+##### Inferior angle
+
+##### lateral angle / glenoid angle / head of the scapula
+
+##### Anatomic neck
+
+##### Surgical neck
+
+#### Borders
+
+##### Superior border
+
+##### Axillary border
+
+##### Medial border
 
 ### Vertebrae
 
