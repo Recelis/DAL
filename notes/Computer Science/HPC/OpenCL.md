@@ -16,6 +16,8 @@ To do this, will need
 - Git
 - CMake (as a `build system`)
 - OpenCL-SDK
+- - This will require the OpenCL headers
+- - and Installable Client Driver (ICD) Loader (This allows your code to not need to know the details the hardware you run it on. It'll run the same.)
 
 ### CMake Build System
 
