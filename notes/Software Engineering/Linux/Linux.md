@@ -31,14 +31,18 @@ There are 7 global namespaces that come with Ubuntu.
 - CGroup
   Similar to `namespaces`, this allows you to create resource limits like CPU, memory, disk space, network traffic to a group of processes.
 
-## Viewing Namespaces
+### Viewing Namespaces
 
 Use the `lsns` command with sudo. Anything with PID1 is part of the global 7 namespaces.
 
-## Creating new namespaces
+### Creating new namespaces
 
 Use the `unshare` command.
 
 To create custom namespaces, you'll have to fork your own based on one of the global 7.
 
 <!-- Try doing this in Ubuntu creating and viewing new namespaces. Giving yourself full fs -->
+
+## Installing Debian
+
+To install a Debian file in Ubuntu, simply run `sudo apt install ./file.deb`
