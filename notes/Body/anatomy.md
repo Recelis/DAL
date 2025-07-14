@@ -85,6 +85,18 @@ This is a muscle in the back and side of the neck. It's main purpose is to lift 
 
 ### Serratus Anterior
 
+[docs](https://en.wikipedia.org/wiki/Serratus_anterior_muscle#/media/File:Serratus_anterior.png)
+
+![Serratus anterior](./Serratus%20anterior.png)
+
+This is a chest muscle. The origin is from upper 8 or 0 ribs and inserts to the `medial border: scapula`. It is innvervated by the `long thoracic nerve` (a branch of the `brachial plexus`). The movement is to pull the scapula forward around the `thorax`.
+
+There are three parts:
+
+- Serratus anterior superior
+- Serratus anterior intermediate
+- Serratus anterior inferior
+
 ## Bones
 
 Bones have several points of interest, their `ossification` (which is how they are grown),
@@ -132,3 +144,11 @@ There are a few sections of the scapula. These are `coracoid process`, `acromion
 ### Scapulo-humeral rhythm
 
 This is the movement associated with lifting your arm up. The `scapula` and `humerus` move in a 1:2 ratio. The arm is lifted up 180 deg, where the scapula moves 60 deg and the humerus moves the 120 deg.
+
+## Nerve System
+
+## Long Thoracic Nerve
+
+## Brachial Plexus
+
+## Thorax
