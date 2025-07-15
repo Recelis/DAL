@@ -97,6 +97,30 @@ There are three parts:
 - Serratus anterior intermediate
 - Serratus anterior inferior
 
+### Scapulohumeral muscles
+
+[docs](https://en.wikipedia.org/wiki/Scapulohumeral_muscles)
+
+These are a group of 7 muscles that connect to the humerus to the scapula. They are made up of the `coracobrachialis`, the `deltoid` and the `Rotator cuff muscles`.
+
+### Rotator Cuff muscles (SITS)
+
+These are a set of 4 muscles that stabilises the rotation of the shoulder. They are the `infraspinatus`, the `suprastinatus`, the `subscapularis` and the `teres minor`.
+
+![Rotar Cuff muscles](./Rotar%20Cuff.png)
+
+### Suprastinatus
+
+[docs](https://en.wikipedia.org/wiki/Rotator_cuff)
+
+This is a small muscle in the upper back. The origin is from the medial two-thirds `supaspinous fossa` of the scapula and inserts to the `greater tubercle` of the `humerus`. It is innvervated by the `suprascapular nerve`.
+
+## Infrastpinatus
+
+## Teres minor
+
+## Subscapularis
+
 ## Bones
 
 Bones have several points of interest, their `ossification` (which is how they are grown),
@@ -139,6 +163,10 @@ There are a few sections of the scapula. These are `coracoid process`, `acromion
 
 ### Vertebrae
 
+### Humerus
+
+#### Greater tubercle
+
 ## Movements
 
 ### Scapulo-humeral rhythm
@@ -150,5 +178,9 @@ This is the movement associated with lifting your arm up. The `scapula` and `hum
 ## Long Thoracic Nerve
 
 ## Brachial Plexus
+
+### Suprascapular nerve
+
+(C5-6)
 
 ## Thorax
