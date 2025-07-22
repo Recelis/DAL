@@ -52,7 +52,7 @@ type Shape =
 
 [docs](https://www.typescriptlang.org/docs/handbook/mixins.html)
 
-A mixin is a way of extending a class. In the example, you pass in a class Sprite to Scale which extends this class.
+A mixin is a way of extending a class. In the example, you pass in a class Sprite to the mixin Scale which extends this class.
 
 ```typescript
 class Sprite {
@@ -108,3 +108,30 @@ console.log(flappySprite.scale);
 As you can see, you can now pass in any class to the Scale class to extend it.
 
 ### Constrainted Mixins
+
+We can constrain to the class that the mixin is applied to by passing in a generic in the constructor.
+
+```typescript
+type GConstructor<T = {}> = new (...args: any[]) => T;
+```
+
+Then the classes that you create from the mixin can only be built from the base class.
+
+```typescript
+type Positionable = GConstructor<{ setPos: (x: number, y: number) => void }>;
+```
+
+Now any classes that you want to extend has to extend from Positionable as well.
+
+```typescript
+function Jumpable<TBase extends Positionable>(Base: TBase) {
+  return class Jumpable extends Base {
+    jump() {
+      // This mixin will only work if it is passed a base
+      // class which has setPos defined because of the
+      // Positionable constraint.
+      this.setPos(0, 20);
+    }
+  };
+}
+```
