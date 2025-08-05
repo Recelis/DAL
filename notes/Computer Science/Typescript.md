@@ -24,6 +24,37 @@ type Shape =
 
 ### Generics
 
+[docs](https://www.typescriptlang.org/docs/handbook/2/generics.html)
+This is a way to build components to work over a variety of types.
+
+```typescript
+function identity<Type>(arg: Type): Type {
+  return arg;
+}
+```
+
+Now with this `generic` type T, you can pass in an arg of any type and it would work.
+
+```typescript
+function identity<Type>(arg: Type): Type {
+  return arg;
+}
+```
+
+#### Generic Types
+
+#### Generic Classes
+
+#### Generic Constraints
+
+#### Using Type Parameters in Generic Constraints
+
+#### Using Class Types in Generics
+
+#### Generic Parameter Defaults
+
+#### Variance Annotations
+
 ### Keyof Type Operator
 
 ### Typeof Type Operator
