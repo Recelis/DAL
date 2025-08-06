@@ -41,9 +41,44 @@ function identity<Type>(arg: Type): Type {
 }
 ```
 
-#### Generic Types
+#### Generic Interface
+
+We can create a type for describing a generic function.
+
+```typescript
+interface GenericIdentityFn<Type> {
+  (arg: Type): Type;
+}
+
+function identity<Type>(arg: Type): Type {
+  return arg;
+}
+
+let myIdentity: GenericIdentityFn<number> = identity;
+```
+
+Now the myIdentity function has been assigned the identity generic function, but we also tell it what type it takes in.
 
 #### Generic Classes
+
+A generic class is similar to a generic interface.
+
+```typescript
+class GenericNumber<NumType> {
+  zeroValue: NumType;
+  add: (x: NumType, y: NumType) => NumType;
+}
+
+let myGenericNumber = new GenericNumber<number>();
+myGenericNumber.zeroValue = 0;
+myGenericNumber.add = function (x, y) {
+  return x + y;
+};
+```
+
+Here we define a class that can take in a generic type for its properties and method arguments. Then when it is used, the Generic Class is provided a specific number type.
+
+Generic classes are only generic on the `instance` side and not their `static side`.
 
 #### Generic Constraints
 
