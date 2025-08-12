@@ -43,3 +43,24 @@ The resulting speed as a function of time that reaches terminal velocity becomes
 v = V_t tanh(t g/V_t)
 
 `tanh` is an example of a `hyperbolic function`. When the `tanh` gets to 1, then the velocity reaches terminal velocity.
+
+## Thin Shell Hoop Stress Equation
+
+This is a calculation of how thick a pressure vessel's wall needs to be when the wall is thin compared to its radius.
+
+$$
+t \approx \frac{p \, r}{\sigma_{\text{allow}}}
+$$
+
+**Spherical thin-wall hoop stress formula:**
+
+$$
+t \approx \frac{p \, r}{2 \, \sigma_{\text{allow}}}
+$$
+
+Where:
+
+- \(t\) = required wall thickness
+- \(p\) = internal pressure (Pa)
+- \(r\) = internal radius (m)
+- \(\sigma\_{\text{allow}}\) = allowable stress (Pa)
