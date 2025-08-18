@@ -82,6 +82,19 @@ Generic classes are only generic on the `instance` side and not their `static si
 
 #### Generic Constraints
 
+If you want the generic to be constrained to only work with certain types. i.e. if you want it to only work for things with length. You can extend your generic off an interface.
+
+```typescript
+interface Lengthwise {
+  length: number;
+}
+
+function loggingIdentity<Type extends Lengthwise>(arg: Type): Type {
+  console.log(arg.length); // Now we know it has a .length property, so no more error
+  return arg;
+}
+```
+
 #### Using Type Parameters in Generic Constraints
 
 #### Using Class Types in Generics
