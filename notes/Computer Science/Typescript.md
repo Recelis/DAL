@@ -97,6 +97,22 @@ function loggingIdentity<Type extends Lengthwise>(arg: Type): Type {
 
 #### Using Type Parameters in Generic Constraints
 
+This is a way of constraining one type by another.
+
+```typescript
+function getProperty<Type, Key extends keyof Type>(obj: Type, key: Key) {
+  return obj[key];
+}
+
+let x = { a: 1, b: 2, c: 3, d: 4 };
+
+getProperty(x, "a");
+getProperty(x, "m");
+Argument of type '"m"' is not assignable to parameter of type '"a" | "b" | "c" | "d"'.
+```
+
+In this example, your type Key is dependent on your type Type. So your obj can be any type. In our case, our x has a,b,c,d fields so then our Key type has to be constrained by our x keys.
+
 #### Using Class Types in Generics
 
 #### Generic Parameter Defaults
