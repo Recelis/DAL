@@ -115,6 +115,55 @@ In this example, your type Key is dependent on your type Type. So your obj can b
 
 #### Using Class Types in Generics
 
+If you want to have a function for creating objects of a class i.e. a factory, you'll need to call the class constructor.
+
+```typescript
+class Bird {
+  hasWings: boolean = true;
+}
+
+function create<Type>(c: { new (): Type }): Type {
+  return new c();
+}
+
+const falcon = create(Bird);
+```
+
+A more powerful pattern is to infer and constrain relationships between constructor function and the instance types.
+
+```typescript
+class BeeKeeper {
+  hasMask: boolean = true;
+}
+
+class ZooKeeper {
+  nametag: string = "Mikle";
+}
+
+class Animal {
+  numLegs: number = 4;
+}
+
+// Bee has their own type of keeper
+class Bee extends Animal {
+  numLegs = 6;
+  keeper: BeeKeeper = new BeeKeeper();
+}
+
+// Lion has their own type of keeper
+class Lion extends Animal {
+  keeper: ZooKeeper = new ZooKeeper();
+}
+
+function createInstance<A extends Animal>(c: new () => A): A {
+  return new c();
+}
+
+// When Lion is passed in here, it checks that it has no arguments and returns an instance of the Animal class allowing the Lion's Zookeeper class type to be preserved.
+createInstance(Lion).keeper.nametag;
+createInstance(Bee).keeper.hasMask;
+```
+
 #### Generic Parameter Defaults
 
 #### Variance Annotations
