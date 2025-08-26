@@ -164,6 +164,8 @@ createInstance(Lion).keeper.nametag;
 createInstance(Bee).keeper.hasMask;
 ```
 
+This pattern is used `mixin`.
+
 #### Generic Parameter Defaults
 
 #### Variance Annotations
@@ -251,7 +253,7 @@ console.log(flappySprite.scale);
 
 As you can see, you can now pass in any class to the Scale class to extend it.
 
-### Constrainted Mixins
+### Constrained Mixins
 
 We can constrain to the class that the mixin is applied to by passing in a generic in the constructor.
 
