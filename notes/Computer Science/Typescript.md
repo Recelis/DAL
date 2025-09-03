@@ -168,7 +168,31 @@ This pattern is used `mixin`.
 
 #### Generic Parameter Defaults
 
-#### Variance Annotations
+You can create default generic types for when you have multiple versions of the same function where one has no parameters and the others may have parameters of different types.
+
+```typescript
+declare function create(): Container<HTMLDivElement, HTMLDivElement[]>;
+declare function create<T extends HTMLElement>(element: T): Container<T, T[]>;
+declare function create<T extends HTMLElement, U extends HTMLElement>(
+  element: T,
+  children: U[]
+): Container<T, U[]>;
+```
+
+This can be simplified to:
+
+```typescript
+declare function create<
+  T extends HTMLElement = HTMLDivElement, // default is HTMLDivElement
+  U extends HTMLElement[] = T[]
+>(element?: T, children?: U): Container<T, U>;
+
+const div = create();
+
+const div: Container<HTMLDivElement, HTMLDivElement[]>;
+
+const p = create(new HTMLParagraphElement());
+```
 
 ### Keyof Type Operator
 
