@@ -24,6 +24,176 @@ type Shape =
 
 ### Generics
 
+[docs](https://www.typescriptlang.org/docs/handbook/2/generics.html)
+This is a way to build components to work over a variety of types.
+
+```typescript
+function identity<Type>(arg: Type): Type {
+  return arg;
+}
+```
+
+Now with this `generic` type T, you can pass in an arg of any type and it would work.
+
+```typescript
+function identity<Type>(arg: Type): Type {
+  return arg;
+}
+```
+
+#### Generic Interface
+
+We can create a type for describing a generic function.
+
+```typescript
+interface GenericIdentityFn<Type> {
+  (arg: Type): Type;
+}
+
+function identity<Type>(arg: Type): Type {
+  return arg;
+}
+
+let myIdentity: GenericIdentityFn<number> = identity;
+```
+
+Now the myIdentity function has been assigned the identity generic function, but we also tell it what type it takes in.
+
+#### Generic Classes
+
+A generic class is similar to a generic interface.
+
+```typescript
+class GenericNumber<NumType> {
+  zeroValue: NumType;
+  add: (x: NumType, y: NumType) => NumType;
+}
+
+let myGenericNumber = new GenericNumber<number>();
+myGenericNumber.zeroValue = 0;
+myGenericNumber.add = function (x, y) {
+  return x + y;
+};
+```
+
+Here we define a class that can take in a generic type for its properties and method arguments. Then when it is used, the Generic Class is provided a specific number type.
+
+Generic classes are only generic on the `instance` side and not their `static side`.
+
+#### Generic Constraints
+
+If you want the generic to be constrained to only work with certain types. i.e. if you want it to only work for things with length. You can extend your generic off an interface.
+
+```typescript
+interface Lengthwise {
+  length: number;
+}
+
+function loggingIdentity<Type extends Lengthwise>(arg: Type): Type {
+  console.log(arg.length); // Now we know it has a .length property, so no more error
+  return arg;
+}
+```
+
+#### Using Type Parameters in Generic Constraints
+
+This is a way of constraining one type by another.
+
+```typescript
+function getProperty<Type, Key extends keyof Type>(obj: Type, key: Key) {
+  return obj[key];
+}
+
+let x = { a: 1, b: 2, c: 3, d: 4 };
+
+getProperty(x, "a");
+getProperty(x, "m");
+Argument of type '"m"' is not assignable to parameter of type '"a" | "b" | "c" | "d"'.
+```
+
+In this example, your type Key is dependent on your type Type. So your obj can be any type. In our case, our x has a,b,c,d fields so then our Key type has to be constrained by our x keys.
+
+#### Using Class Types in Generics
+
+If you want to have a function for creating objects of a class i.e. a factory, you'll need to call the class constructor.
+
+```typescript
+class Bird {
+  hasWings: boolean = true;
+}
+
+function create<Type>(c: { new (): Type }): Type {
+  return new c();
+}
+
+const falcon = create(Bird);
+```
+
+A more powerful pattern is to infer and constrain relationships between constructor function and the instance types.
+
+```typescript
+class BeeKeeper {
+  hasMask: boolean = true;
+}
+
+class ZooKeeper {
+  nametag: string = "Mikle";
+}
+
+class Animal {
+  numLegs: number = 4;
+}
+
+// Bee has their own type of keeper
+class Bee extends Animal {
+  numLegs = 6;
+  keeper: BeeKeeper = new BeeKeeper();
+}
+
+// Lion has their own type of keeper
+class Lion extends Animal {
+  keeper: ZooKeeper = new ZooKeeper();
+}
+
+function createInstance<A extends Animal>(c: new () => A): A {
+  return new c();
+}
+
+// When Lion is passed in here, it checks that it has no arguments and returns an instance of the Animal class allowing the Lion's Zookeeper class type to be preserved.
+createInstance(Lion).keeper.nametag;
+createInstance(Bee).keeper.hasMask;
+```
+
+This pattern is used `mixin`.
+
+#### Generic Parameter Defaults
+
+You can create default generic types for when you have multiple versions of the same function where one has no parameters and the others may have parameters of different types.
+
+```typescript
+declare function create(): Container<HTMLDivElement, HTMLDivElement[]>;
+declare function create<T extends HTMLElement>(element: T): Container<T, T[]>;
+declare function create<T extends HTMLElement, U extends HTMLElement>(
+  element: T,
+  children: U[]
+): Container<T, U[]>;
+```
+
+This can be simplified to:
+
+```typescript
+declare function create<
+  T extends HTMLElement = HTMLDivElement, // default is HTMLDivElement
+  U extends HTMLElement[] = T[]
+>(element?: T, children?: U): Container<T, U>;
+
+const div = create();
+
+const div: Container<HTMLDivElement, HTMLDivElement[]>;
+
+const p = create(new HTMLParagraphElement());
+```
+
 ### Keyof Type Operator
 
 ### Typeof Type Operator
@@ -107,7 +277,7 @@ console.log(flappySprite.scale);
 
 As you can see, you can now pass in any class to the Scale class to extend it.
 
-### Constrainted Mixins
+### Constrained Mixins
 
 We can constrain to the class that the mixin is applied to by passing in a generic in the constructor.
 
