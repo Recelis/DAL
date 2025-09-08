@@ -20,3 +20,11 @@ How we talk to ourselves is something else that gets passed down.
 4. Be aware of passing it down to your child.
 
 ## Environment
+
+It isn't about the family structure, it is about how we get along with each other.
+
+### Arguing
+
+Important to know how you feel about the context and to share that. It is also important to know how the other is feeling. If you leave feelings out of it, you will only be playing `fact tennis` which is when you just give more and more reasons until the other stops giving reasons or you run out of reasons. No one feels good at the end of this.
+
+`Distractions` or avoidance are another unhelpful way to deal with arguments. It also means that intimacy is avoided too.
