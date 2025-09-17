@@ -28,3 +28,16 @@ It isn't about the family structure, it is about how we get along with each othe
 Important to know how you feel about the context and to share that. It is also important to know how the other is feeling. If you leave feelings out of it, you will only be playing `fact tennis` which is when you just give more and more reasons until the other stops giving reasons or you run out of reasons. No one feels good at the end of this.
 
 `Distractions` or avoidance are another unhelpful way to deal with arguments. It also means that intimacy is avoided too.
+
+The next is `being a martyr` to make everyone guilty, but then they become resentful
+
+Conflict puts kids into a stress mode instead of treating home as a place for security.
+
+### Ideal way to argue
+
+Start with how you feel.
+"I feel fed up when I come home after having washed up in the morning to see more of the dishes left to do."
+
+Good to use `I statements` instead of `you statements`.
+
+The goal is to understand instead of winning and this does not mean the other person will change for you, but you will develop a more emotionally intelligent and respectful way of arguing.
