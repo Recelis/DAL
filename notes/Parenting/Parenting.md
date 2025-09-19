@@ -41,3 +41,12 @@ Start with how you feel.
 Good to use `I statements` instead of `you statements`.
 
 The goal is to understand instead of winning and this does not mean the other person will change for you, but you will develop a more emotionally intelligent and respectful way of arguing.
+
+### Fostering Goodwill
+
+Two ways of fostering goodwill.
+
+- responding to bids for connection or attention
+- finding solace in each other instead of treating each other as adversaries
+
+Couples who are stressed by each other tend to be split up or in a dysfunctional relationship after a while. While couples who are soothed by each other will stick together.
