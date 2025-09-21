@@ -50,3 +50,23 @@ Two ways of fostering goodwill.
 - finding solace in each other instead of treating each other as adversaries
 
 Couples who are stressed by each other tend to be split up or in a dysfunctional relationship after a while. While couples who are soothed by each other will stick together.
+
+## Feelings
+
+Your job as a parent is to `contain` your child's feelings. Ignoring or denying the child's feelings is harmful to mental health. Scolding, belittling, advising or distracting can try to help them feel better, or ourselves, but when feelings are disallowed, they don't disappear.
+
+<blockquote>
+The common cause of adult depression is not what's happening to the adult in the present but because, as a child, they did not learn in their relationship with their parents how they can be soothed.
+</blockquote>
+
+Their capacity for them diminishes if left alone.
+
+The three main ways of dealing with emotion are:
+
+### Repressing
+
+This is when you push the strong feelings away and say: "shush". You dismiss your child's feelings as unimportant.
+
+### Overreacting
+
+This is when you become as hysterical as they are and cry with them.
