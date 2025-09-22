@@ -70,3 +70,13 @@ This is when you push the strong feelings away and say: "shush". You dismiss you
 ### Overreacting
 
 This is when you become as hysterical as they are and cry with them.
+
+### Containing
+
+Acknowledge and validate all of your feelings for yourself and your child. This is something that psychotherapists do for their clients.
+
+<blockquote>Stick with the philosophy.instead of soothing the tears, feeling with rather than dealing with. If you take a child's feelings seriously and sooth them when they need it, they will gradually learn to internalize that soothing and eventually become able to do it for themselves.</blockquote>
+
+May need to practise yourself and deal with them. One way is by defining your feeling rather than yourself. Instead of "you are sad", say "you feel sad" or it "looks like you are feeling sad".
+
+Don't dismiss feelings. One example is when kids say that monsters are under the bed. Instead of saying, "monsters don't exist", you can ask about what the names of the monster are. What they look like. Don't dismiss them.
