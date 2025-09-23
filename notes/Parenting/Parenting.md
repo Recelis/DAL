@@ -80,3 +80,9 @@ Acknowledge and validate all of your feelings for yourself and your child. This 
 May need to practise yourself and deal with them. One way is by defining your feeling rather than yourself. Instead of "you are sad", say "you feel sad" or it "looks like you are feeling sad".
 
 Don't dismiss feelings. One example is when kids say that monsters are under the bed. Instead of saying, "monsters don't exist", you can ask about what the names of the monster are. What they look like. Don't dismiss them.
+
+#### Accepting Every Mood
+
+It is not possible to be happy all the time. If you tell your children to be happy when they say they are "not happy". Scold them or argue that they should be happy or even give them advice, they will not be happy. They will grow to be confused and unsure of their own feelings. Also, you are not validating or connecting to them.
+
+Asking why they feel like that is enquiring about them.
