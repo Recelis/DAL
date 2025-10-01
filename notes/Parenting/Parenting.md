@@ -86,3 +86,5 @@ Don't dismiss feelings. One example is when kids say that monsters are under the
 It is not possible to be happy all the time. If you tell your children to be happy when they say they are "not happy". Scold them or argue that they should be happy or even give them advice, they will not be happy. They will grow to be confused and unsure of their own feelings. Also, you are not validating or connecting to them.
 
 Asking why they feel like that is enquiring about them.
+
+Emotions do not have a fading control, you can't turn down one and keep the other. It only has a master volume. You can turn down all at a time. So turning down negative means turning down all.
