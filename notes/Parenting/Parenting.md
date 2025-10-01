@@ -88,3 +88,20 @@ It is not possible to be happy all the time. If you tell your children to be hap
 Asking why they feel like that is enquiring about them.
 
 Emotions do not have a fading control, you can't turn down one and keep the other. It only has a master volume. You can turn down all at a time. So turning down negative means turning down all.
+
+#### Distracting away from feelings
+
+Distraction is a trick used by parents to help their children avoid difficult feelings. It is detrimental to good mental health because they learn to need to be distracted whenever they have difficult feelings and don't learn how to work through difficult problems. Being firm, honest and accepting of their feelings:
+
+"You don't like it when mum goes to work and leaves you at home, but she will be back home at the end of the day." is better than distracting away by giving them a toy. It is also not what we do as adults when we have a difficult thing. It takes time even for us to be able to be distracted away.
+
+Of course, you can use distraction but only in relation to the difficult thing, i.e. telling your kid to focus on the sensation of your hand instead of the needle is powerful because it helps train your kids to switch focus during a difficult time.
+
+## Pregnancy and Laying a Foundation
+
+Think of your kid in the long term, the relationship you want to have with them and not just a chore for now.
+Can be difficult to have a good relationship with them if you haven't built a good foundation with them using the frameworks and ideas from the previous sections.
+
+Typically hard, because from the start of pregnancy there are a lot of rules which forces you to not think of your children as real people and you want to optimise them.
+
+There is an idea of `sympathetic magic`, the idea if you do the perfect thing you can have a perfect child (but a perfect child is not accepting who they are), or avoiding potential issues like if you eat chocolate in pregnancy your kid will likely be happier. But crap still happens, or your kid is happy even though you didn't eat chocolate, and you may not have seen the advice until too late.
