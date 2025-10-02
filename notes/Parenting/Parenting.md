@@ -105,3 +105,11 @@ Can be difficult to have a good relationship with them if you haven't built a go
 Typically hard, because from the start of pregnancy there are a lot of rules which forces you to not think of your children as real people and you want to optimise them.
 
 There is an idea of `sympathetic magic`, the idea if you do the perfect thing you can have a perfect child (but a perfect child is not accepting who they are), or avoiding potential issues like if you eat chocolate in pregnancy your kid will likely be happier. But crap still happens, or your kid is happy even though you didn't eat chocolate, and you may not have seen the advice until too late.
+
+### Parent Tribe
+
+Parents can fall into two categories. Facilitators and Regulators. Facilitators are those who are more like supply-side to the child. If the child wants or needs something they will provide. While Regulators want to provide a safe secure and predictable environment to their children. People have a tendency to be one or the other, but sometimes will switch. There is no right or wrong answer.
+
+### Attachment Theory
+
+The book goes through the story of a pair of twins where one had a tough birth and didn't see the mother until 4 weeks after birth. And then the mother distracted herself from looking after the child, leaving the child to start become clingy and made him unlikeable even by his twin. She saw this rupture in the child and started spending one on one time with him when he was 4 years old. So he started to become less clingy which would help avoid him having one sided relationships in the future.
