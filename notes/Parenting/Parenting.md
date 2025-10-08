@@ -113,3 +113,21 @@ Parents can fall into two categories. Facilitators and Regulators. Facilitators 
 ### Attachment Theory
 
 The book goes through the story of a pair of twins where one had a tough birth and didn't see the mother until 4 weeks after birth. And then the mother distracted herself from looking after the child, leaving the child to start become clingy and made him unlikeable even by his twin. She saw this rupture in the child and started spending one on one time with him when he was 4 years old. So he started to become less clingy which would help avoid him having one sided relationships in the future.
+
+Babies are born preprogrammed to develop attachment styles to work with their environment based on whether their needs are met.
+
+### Secure Attachment Style
+
+Needs are met. Generally trusting of people. Thinking you are okay and that others are as well. Optimistic.
+
+### Insecure/Ambivalent Attachment Style
+
+Only inconsistently met. Need to scream loud and hard to get attention and still sometimes don't get it. Belief that you will be overlooked and ignored. Don't think you are an okay person and don't believe others will be the same.
+
+### Avoidant Attachment Style
+
+Needs almost never met no matter how much you cried.Internal belief is that won't get attention no matter how hard you try. Don't believe you will have influence over others nor can be understood. Don't really let anyone get close to you.
+
+### Dismissive Attachment Style
+
+Instead of seeing to your needs, people expected you to meet theirs or they abused you, didn't give you anything, or caused physical harm. See others as a source of harm. No empathy.
