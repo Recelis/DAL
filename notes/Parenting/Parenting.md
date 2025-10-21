@@ -131,3 +131,7 @@ Needs almost never met no matter how much you cried.Internal belief is that won'
 ### Dismissive Attachment Style
 
 Instead of seeing to your needs, people expected you to meet theirs or they abused you, didn't give you anything, or caused physical harm. See others as a source of harm. No empathy.
+
+## Good Mental Health
+
+Building good mental health means forming a strong bond between parent and child. To do this, we start by learning about the give and take turn-taking of communication. Where we talk and expect to be listened to and given our full attention. Parents who are constantly on their phones may detract from their children's mental health because the number one priority is on their phone.
