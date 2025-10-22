@@ -134,4 +134,10 @@ Instead of seeing to your needs, people expected you to meet theirs or they abus
 
 ## Good Mental Health
 
-Building good mental health means forming a strong bond between parent and child. To do this, we start by learning about the give and take turn-taking of communication. Where we talk and expect to be listened to and given our full attention. Parents who are constantly on their phones may detract from their children's mental health because the number one priority is on their phone.
+Building good mental health means forming a strong bond between parent and child. To do this, we start by learning about the give and take turn-taking of communication. Where we talk, observe and listen to our children instead of interrupting. Parents who are constantly on their phones may detract from their children's mental health because the number one priority is on their phone. It can be hard to do this as a parent, this is called `diaphobia`, but we do need to work through it.
+
+Bad behaviour from our children will need to be treated with `love bombing` where we give ourselves fully to our kids. This is because they are calling out for attention and may have felt unseen, uncared for. People may say this is rewarding bad behaviour but it is treating the issue rather than masking the symptoms.
+
+The book talks about sleep training and how it excacerbates the issue where kids feel unheard and their needs unmet. And instead suggests `sleep nudging` where we figure out our baseline and then try a little bit more if they are okay with it.
+
+Lastly, it talks about play and how it is actually very effortful and work to imagine and figure things out instead of being a waste of time.
