@@ -6,6 +6,15 @@
 
 Measured in Volts (V). This can be thought of the pressure between charges between two points. If the thing separating it is very permittive or if the area is big, then the voltage is small because it doesn't take much work to move the charge up to the other point.
 
+$$
+v_{AB} \triangleq \frac{\delta w}{\delta q}
+$$
+
+where:
+
+- \(\delta w\) is the incremental work required to move a small charge,
+- \(\delta q\) is that small amount of charge.
+
 ## Current
 
 Measured in Amperes (A) and denoted as I. The rate at which charge is flowing.
@@ -34,3 +43,19 @@ Capacitance of a capacitor is calculated from its physical properties.
 Where ∈ is the permittivity of the dielectric material. A is the surface area of the plates and d the distance between the plates. This assumes the capacitor is made up of parallel plates.
 
 Basically, a higher capacitance means that the for a given charge difference, the voltage (pressure) is the same, but a lower capacitance might would result in a lower voltage.
+
+## Power
+
+Power is time rate of expending or absorbing energy in Watts.
+
+$$
+p \triangleq \frac{\delta w}{\delta t}
+$$
+
+This can be simplified as:
+
+$$
+p = vi
+$$
+
+If power is positive, then it is power delivered to the element, but if it is negative, then it is supplied by element. The `law of conservation of energy` must be obeyed in any electrical circuit so everything supplied to the circuit must be absorbed.
