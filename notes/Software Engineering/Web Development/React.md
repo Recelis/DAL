@@ -3,36 +3,58 @@
 ## React Context
 
 ### Creating Context
+
 [docs](https://react.dev/reference/react/createContext)
 
-React Context allows you to pass data globally through your component tree.
+React Context allows you to pass data globally or locally throughout your component tree.
 
 You create it with `createContext`.
 
 ```typescript
-const SomeContext = createContext(defaultValue);
+const SomeContext = createContext<IContext | undefined>(defaultValue);
 ```
 
-The defaultValue is what the context will be if you don't have a provider above the component that is reading that context. This value is `null` by default.
+The defaultValue is `null` by default, but I prefer `undefined` to keep things consistent.
 
-It returns a context oject that doesn't actually hold any information on its own.
-You will also need to create a provider component to wrap the components that need access to the context.
+#### Typing Context
+
+The Type you specify for your context will be all the state and methods you want to expose.
+
+#### Provider
+
+You will also need to create a provider component to wrap the components that need access to the context. The provider component tells React which components have access to this component. Without it, your `useContext` will return probably just `null`.
 
 ```typescript
-function MyPage() {
+function SomeProvider(props: { children: ReactNode }) {
+  // state1, state2
+  // method1, method2 defined
+
   return (
-    <ThemeContext.Provider value="dark">
-      <Form />
-    </ThemeContext.Provider>
+    <SomeContext.Provider value={{ state1, state2, method1, method2 }}>
+      {props.children}
+    </SomeContext.Provider>
   );
 }
+```
 
+Your Context and Provider can be defined in one place.
+
+When you want access to your Provider, you wrap your component inside the Provider.
+
+```typescript
+// pass Form into your Provider later...
 function Form() {
   // ... renders buttons inside ...
 }
+
+// elsewhere
+<SomeProvider>
+  <Form />
+</SomeProvider>;
 ```
 
 ### Using Context
+
 [docs](https://react.dev/reference/react/useContext)
 If you want to then read the context in a component you can use `useContext`.
 
@@ -44,16 +66,18 @@ You can use context with state, with useState, and this will allow you to update
 Typically, the Provider is wrapped up as its own component.
 
 ```typescript
-export default function CurrentUserProvider (props: {children: React.ReactNode}) {
+export default function CurrentUserProvider(props: {
+  children: React.ReactNode;
+}) {
   const [currentUser, setCurrentUser] = useState<User | undefined>(undefined);
 
-// it is better to use a handler than the setCurrentUser modifier to avoid setting the type as a SetDispatch
-const handleCurrentUserChange = (newUser: User) => setCurrentUser(newUser);
+  // it is better to use a handler than the setCurrentUser modifier to avoid setting the type as a SetDispatch
+  const handleCurrentUserChange = (newUser: User) => setCurrentUser(newUser);
   return (
     <CurrentUserContext.Provider
       value={{
         currentUser,
-        handleCurrentUserChange
+        handleCurrentUserChange,
       }}
     >
       <Form />
@@ -63,6 +87,7 @@ const handleCurrentUserChange = (newUser: User) => setCurrentUser(newUser);
 ```
 
 Then you need to wrap the Provider around the component that you want access to that context.
+
 ```typescript
 <CurrentUserProvider>
     <MyComponent>
@@ -72,5 +97,5 @@ Then you need to wrap the Provider around the component that you want access to 
 And to use that context inside MyComponent.
 
 ```typescript
-const {currentUser, handleCurrentUserChange} = useContext(CurrentUserContext);
+const { currentUser, handleCurrentUserChange } = useContext(CurrentUserContext);
 ```
