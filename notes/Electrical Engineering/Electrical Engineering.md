@@ -4,6 +4,7 @@
 
 ## Voltage
 
+∂
 Measured in Volts (V). This can be thought of the pressure between charges between two points. If the thing separating it is very permittive or if the area is big, then the voltage is small because it doesn't take much work to move the charge up to the other point.
 
 $$
@@ -13,7 +14,8 @@ $$
 where:
 
 - \(\delta w\) is the incremental work required to move a small charge,
-- \(\delta q\) is that small amount of charge.
+- # \(\delta q\) is that small amount of charge.
+  Measured in Volts (V). This is a the charge difference between two points.∂
 
 ## Current
 
@@ -59,3 +61,14 @@ p = vi
 $$
 
 If power is positive, then it is power delivered to the element, but if it is negative, then it is supplied by element. The `law of conservation of energy` must be obeyed in any electrical circuit so everything supplied to the circuit must be absorbed.
+
+$$
+P = \frac{\delta E}{\delta q} * \frac{\delta q}{\delta t} = \frac{\delta E}{\delta t}
+$$
+
+Energy is often measured in terms of `Watt hours` which is the energy consumed in terms of hours.s
+
+## Circuit Elements
+
+Two types of elements: `active` or `passive`.
+Active elements are capable of generating energy, examples are: generators, batteries, op amps. While passive element examples are resistors, capacitors, and inductors.
