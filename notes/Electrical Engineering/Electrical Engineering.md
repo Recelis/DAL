@@ -72,3 +72,7 @@ Energy is often measured in terms of `Watt hours` which is the energy consumed i
 
 Two types of elements: `active` or `passive`.
 Active elements are capable of generating energy, examples are: generators, batteries, op amps. While passive element examples are resistors, capacitors, and inductors.
+
+For the active elements, we have our voltage and current sources.
+
+We have the concepts for `dependent` and `independent` power sources as well for `voltage` and `current`. So a voltage dependent voltage source means that the voltage out of the element depends on the voltage given to the element. A voltage dependent current source is sort like a transistor. We have current controlled sources as well. The symbol used is a diamond for dependent sources while the symbol used for independent sources is a circle (or a battery symbol for voltage).
