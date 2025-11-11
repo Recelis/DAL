@@ -21,19 +21,6 @@ where:
 
 Measured in Amperes (A) and denoted as I. The rate at which charge is flowing.
 
-## Resistance
-
-Measured in Ohms (Ω). This is the material's tendency to resist the current.
-
-`R = p l /A`
-Where p is the resistivity of the material in ohm meters and l is the length and A is the cross-sectional area.
-
-## Ohm's Law
-
-`V = IR`
-This is the relationship between voltage, current and resistance where the voltage determines the
-product of the flow and the resistance. Typically, an engineer will have control over the voltage and the resistance of the material, while the current is the result of these two properties.
-
 ## Capacitance
 
 Capacitance is the ratio between the Voltage difference between two plates and the charges difference between those same two plates.
@@ -76,3 +63,34 @@ Active elements are capable of generating energy, examples are: generators, batt
 For the active elements, we have our voltage and current sources.
 
 We have the concepts for `dependent` and `independent` power sources as well for `voltage` and `current`. So a voltage dependent voltage source means that the voltage out of the element depends on the voltage given to the element. A voltage dependent current source is sort like a transistor. We have current controlled sources as well. The symbol used is a diamond for dependent sources while the symbol used for independent sources is a circle (or a battery symbol for voltage).
+
+## Resistance
+
+Measured in Ohms (Ω). This is the material's tendency to resist the current.
+
+$$
+R = p l /A
+$$
+
+Where p is the resistivity of the material in ohm meters and l is the length and A is the cross-sectional area.
+
+## Ohm's Law
+
+$$
+V = IR
+$$
+
+This is the relationship between voltage, current and resistance where the voltage determines the
+product of the flow and the resistance. Typically, an engineer will have control over the voltage and the resistance of the material, while the current is the result of these two properties.
+
+This means that voltage is proportional to current.
+
+Not all resistors obey Ohm's Law. The ones that do are `linear resistors` while the ones that don't are `non-linear` where the resistance varies with current. Two examples are the lightbulb and the diode, but for practical purposes we assume they are linear.
+
+## Conductance
+
+The inverse of resistance. Measured in mho or ℧.
+
+$$
+G = 1 / R = i /v
+$$
