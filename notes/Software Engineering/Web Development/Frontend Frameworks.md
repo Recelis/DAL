@@ -1,10 +1,10 @@
-# Frontend Frameworks: CRUD
+# Frontend Frameworks: CRUD, JavaScript, npm
 
 ## Dependencies
-The core ideas are componentisation of `HTML`, `CSS` and `JavaScript` code. You can bundle your code into either class or functional components so that they are modular, reusable if needed, and composable. They have a `lifecycle`, things happen on first mount, on update and on removal. They also take in `props` and the output is the component HTML or whatever rendering template language. Typically, they will also have some internal `state` that can deal with `event handling`. 
+The core ideas are componentisation of `HTML`, `CSS` and `JavaScript` code. You can bundle your code into either class or functional components so that they are modular, reusable if needed, and composable. They have a `lifecycle`, things happen on first mount, on update and on removal. They also take in `props` and the output is the component HTML or whatever rendering `template` language. Typically, they will also have some internal `state` that can deal with `event handling`. 
 
 ## Implementations
-Typically for `CRUD` applications.
+Typically for `CRUD` applications. `Automated testing` is an important addition to Frontend Frameworks. It is optional, but necessary in most professional settings.
 
 ## Dependents
 - React

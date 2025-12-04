@@ -48,7 +48,7 @@ const greeting = document.createElement("simple-greeting");
 
 The LitElement base class is a subclass of HTMLElement. It actually inherits from ReactiveElement which inherits from HTMLElement.
 
-## Typescript typings
+### Typescript typings
 
 TypeScript will infer the class and all of its properties given the HTML element.
 
@@ -208,6 +208,7 @@ state()
 
 ### Lifecycle
 
+
 This is what the lifecycle callbacks look like:
 
 ```js
@@ -241,4 +242,27 @@ class MyCustomElement extends HTMLElement {
 }
 
 customElements.define("my-custom-element", MyCustomElement);
+```
+
+### Event Handling
+
+### Automated Testing
+The docs suggest using the `Web Test Runner` for unit tests which can test things inside the Shadow DOM of a Lit Component.
+
+[Lit Test Example](https://github.com/modernweb-dev/example-projects/blob/master/lit-element/test/my-element.test.js)
+
+```javascript
+import { html, fixture, expect } from '@open-wc/testing';
+
+import { MyElement } from '../src/MyElement';
+import '../my-element';
+
+describe('MyElement', () => {
+  it('has a default title "Hey there" and counter 5', async () => {
+    const el: MyElement = await fixture(html` <my-element></my-element> `);
+
+    expect(el.title).to.equal('Hey there');
+    expect(el.counter).to.equal(5);
+  });
+})
 ```
