@@ -24,4 +24,5 @@ Where m is the mth voltage and M is the number of voltage in the loop.
 
 # Dependents
 `Circuit Analysis` when combined with `Ohm's Law`.
+
 # Interactions
