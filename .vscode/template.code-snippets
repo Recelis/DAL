@@ -1,0 +1,22 @@
+{
+	"Template": {
+    "prefix": "template",
+    "body": [
+      "# ${1:Title}",
+      "",
+      "## Dependencies",
+      "${2:}",
+      "",
+      "## Implementations",
+      "${3:}",
+      "",
+      "## Dependents",
+      "${4:}", 
+      "",
+      "## Interactions",
+      "${5:}",
+      ""
+    ],
+    "description": "Insert standard documentation headers with a customizable top title"
+  }
+}
