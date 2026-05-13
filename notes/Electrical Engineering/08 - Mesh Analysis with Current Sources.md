@@ -7,7 +7,7 @@ There are two special cases:
 
 Case 2: When current sources exists between two meshes. We create supermesh by excluding current source and any elements connected in series.
 
-Then we apply KV; to the node where the two meshes intersect.
+Then we apply KVL; to the node where the two meshes intersect.
 
 # Implementations
 
