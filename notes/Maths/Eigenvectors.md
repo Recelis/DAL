@@ -9,3 +9,9 @@ The difference in magnitude is called the `eigenvalue`.
 $\mathbf{A}\mathbf{v} = \lambda\mathbf{v}$
 
 The $\lambda\$ is the eigenvalue.
+
+# Implementations
+
+# Dependents
+
+# Interactions
