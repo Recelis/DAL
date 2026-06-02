@@ -1,6 +1,10 @@
 # pnpm
 
 ## Dependencies
+[silly bugs](https://www.kochan.io/nodejs/pnpms-strictness-helps-to-avoid-silly-bugs.html)
+[symlinks](https://pnpm.io/symlinked-node-modules-structure)
+
+
 This is a package manager similar to `npm` and `yarn` for Node.js projects.
 
 It solves the issues of `npm`'s `flattened dependency tree` where all of the transient dependencies are listed on the root level of your `node_modules` directory.
