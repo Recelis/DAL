@@ -1,0 +1,17 @@
+# Thevenin's Theorem
+
+# Dependencies
+This is a technique for simplying a circuit analysis. Especially in regards to a circuit with a variable load and a fixed load, where when a variable load is changed, the subsequent circuit analysis does not need to be all recalculated because the fixed load parts of the circuit has been simplified into a Thevenin equivalent.
+
+This equivalent may be a voltage and a resistance.
+
+The full definition:
+
+Thevenin's theorem states that a linear two-terminal circuit can be replaced by an equivalent circuit consisting of a voltage source V_Th in series with a resistor R_th, where V_Th is the open-circuit voltage at the terminals and R_Th is the input or equivalent resistance at the terminals when the independent sources are turned off.`
+
+# Implementations
+
+
+# Dependents
+
+# Interactions
